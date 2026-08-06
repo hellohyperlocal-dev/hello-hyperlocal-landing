@@ -18,7 +18,7 @@ export function DownloadCta() {
           Free for residents. Four minutes to set up. One neighbour to verify
           you.
         </p>
-        <StoreButtons size="lg" playTone="panel" />
+        <StoreButtons size="lg" />
       </div>
 
       <div className="flex justify-center">

@@ -5,9 +5,8 @@ import { Hero } from "@/components/landing/Hero"
 import { PartnerStrip } from "@/components/landing/PartnerStrip"
 import { Features } from "@/components/landing/Features"
 import { HowItWorks } from "@/components/landing/HowItWorks"
-import { Testimonials } from "@/components/landing/Testimonials"
 import { Newsletter } from "@/components/landing/Newsletter"
-import { BusinessIntake } from "@/components/landing/BusinessIntake"
+import { ForBusiness } from "@/components/landing/ForBusiness"
 import { Expansion } from "@/components/landing/Expansion"
 import { DownloadCta } from "@/components/landing/DownloadCta"
 import { SiteFooter } from "@/components/landing/SiteFooter"
@@ -27,9 +26,8 @@ export default function Page() {
         <PartnerStrip />
         <Features />
         <HowItWorks />
-        <Testimonials />
         <Newsletter />
-        <BusinessIntake />
+        <ForBusiness />
         <Expansion />
         <DownloadCta />
       </main>
