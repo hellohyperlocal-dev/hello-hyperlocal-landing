@@ -67,6 +67,9 @@ which is why the page renders identically regardless of theme — see §6.
   `next/font/google` in `app/layout.tsx`. DM Mono is used in exactly one
   place — the `01`–`04` step numerals in `HowItWorks` — matching the design
   system's rule that mono is for numeric/technical values only.
+- **Motion (`motion/react`) v13** for the hero's animation — entrance tweens
+  plus `useScroll`/`useSpring`/`useTransform` for its scroll-driven phase. It is
+  the only animated component; everything else uses CSS.
 - **No backend.** Every form is local `useState` with no submit target. See §7.
 
 ---
@@ -77,23 +80,47 @@ which is why the page renders identically regardless of theme — see §6.
 
 | Component | Section id | Background | Notes |
 |---|---|---|---|
-| `SiteHeader` | — | canvas, sticky | Nav + "Get the app" pill |
-| `Hero` | `#top` | canvas | Two floating phone mockups, CSS keyframe animation |
+| `SiteHeader` | — | canvas, sticky | Wordmark + nav + "Get the app" pill |
+| `Hero` | — | canvas | **Scroll-pinned, 2 viewports tall** — see below |
 | `PartnerStrip` | — | panel (white) | Four partner names, **plain text** — see §8 |
 | `Features` | `#features` | canvas | 3 cards, third is dark spruce |
 | `HowItWorks` | `#how` | canvas | 4-step walkthrough, **client component** |
-| `Newsletter` | `#newsletter` | canvas | White card, email capture |
-| `ForBusiness` | `#business` | panel (white) | Copy + Linden Market photo |
 | `Expansion` | `#expansion` | canvas | Dark spruce panel, suburb waitlist |
+| `ForBusiness` | `#business` | panel (white) | Copy + Linden Market photo |
 | `DownloadCta` | `#get` | canvas | Store badges + logo card |
+| `Newsletter` | `#newsletter` | canvas | White card, email capture |
 | `SiteFooter` | — | canvas | Legal links, all placeholders |
 
 **Backgrounds alternate canvas/panel deliberately** so no two same-coloured
 blocks touch. If you insert a section, keep the alternation going.
 
-Only `HowItWorks`, `Newsletter` and `Expansion` are client components — they
-hold state. Everything else renders on the server; keep it that way unless a
-section genuinely needs interactivity.
+`HowItWorks`, `Newsletter`, `Expansion` and `Hero` are client components — they
+hold state or animate. Everything else renders on the server; keep it that way
+unless a section genuinely needs interactivity.
+
+### The hero
+
+`components/landing/Hero.tsx` is a **scroll-driven animation on a sticky pin**:
+a `200dvh`-equivalent section with a `sticky` one-viewport stage inside it, so
+the hero holds on screen for a viewport of scroll before releasing. On mount:
+a staggered blur-fade headline (`BlurText`, inlined in the same file), an
+ambient elliptical glow rising from below, then the phone sliding up. On
+scroll: the headline scales 1 → 1.3 and the phone pushes down 15%.
+
+It also renders standalone at **`/hero-preview`** (`app/hero-preview/page.tsx`)
+for iterating without the rest of the page. **Same component both places** —
+edit `Hero.tsx` and both update.
+
+Full spec, measured reference values and the implementation traps are in
+`handdown.md`. Read it before changing the hero — several of its gotchas look
+like the code "not working" rather than a mistake.
+
+**`--site-header-h`** (in `globals.css`) is the single source of truth for the
+header height. `SiteHeader` sets its height from it and `Hero` subtracts it to
+size the pinned stage so the phone lands flush with the viewport bottom. It's a
+CSS variable rather than a JS constant because Tailwind's scanner only reads
+literal class strings — an interpolated `h-[calc(...${X}...)]` is never
+generated, but `var()` inside a literal class resolves fine.
 
 ---
 
@@ -164,6 +191,12 @@ lives in the keyframes, so `animation: none` alone would un-rotate them.
 - **No testimonials.** A testimonials section existed briefly and was removed
   because the quotes were invented and the product has no users. If real
   quotes arrive, it's recoverable from commit `bfc541d`.
+- **The header logo is a text wordmark, not the logo file.** Swapped while
+  alternative marks are being designed for the client. `/logo/hhl-logo.png` is
+  still in `public/` and still used by `DownloadCta`.
+- **The phone mockup's screen is empty.** `hero_iPhone20Hand-p-1080.webp` has a
+  transparent screen, so the hero's glow shows through it. An app screenshot
+  needs to be composited in, or the glow masked behind the phone.
 - **No analytics, no SEO beyond the page `metadata`, no sitemap, no OG image.**
 - **Not deployed anywhere.** No hosting, no CI, no preview URL.
 
@@ -194,6 +227,14 @@ lives in the keyframes, so `animation: none` alone would un-rotate them.
 
 ## 9. Key decisions worth knowing (to avoid re-litigating)
 
+- **The hero is not from the design comp.** The comp's hero (two floating phone
+  mockups, "Love where you live.", store badges) was replaced by the
+  scroll-pinned hero. Its motion is modelled on https://novawell.webflow.io/ —
+  referenced for animation behaviour only, not design or dark theme. **That name
+  must not appear in file, component or route names.** The comp's hero is
+  recoverable from commit `21ca651` if it's ever wanted back. The brand line and
+  store badges were deliberately left out of the new hero; badges still live in
+  `DownloadCta`.
 - **The comp replaced an earlier draft.** A different AI tool built a first
   pass (`HeroSection`, `StorySection`, `AppShowcase`, `ExploreLocal`,
   `WhatsOn`, `Navbar`, `Footer`, `Newsletter`, `BusinessIntake`). When the

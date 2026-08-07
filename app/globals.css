@@ -67,6 +67,11 @@
 }
 
 :root {
+    /* Single source of truth for the sticky site header's height. The hero
+       subtracts it to size its pinned stage, so the phone lands flush with the
+       viewport bottom. Change it here only — SiteHeader and Hero both read it. */
+    --site-header-h: 4.5rem;
+
     --background: #FCFAF7;
     --foreground: #0F0F0F;
     --card: #FFFFFF;
