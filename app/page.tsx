@@ -1,12 +1,12 @@
 import { SiteHeader } from "@/components/landing/SiteHeader";
 import { Hero } from "@/components/landing/Hero";
 import { PartnerStrip } from "@/components/landing/PartnerStrip";
+import { FeaturesBento } from "@/components/landing/FeaturesBento";
 import { Features } from "@/components/landing/Features";
 import { HowItWorks } from "@/components/landing/HowItWorks";
-import { Expansion } from "@/components/landing/Expansion";
+import { PlatformPillars } from "@/components/landing/PlatformPillars";
 import { ForBusiness } from "@/components/landing/ForBusiness";
 import { DownloadCta } from "@/components/landing/DownloadCta";
-import { Newsletter } from "@/components/landing/Newsletter";
 import { SiteFooter } from "@/components/landing/SiteFooter";
 
 export default function Page() {
@@ -15,12 +15,12 @@ export default function Page() {
       <SiteHeader />
       <Hero />
       <PartnerStrip />
+      <FeaturesBento />
       <Features />
       <HowItWorks />
-      <Expansion />
       <ForBusiness />
+      <PlatformPillars />
       <DownloadCta />
-      <Newsletter />
       <SiteFooter />
     </main>
   );

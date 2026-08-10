@@ -1,22 +1,14 @@
-import { DM_Mono, DM_Sans } from "next/font/google"
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 
-import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@/lib/utils"
-
-const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-sans" })
-
-// DM Mono is the design system's face for data/technical/numeric values.
-const fontMono = DM_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-mono",
-})
+import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import { cn } from "@/lib/utils";
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html
@@ -24,14 +16,14 @@ export default function RootLayout({
       suppressHydrationWarning
       className={cn(
         "antialiased",
-        fontMono.variable,
-        "font-sans",
-        dmSans.variable
+        GeistSans.variable,
+        GeistMono.variable,
+        GeistSans.className
       )}
     >
       <body>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
-  )
+  );
 }

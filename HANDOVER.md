@@ -1,283 +1,178 @@
 # Hello Hyperlocal Landing Page — Project Handover
 
-**Purpose of this file:** a single source of truth for any AI agent or
-developer picking up this repo cold. Read it completely before making
-changes. **Keep it updated** after any significant chunk of work — treat it
-as part of the deliverable, not a one-off snapshot.
+**Purpose of this file:** A single source of truth for any AI agent or developer picking up this repo cold. Read it completely before making changes. **Keep it updated** after any significant chunk of work — treat it as part of the deliverable, not a one-off snapshot.
 
-**This is the landing page repo only.** The Expo mobile app is a separate
-project at `C:\Projects\apps\Hello-Hyperlocal`, with its own `HANDOVER.md`.
-The two share a brand and a design system but no code. Note that the Expo
-repo's handover currently lists the landing page as "not started" under its
-§7 — that line is stale as of 2026-08-06.
+**This is the landing page repo only.** The Expo mobile app is a separate project at `C:\Projects\apps\Hello-Hyperlocal`, with its own `HANDOVER.md`. The two share a brand and a design system but no code.
 
-**Confidentiality:** this project is covered by an NDA (see the Expo repo's
-`docs/HHL NDA (1).pdf`). Fine to share this file with another AI tool you
-(the developer) are using on your own machine — do not post it, or any
-project content, publicly or to third parties.
+**Confidentiality:** This project is covered by an NDA. Fine to share this file with another AI tool you (the developer) are using on your own machine — do not post it, or any project content, publicly or to third parties.
 
 ---
 
 ## 1. What this is
 
-The marketing landing page for **Hello Hyperlocal** (first suburb: Linden,
-Johannesburg). Tagline: "Love where you live." Its job is to explain the app
-to residents, get them to the app stores, collect suburb-expansion interest,
-and pitch local business owners.
+The marketing landing page for **Hello Hyperlocal**. Tagline: "Love where you live." Its job is to connect neighbours, celebrate local culture, get residents to the app stores, and pitch independent local business owners.
 
-**Business context:** Lambert Van Sittert (Wavepoint Studios) building under
-retainer for JC Snooke / Hello Hyperlocal (Pty) Ltd. Per the original
-proposal, the landing page is a separate Next.js project from the app — this
-repo is that project.
+**Business context:** Lambert Van Sittert (Wavepoint Studios) building under retainer for JC Snooke / Hello Hyperlocal (Pty) Ltd. Per the original proposal, the landing page is a separate Next.js project from the app — this repo is that project.
 
 ---
 
-## 2. Where the design came from
+## 2. Design System & Tokens (Single Source of Truth)
 
-The page is an implementation of a **Claude Design comp**, not an original
-design. The comp is the source of truth for layout, type scale and colour:
+The project's active single source of truth for tokens, typography, radii, and component architecture is:
+- **Canonical Design System:** [`design.md`](./design.md)
+- **Live Interactive Spec Preview:** `http://localhost:3000/design-md` (also aliased at `/wise-preview`)
+- **Phone Frame & Screen Capture Suite:** `http://localhost:3000/preview/phonemockup` (also aliased at `/preview`) — Renders the 1st mockup screen fitted and masked pixel-perfect inside the official `public/phone-2.png` iPhone device frame, with quick toggles between framed and raw 1:1 viewports for all 5 screens.
+- **Archived / Legacy Drafts:** [`legacy-design-md/`](./legacy-design-md/) (contains older color/brand boards)
 
-- Project: `https://claude.ai/design/p/46ed070d-e6e9-456d-a737-5134be41412d`
-- File: `Hello Hyperlocal Landing.dc.html`
-- Design system: `_ds/hello-hyperlocal-design-system-7b16bf08-.../`
-  (`tokens/colors.css`, `tokens/typography.css`, `tokens/spacing.css`)
+### Core Color Palette
+- **`primary` (`#7ED957`)**: Vivid brand lime/grass green.
+- **`on-primary` (`#0e0f0c`)**: Deep near-black ink.
+- **`canvas` (`#ffffff`)**: Pure white.
+- **`canvas-soft` (`#F5F5F5`)**: Crisp neutral canvas background.
+- **`canvas-muted` (`#EBEBEB`)**: Soft muted canvas surface for stacked feature cards.
+- **`ink-deep` (`#1C472A`)**: Deep Forest Green Ink / Spruce.
+- **`primary-pale` (`#e2f6d5`)**: Pale tinted mint green for badges and accents.
 
-Read the comp before changing visual decisions — most of what looks arbitrary
-in the code (`clamp()` values, exact pixel sizes, the `0.14em` eyebrow
-tracking) is copied from it deliberately.
+### Strict Shadow & Gradient Policy
+- **Zero Shadows & Zero Gradients**: All decorative box-shadows, drop-shadows, radial/linear backdrop gradients, and blur glows are strictly prohibited across standard sections and cards.
+- **The Only Permitted Shadow**: Strictly reserved for **`card-content-elevated`** (`shadow: 0 4px 24px rgba(14, 15, 12, 0.1)`, `border: none`).
 
-The design system is **light-only**. There is no dark variant of these tokens,
-which is why the page renders identically regardless of theme — see §6.
+### Canonical Card Surface Hierarchy
+1. **`card-content`**: Pure white background (`#ffffff`), `rounded-[24px]`, hairline border (`1px solid rgba(14,15,12,0.1)`), no shadow.
+2. **`card-content-elevated`**: Pure white background (`#ffffff`), `rounded-[24px]`, `border: none`, subtle elevation (`shadow: 0 4px 24px rgba(14, 15, 12, 0.1)`).
+3. **`card-feature-sage`**: Pale neutral sage background (`#F5F5F5`), `rounded-[24px]`.
+4. **`card-feature-green`**: Tinted pale green background (`#e2f6d5`), `text-[#054d28]`, `rounded-[24px]`.
+5. **`card-feature-dark-primary`**: Deep Forest Green Ink (`#1C472A`), `text-white` with `#7ED957` brand accents, `rounded-[24px]`.
+6. **`card-feature-dark-secondary`**: Near-Black Ink (`#0e0f0c`), `text-white`, `rounded-[24px]`.
+
+### Typography Tokens (Geist Typography System)
+- **`display-mega`**: `165px` · `line-height: 148px` · `font-weight: 600` · `letter-spacing: -9.9px` (`.text-heading-165`).
+- **`display-xl`**: `72px` · `line-height: 72px` · `font-weight: 600` · `letter-spacing: -4.32px` (`.text-heading-72`).
+- **`display-md`**: **`50px`** · `line-height: 54px` · `font-weight: 600` · `letter-spacing: -3.00px` (`.text-heading-50` / `.text-display-md`). **Universally used for all Section Headings**.
+- **`display-sm`**: `32px` · `line-height: 40px` · `font-weight: 600` · `letter-spacing: -1.28px` (`.text-heading-32`).
+- **`body-lg`**: **`20px`** · `line-height: 36px` · `font-weight: 400` (`.text-copy-20`). Used for Section Subtext.
+- **`body-md`**: `16px` · `line-height: 24px` · `font-weight: 400` (`.text-copy-16`).
+- **`body-sm`**: `14px` · `line-height: 20px` · `font-weight: 400` (`.text-copy-14`).
+- **Controls & Labels**:
+  - `button-14`: `14px` · `font-weight: 500` · `line-height: 20px`.
+  - `label-12-mono`: `12px` GeistMono · `letter-spacing: 0.08em` · `font-weight: 500`.
+
+### Interactive Button Micro-Animations
+- **Arrow Flip Animation (`ArrowFlipIcon`)**: Dual-element CSS keyframe slide animation (`.icon-flip`) featuring a diagonal 45° arrow (`ArrowUpRight`). On hover, the primary icon slides up-right while a duplicate emerges from the bottom-left.
 
 ---
 
-## 3. Tech stack (do not deviate without a reason)
+## 3. Tech Stack
 
 - **Next.js 16.2.6** (App Router, Turbopack), React 19.2.4, TypeScript.
-- **Tailwind v4.** There is **no `tailwind.config.js`** — theme tokens live in
-  `@theme` inside `app/globals.css`. Don't create a config file.
-- **Base UI, not Radix.** `components.json` is on the `base-maia` style and
-  `package.json` has `@base-ui/react` with no `@radix-ui/*`. Most shadcn block
-  code found online is Radix-era and uses `asChild`; this project wants Base
-  UI's `render` prop. Adapt pasted code rather than installing Radix.
-- **Icons: `lucide-react` v1.** Note v1 renamed some icons — `Home` is now
-  `House`. (`components.json` says `phosphor` and `@phosphor-icons/react` is
-  installed, but no code uses it — lucide is what's actually in use.)
-- **Fonts:** DM Sans (`--font-sans`) and DM Mono (`--font-mono`), both via
-  `next/font/google` in `app/layout.tsx`. DM Mono is used in exactly one
-  place — the `01`–`04` step numerals in `HowItWorks` — matching the design
-  system's rule that mono is for numeric/technical values only.
-- **Motion (`motion/react`) v13** for the hero's animation — entrance tweens
-  plus `useScroll`/`useSpring`/`useTransform` for its scroll-driven phase. It is
-  the only animated component; everything else uses CSS.
-- **No backend.** Every form is local `useState` with no submit target. See §7.
+- **Tailwind v4:** Theme tokens live directly inside `@theme` in `app/globals.css`. There is **no `tailwind.config.js`**.
+- **Base UI, not Radix:** `components.json` is configured for `base-maia` style with `@base-ui/react`.
+- **Icons:** `lucide-react` v1 (core UI icons) and `react-icons/fa` (brand social links in footer).
+- **Fonts & Typography:** Official `geist` package (`GeistSans` and `GeistMono`) powering the complete Geist typography hierarchy.
+- **Motion (`motion/react`) v13:** For entrance tweens and expanding accordion interactions.
+- **Marquee:** `react-fast-marquee` for partner logo strip.
+- **Skills:** Impeccable skill installed at `.gemini/skills/impeccable/` for design audits, token enforcement, and frontend polish.
+- **No backend:** Every interactive CTA is local `useState` with no external server target.
 
 ---
 
-## 4. Page structure
+## 4. Page Structure & Component Breakdown
 
-`app/page.tsx` composes nine pieces, in this order:
+`app/page.tsx` composes the sections in this exact order:
 
-| Component | Section id | Background | Notes |
+| # | Component | Background | Notes |
 |---|---|---|---|
-| `SiteHeader` | — | canvas, sticky | Wordmark + nav + "Get the app" pill |
-| `Hero` | — | canvas | **Scroll-pinned, 2 viewports tall** — see below |
-| `PartnerStrip` | — | panel (white) | Four partner names, **plain text** — see §8 |
-| `Features` | `#features` | canvas | 3 cards, third is dark spruce |
-| `HowItWorks` | `#how` | canvas | 4-step walkthrough, **client component** |
-| `Expansion` | `#expansion` | canvas | Dark spruce panel, suburb waitlist |
-| `ForBusiness` | `#business` | panel (white) | Copy + Linden Market photo |
-| `DownloadCta` | `#get` | canvas | Store badges + logo card |
-| `Newsletter` | `#newsletter` | canvas | White card, email capture |
-| `SiteFooter` | — | canvas | Legal links, all placeholders |
+| 1 | `SiteHeader` | floating elevated | **Floating 1280px Header** — Rounded pill with `card-content-elevated` shadow, backdrop blur, wordmark, nav links, and `#7ED957` "Get the app" CTA |
+| 2 | `Hero` | `white` (`#FFFFFF`) | **Centered Full-Impact Hero** — `display-xxl` (96px) headline, centered `body-lg` subtext, and dual store download buttons |
+| 3 | `PartnerStrip` | bg-transparent | **Logos 3 Marquee** — Max-width 1200px. Desaturated logos color on hover |
+| 4 | `FeaturesBento` | canvas | **Why Hello Hyperlocal** — 3:6:3 Asymmetrical Layout, Elevated side cards, Flush center phone mockup |
+| 5 | `Features` | `#F5F5F5` | **App Experience** — 4 Sticky Stacking Cards (`w-full` alignment, `#EBEBEB` Card 2 fill) |
+| 6 | `HowItWorks` | canvas | **3-Step Flex Accordion** — Hover-expand onboarding flow with simulated screens |
+| 7 | `ForBusiness` | `#F5F5F5` / panel | **Local Merchant Pitch** — Direct partnership CTA + Linden Market photography |
+| 8 | `PlatformPillars` | canvas | **Our Commitment** — 3-Column Trust Commitments Grid |
+| 9 | `DownloadCta` | `#0e0f0c` | **Dark App Banner** — Clean dual store badges & smartphone mockup |
+| 10 | `SiteFooter` | bg-transparent | **Footer** — Brand mission, social links, 2-col nav, copyright |
 
-**Backgrounds alternate canvas/panel deliberately** so no two same-coloured
-blocks touch. If you insert a section, keep the alternation going.
+### Key Section Implementations
 
-`HowItWorks`, `Newsletter`, `Expansion` and `Hero` are client components — they
-hold state or animate. Everything else renders on the server; keep it that way
-unless a section genuinely needs interactivity.
+#### 1. The Hero (`components/landing/Hero.tsx`)
+- Eyebrow pill: *"The Neighbourhood Network"*
+- Centered headline in `display-xxl` (**96px** font size, `600` weight, `-4.32px` letter spacing): *"Love where you live."*
+- Centered subtext in `body-lg` (**20px** font size, `400` weight, `36px` line height): *"Bringing you everyday local life. Stay informed with suburb updates, support local spots, and back community initiatives."*
+- Dual store download buttons directly below the subtext (Apple Store and Google Play).
+- Strictly zero em dashes in all copy.
 
-### The hero
+#### 2. Why Hello Hyperlocal (`components/landing/FeaturesBento.tsx`)
+- **Section Heading**: `display-md` (**50px** font size, `-3.00px` letter spacing).
+- **Subtext**: `body-lg` (**20px** font size, `36px` line height).
+- **3-Column Grid Architecture (3 : 6 : 3 Ratio)**:
+  - `grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center`.
+  - **Left Column (`col-span-3`)**: Vertically centered (`self-center justify-center`), housing 2 stacked **`card-content-elevated`** cards: *Verified Residents* and *Discover Local Spots*.
+  - **Center Column (`col-span-6`)**: Bottom-aligned (`self-end items-end`), **zero bottom padding (`pb-0`)**, **no border (`border-none`)**, and **top-only rounded corners (`rounded-t-[32px] rounded-b-none`)**, housing an enlarged, static `public/phone-2.png` iPhone device frame rendering **Screen 1 · Home Feed** with a slow, highly-eased scroll slide-in (`y: 100` -> `y: 0`, `duration: 1.35s`, `ease: [0.19, 1, 0.22, 1]`) and bottom bleed off the card boundary.
+  - **Right Column (`col-span-3`)**: Vertically centered (`self-center justify-center`), housing 2 stacked **`card-content-elevated`** cards: *Real-Time Ward Alerts* and *Back Ward Projects*.
+- **Strict Copy Rules**: Strictly non-commercial, civic, community-first copy ("Verified residents", "Local spots", "Ward alerts", "Ward projects").
 
-`components/landing/Hero.tsx` is a **scroll-driven animation on a sticky pin**:
-a `200dvh`-equivalent section with a `sticky` one-viewport stage inside it, so
-the hero holds on screen for a viewport of scroll before releasing. On mount:
-a staggered blur-fade headline (`BlurText`, inlined in the same file), an
-ambient elliptical glow rising from below, then the phone sliding up. On
-scroll: the headline scales 1 → 1.3 and the phone pushes down 15%.
+#### 3. App Experience — Sticky Stacking Cards (`components/landing/Features.tsx`)
+- **Section Header**: Centered flex column, `display-md` (**50px** font size, `600` weight, `-3.00px` tracking) headline, `body-lg` (**20px** font size, `400` weight, `36px` line height) subtext.
+- **Sticky Stacking Container**: Relative container housing **4 layered sticky cards** with increasing top offsets and z-indexes (`z-10` to `z-40`, `top-24` to `top-36`).
+- **Width & Elevation**: The cards span **`w-full`** across the `max-w-[1240px]` container (`1176px` inner width) with `border-none`. Only the **first card** (*Verified Feed*) carries the soft elevation (`shadow: 0 8px 40px rgba(14, 15, 12, 0.08)`), while subsequent cards stack flatly on top.
+- **Individual Card Layout (Alternating 2-Column Split)**:
+  - `grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center p-8 sm:p-10 lg:p-12 pb-0 sm:pb-0 lg:pb-0 rounded-3xl`.
+  - **Card Headings**: Set to `display-sm` (**32px** font size, `600` weight, `-1.28px` letter spacing).
+  - **Cards 1 & 3 (Standard Split)**: Text on the left (`lg:order-1`), phone on the right (`lg:order-2`).
+  - **Cards 2 & 4 (Swapped Alternating Split)**: Phone on the left (`lg:order-1`), text on the right (`lg:order-2`).
+  - **Enlarged Phone Geometry**: Houses the enlarged `public/phone-2.png` iPhone device frame (`w-[330px] sm:w-[380px] lg:w-[420px]`) rendering tailored in-app mockups with the top half showcased and the bottom half bleeding off and clipped cleanly inside the sticky card boundary (`overflow-hidden`, `-mb-40 sm:-mb-52 lg:-mb-60`).
+- **4 Tailored In-App Screen Mockups**:
+  1. *Verified Feed*: White surface (`#ffffff`), live municipal grid update (`3rd St Power Substation`), resident cleanup notice (`Sarah v.d. Merwe`), and verified neighbour confirmation tags.
+  2. *Local Merchants*: Canvas-muted surface (`#EBEBEB`), full-bleed Goddess Café hero photo with overlaid status bar and navigation actions (`‹`, `♡`), cafe story description, operating hours, address metadata, *The Whippet* preview card, and a full-width `Support local` CTA button.
+  3. *Civic Action*: Tinted mint surface (`#e2f6d5`), Braamfontein Spruit Solar Trail Lighting project tracker with funding progress bar (`R38.5k / 85%`) and volunteer drive.
+  4. *Suburb Events*: Deep Forest Green Ink (`#1C472A`), Linden Village Craft & Food Market event card with `Sat 15 Aug` badge, attendee counter, and interactive `Going ✓` RSVP button.
 
-It also renders standalone at **`/hero-preview`** (`app/hero-preview/page.tsx`)
-for iterating without the rest of the page. **Same component both places** —
-edit `Hero.tsx` and both update.
+#### 4. How It Works (`components/landing/HowItWorks.tsx`)
+- **2-Column Responsive Header Layout**:
+  - **Column 1 (`lg:col-span-7`)**: Eyebrow pill (`How It Works`) + `display-md` (**50px** font size, `-3.00px` tracking) headline: *"Getting started in 3 simple steps."*
+  - **Column 2 (`lg:col-span-5`)**: `body-lg` (**20px** font size, `400` weight, `36px` line height) subtext aligned to the bottom.
+- **2-Column Steps Architecture**:
+  - **Column 1 (Left Phone Mockup, `lg:col-span-6`)**: Container with tinted mint surface (`#e2f6d5`), set to stretch to the exact full height of Column 2's cards (`h-full items-stretch`), housing an enlarged `public/phone-2.png` iPhone device frame (`w-[360px] sm:w-[440px] lg:w-[490px] xl:w-[530px]`) with top-half showcase and bottom clipped bleed, dynamically rendering the active step mockup screen (Step 1 Suburb Selector, Step 2 Resident Pass, Step 3 Live Suburb Feed).
+  - **Column 2 (Right Step Cards, `lg:col-span-6`)**: 3 stacked borderless cards (`border-none`, `min-h-[160px] sm:min-h-[180px]`) with background watermark numbers (`"01"`, `"02"`, `"03"`) positioned at the top (`top-4 sm:top-5 left-5 sm:left-7`) for unobstructed visibility, and heading + text contained in a bottom-aligned container (`flex flex-col justify-end pt-8 sm:pt-10 mt-auto`). Card headings use `display-sm` (**32px** font size, `600` weight, `-1.28px` tracking). Features a **100vh full-screen sticky scroll progression** (`h-[260vh] sm:h-[300vh]` scroll track with `sticky top-0 h-screen flex flex-col justify-center`): as the user scrolls, the active step switches to `card-feature-dark-primary` (#1C472A Forest with `#7ED957` brand lime heading and watermark) while the other two cards rest in `card-feature-green` (#e2f6d5 Tinted Mint with `#0e0f0c` ink text), synchronizing the phone mockup screen before releasing smoothly to the next section.
 
-Full spec, measured reference values and the implementation traps are in
-`handdown.md`. Read it before changing the hero — several of its gotchas look
-like the code "not working" rather than a mistake.
+#### 5. For Local Business Owners (`components/landing/ForBusiness.tsx`)
+- Section heading in unified `display-md` (**50px** font size, `600` weight, `-3.00px` tracking) with solid ink color: *"Grow your business where it matters most: your neighbourhood."*
+- Section subtext in `body-lg` (**20px** font size, `400` weight, `36px` line height).
+- Local business value propositions with `#e2f6d5` mint checkmark pills + `Store` registration CTA button with `ArrowFlipIcon`.
+- Verified Linden Village Market photography (`/photography/linden-market.jpg`) with `rounded-[32px]`.
 
-**`--site-header-h`** (in `globals.css`) is the single source of truth for the
-header height. `SiteHeader` sets its height from it and `Hero` subtracts it to
-size the pinned stage so the phone lands flush with the viewport bottom. It's a
-CSS variable rather than a JS constant because Tailwind's scanner only reads
-literal class strings — an interpolated `h-[calc(...${X}...)]` is never
-generated, but `var()` inside a literal class resolves fine.
+#### 6. Platform Pillars (`components/landing/PlatformPillars.tsx`)
+- Section heading at `display-md` (50px · 600 · -3.00px) and subtext at `body-lg` (20px · 400 · 36px).
+- 3-column trust matrix in `card-feature-green` (`#e2f6d5` Tinted Mint) with no borders (`border-none`, `rounded-[28px] sm:rounded-[32px]`).
+- Circle icon containers with a slightly darker green fill (`bg-[#c5edab]` / `{colors.primary-neutral}`) and `#054d28` deep green icons (*100% Verified Residents*, *Always Free for Residents*, *Backing Local Merchants*).
 
----
-
-## 5. Components
-
-**`components/ds/`** — ported from the design system's `_ds_bundle.js`:
-`FacilityCard`, `HeroCard`, `ListRow`, `StatChip`. These mirror the bundle's
-implementations. If the design system changes upstream, these are what need
-re-syncing.
-
-`HeroCard` and `StatChip` render their CTA as an inert `<span>` when no
-handler is passed — they appear inside non-interactive phone mockups, which
-should stay out of the tab order. Pass a handler and they become real buttons.
-
-**`components/landing/`** — the page sections above, plus:
-- `StoreButtons` — App Store / Google Play badges, inline SVG, no dependency.
-- `PhoneBottomNav` — the floating nav inside the phone mockups.
-
-**`components/`** (root) — `theme-provider.tsx` and `theme-toggle.tsx`
-survive from an earlier draft. See §6.
-
----
-
-## 6. Design tokens and theming
-
-Brand tokens live in `@theme` in `app/globals.css` as `--color-brand-*`,
-usable as `bg-brand-spruce`, `text-brand-muted`, `border-brand-line-soft`
-etc. They mirror the design system's `tokens/colors.css`:
-
-Dark Spruce `#1C472A` · Radioactive Grass `#7ED957` · Hunter Green `#47663B` ·
-Warm White `#FCFAF7` · Onyx `#0F0F0F` · Panel `#FFFFFF` · Muted `#6F6F68`
-
-Radius scale from the comp: 16 (small cards) / 24 (hero cards) / 32 (section
-cards) / 999 (pills). Voice: sentence case everywhere, uppercase only for
-wide-tracked eyebrows, no emoji.
-
-**Dark mode is effectively dead.** The design system is light-only, so the
-page hardcodes brand colours and renders identically in either theme.
-`ThemeProvider` is still mounted in `layout.tsx` and still binds a global
-**"d" hotkey** that toggles the `.dark` class — currently a visual no-op.
-`ThemeToggle` is unreferenced by any rendered component. Either wire a
-toggle back in and build real dark variants, or remove all three; the
-current half-state is the thing to fix, not preserve.
-
-**Motion:** three keyframes (`hhl-float`, `hhl-float-b`, `hhl-pulse`) are
-defined at the bottom of `globals.css` with a `prefers-reduced-motion` block
-that stops them **and restores the phones' resting rotation** — the rotation
-lives in the keyframes, so `animation: none` alone would un-rotate them.
+#### 7. Final Download CTA (`components/landing/DownloadCta.tsx`)
+- Pure 2-column card in `card-feature-dark-primary` (#1C472A Deep Forest Green, `border-none`, `rounded-[32px] sm:rounded-[36px]`, `pb-0`).
+- **Column 1 (`lg:col-span-7`)**: `#7ED957` brand lime eyebrow pill, `display-md` (**50px** font size, `600` weight, `-3.00px` tracking) heading in `#7ED957`, `body-lg` (**20px** font size, `400` weight, `36px` line height) subtext, and dual App Store / Google Play download buttons (arrowless).
+- **Column 2 (`lg:col-span-5`)**: Phone mockup (`public/phone-2.png`) sitting directly inside the card and bleeding off flush at the bottom edge.
 
 ---
 
-## 7. What's explicitly NOT built (don't assume it exists)
+## 5. What was deprecated / removed
 
-- **No form goes anywhere.** `Newsletter` and `Expansion` both flip a
-  `useState` boolean and render a success message. Nothing is validated
-  server-side, sent, stored or emailed. Wiring these to a real destination
-  (Supabase, Resend, a form service) is unstarted work.
-- **Store URLs are `#` placeholders** in `lib/site-config.ts`. The app isn't
-  listed in either store yet. Drop real `https://` URLs in there and
-  `StoreButtons` switches to `target="_blank" rel="noopener noreferrer"`
-  automatically — no component change needed.
-- **Business partnership intake was deliberately removed** (2026-08-06). The
-  section pitches local businesses but gives them **no way to respond**. This
-  is a known, accepted gap pre-launch. When ready, the cheapest fix is a
-  mailto button under the benefits list, not rebuilding the form.
-- **Footer legal links are placeholders** — "Privacy policy" and "Terms" both
-  point at `#top`. No legal pages exist.
-- **No testimonials.** A testimonials section existed briefly and was removed
-  because the quotes were invented and the product has no users. If real
-  quotes arrive, it's recoverable from commit `bfc541d`.
-- **The header logo is a text wordmark, not the logo file.** Swapped while
-  alternative marks are being designed for the client. `/logo/hhl-logo.png` is
-  still in `public/` and still used by `DownloadCta`.
-- **The phone mockup's screen is empty.** `hero_iPhone20Hand-p-1080.webp` has a
-  transparent screen, so the hero's glow shows through it. An app screenshot
-  needs to be composited in, or the glow masked behind the phone.
-- **No analytics, no SEO beyond the page `metadata`, no sitemap, no OG image.**
-- **Not deployed anywhere.** No hosting, no CI, no preview URL.
+- **`Expansion.tsx`** & **`Newsletter.tsx`** forms were removed in favor of direct app download CTAs.
+- Sticky-scroll pinning on Hero was replaced by a clean, responsive 100vh 2-column flex layout.
+- All background gradients, ambient radial glow divs, drop-shadows, and box-shadows were stripped across all components (preserving only `card-content-elevated`).
 
 ---
 
-## 8. Known issues / open decisions
+## 6. What is explicitly NOT built
 
-- **`public/partner-logos/` is unused.** Four real logos (Goddess Cafe, LCA,
-  Linden Lanes, Linden Market) sit there, referenced by nothing.
-  `PartnerStrip` currently renders partner **names as plain text** at 55%
-  opacity. Wiring the logos in is an obvious next step — note only two of the
-  four strip entries have a matching logo, and two logos (Goddess Cafe,
-  Linden Lanes) are businesses not currently listed in the strip at all, so
-  the list and the assets need reconciling first.
-- **`docs/` is intentionally untracked** (~28 MB of PDFs including the NDA)
-  and is in neither git nor `.gitignore`. Leave it that way unless asked.
-- **`npm audit` reports 4 advisories** (`next`, `postcss`, `sharp`, `hono`),
-  all pre-existing and inherited from Next.js itself. Not introduced by
-  feature work.
-- **Line endings**: the repo has no `.gitattributes` and git warns
-  `LF will be replaced by CRLF` on every commit from Windows. Harmless but
-  noisy; a `.gitattributes` with `* text=auto eol=lf` would settle it.
-- **Prettier config vs reality**: `.prettierrc` sets `semi: false`, and all
-  current code follows it. If you paste in code with semicolons, run
-  `npx prettier --write` on it rather than leaving the repo mixed.
+- **No backend endpoints**: All interactive components use local React state.
+- **Store links are `#` placeholders** in `lib/site-config.ts`.
+- **Footer legal links are `#` placeholders**.
 
 ---
 
-## 9. Key decisions worth knowing (to avoid re-litigating)
+## 7. Maintenance & Commands
 
-- **The hero is not from the design comp.** The comp's hero (two floating phone
-  mockups, "Love where you live.", store badges) was replaced by the
-  scroll-pinned hero. Its motion is modelled on https://novawell.webflow.io/ —
-  referenced for animation behaviour only, not design or dark theme. **That name
-  must not appear in file, component or route names.** The comp's hero is
-  recoverable from commit `21ca651` if it's ever wanted back. The brand line and
-  store badges were deliberately left out of the new hero; badges still live in
-  `DownloadCta`.
-- **The comp replaced an earlier draft.** A different AI tool built a first
-  pass (`HeroSection`, `StorySection`, `AppShowcase`, `ExploreLocal`,
-  `WhatsOn`, `Navbar`, `Footer`, `Newsletter`, `BusinessIntake`). When the
-  design comp arrived, that draft was replaced wholesale — `Newsletter` and
-  `BusinessIntake` were rebuilt in the design system's language and the rest
-  deleted. All of it is recoverable from commit `bfc541d`'s parent.
-  **`ExploreLocal` in particular had real substance** (filterable "hidden
-  gems" cards with upvotes and per-merchant offers) that the comp has no
-  equivalent for — worth revisiting if the page needs more depth.
-- **Store badges are hand-built, on purpose.** `react-mobile-app-button` was
-  tried and removed. It renders its badge as a `<div>` with an `onClick`
-  calling `window.open` — no `href`, `tabIndex: -1`, unreachable by keyboard,
-  invisible to crawlers — and ships Vite and Babel as *runtime* dependencies
-  (136 packages, 2 advisories). **Don't reinstall it.** The inline-SVG version
-  in `StoreButtons.tsx` is visually identical and renders on the server.
-- **Photography is real, not stock.** Client-supplied Linden photos, copied
-  from the Expo repo's `assets/photography/`. The earlier draft used Unsplash
-  placeholders; don't reintroduce stock imagery.
-- **The phone mockups are decorative but readable.** They're not marked
-  `aria-hidden` — the copy inside them is real product content — but they
-  contain no focusable elements by design.
-
----
-
-## 10. How to resume work
-
-```bash
-cd C:\Projects\hello-hyperlocal-landing-page
-npm run dev          # http://localhost:3000
-npm run typecheck    # tsc --noEmit
-npm run lint         # eslint — currently clean, keep it that way
-npm run build        # production build
-npm run format       # prettier over **/*.{ts,tsx}
-```
-
-Branch is `feat/design-comp-landing`, off `master`. Nothing is pushed —
-**there is no git remote configured.**
-
----
-
-## 11. Maintenance
-
-**Update this file** whenever you complete a meaningful chunk of work — new
-sections, new decisions, new known issues, changes to what's deferred.
-Sections 4 (page structure), 7 (not built) and 8 (open issues) go stale
-fastest.
+- **Run development server:** `npm run dev` (running at `http://localhost:3000`)
+- **Type check:** `npm run typecheck`
+- **Lint:** `npm run lint`
+- **Design Spec Preview:** `http://localhost:3000/design-md`

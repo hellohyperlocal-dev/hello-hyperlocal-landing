@@ -1,28 +1,128 @@
-const LINKS = [
-  { href: "#top", label: "Privacy policy" },
-  { href: "#top", label: "Terms" },
-  { href: "#expansion", label: "Contact" },
-]
+"use client";
 
-export function SiteFooter() {
+import React from "react";
+import Link from "next/link";
+import {
+  FaFacebook,
+  FaInstagram,
+} from "react-icons/fa";
+import { cn } from "@/lib/utils";
+
+const SECTIONS = [
+  {
+    title: "App Experience",
+    links: [
+      { name: "Neighbourhood Feed", href: "#features" },
+      { name: "Love Local Deals", href: "#features" },
+      { name: "How It Works", href: "#how-it-works" },
+      { name: "For Local Businesses", href: "#business" },
+      { name: "Get the App", href: "#get-app" },
+    ],
+  },
+  {
+    title: "Support & Legal",
+    links: [
+      { name: "Help & Verification", href: "#pillars" },
+      { name: "Merchant Support", href: "#business" },
+      { name: "Privacy Policy", href: "#" },
+      { name: "Terms of Service", href: "#" },
+    ],
+  },
+];
+
+const SOCIAL_LINKS = [
+  {
+    icon: <FaInstagram className="size-4" />,
+    href: "https://instagram.com",
+    label: "Instagram",
+  },
+  {
+    icon: <FaFacebook className="size-4" />,
+    href: "https://facebook.com",
+    label: "Facebook",
+  },
+];
+
+export function SiteFooter({ className }: { className?: string }) {
   return (
-    <footer className="border-t border-brand-line-soft">
-      <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-5 px-[clamp(20px,4vw,32px)] py-8">
-        <div className="flex flex-wrap gap-6">
-          {LINKS.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-[12px] font-bold text-brand-hunter transition-colors hover:text-brand-spruce"
+    <footer className={cn("border-t border-brand-line-soft dark:border-brand-spruce-line bg-transparent pt-16 sm:pt-20 pb-12 transition-colors duration-200", className)}>
+      <div className="mx-auto max-w-[1200px] px-[clamp(20px,4vw,32px)]">
+        
+        {/* Main Footer Content */}
+        <div className="flex w-full flex-col justify-between gap-12 lg:flex-row lg:items-start">
+          
+          {/* Brand Info */}
+          <div className="flex w-full max-w-sm flex-col gap-5 text-left">
+            <Link
+              href="#top"
+              className="text-heading-24 text-brand-onyx dark:text-[#FCFAF7] transition-colors hover:text-brand-spruce dark:hover:text-brand-grass"
             >
-              {link.label}
-            </a>
-          ))}
+              Hello Hyperlocal
+            </Link>
+            
+            <p className="text-copy-14 text-brand-muted dark:text-[#99A893]">
+              Connecting neighbours, supporting local businesses, and celebrating community across South Africa. Love where you live.
+            </p>
+
+            <ul className="flex items-center gap-4 text-brand-muted dark:text-[#99A893] pt-1">
+              {SOCIAL_LINKS.map((social) => (
+                <li key={social.label}>
+                  <a
+                    href={social.href}
+                    aria-label={social.label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-line-soft dark:border-brand-spruce-line bg-brand-panel dark:bg-[#151F17] text-brand-onyx dark:text-[#FCFAF7] transition-all hover:bg-brand-grass hover:text-brand-spruce hover:scale-105"
+                  >
+                    {social.icon}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Navigation Links Grid (2 Columns) */}
+          <div className="grid grid-cols-2 gap-10 sm:gap-16 lg:gap-24 text-left">
+            {SECTIONS.map((section) => (
+              <div key={section.title} className="flex flex-col gap-4">
+                <h3 className="text-label-12 font-bold tracking-[0.14em] text-brand-hunter dark:text-brand-grass uppercase">
+                  {section.title}
+                </h3>
+                <ul className="space-y-3 text-label-14">
+                  {section.links.map((link) => (
+                    <li key={link.name}>
+                      <Link
+                        href={link.href}
+                        className="text-brand-muted dark:text-[#99A893] transition-colors hover:text-brand-onyx dark:hover:text-white"
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
         </div>
-        <div className="text-[12px] text-brand-muted">
-          © 2026 Hello Hyperlocal · Generated with love by Wavepoint Studio
+
+        {/* Bottom Legal & Copyright Bar */}
+        <div className="mt-16 flex flex-col justify-between gap-4 border-t border-brand-line-soft dark:border-brand-spruce-line/60 pt-8 text-label-12 text-brand-muted dark:text-[#99A893] sm:flex-row sm:items-center">
+          <p>© 2026 Hello Hyperlocal (Pty) Ltd. All rights reserved.</p>
+          <div className="flex flex-wrap items-center gap-6">
+            <Link href="#" className="transition-colors hover:text-brand-onyx dark:hover:text-white">
+              Privacy Policy
+            </Link>
+            <Link href="#" className="transition-colors hover:text-brand-onyx dark:hover:text-white">
+              Terms of Service
+            </Link>
+            <Link href="#" className="transition-colors hover:text-brand-onyx dark:hover:text-white">
+              Cookie Preferences
+            </Link>
+          </div>
         </div>
+
       </div>
     </footer>
-  )
+  );
 }

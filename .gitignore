@@ -37,3 +37,8 @@ next-env.d.ts
 
 # confidential client documents
 docs/*NDA*
+
+# tool metadata
+.gemini/
+.impeccable/
+
