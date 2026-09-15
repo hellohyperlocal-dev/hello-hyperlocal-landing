@@ -1,6 +1,6 @@
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { Hero } from "@/components/landing/Hero";
+import { Hero } from "@/components/site/sections/Hero";
 import { PartnerStrip } from "@/components/landing/PartnerStrip";
 import { GrowthCounter } from "@/components/landing/GrowthCounter";
 import { OurStory } from "@/components/landing/OurStory";
