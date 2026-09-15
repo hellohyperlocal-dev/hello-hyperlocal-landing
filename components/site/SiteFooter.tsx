@@ -26,9 +26,10 @@ const COLUMNS = [
   },
 ];
 
+// Placeholder hrefs until the real Instagram and Facebook profile URLs are supplied.
 const SOCIAL_LINKS = [
-  { label: "Instagram", href: "https://instagram.com", icon: FaInstagram },
-  { label: "Facebook", href: "https://facebook.com", icon: FaFacebook },
+  { label: "Instagram", href: "#", icon: FaInstagram },
+  { label: "Facebook", href: "#", icon: FaFacebook },
 ];
 
 const LEGAL_LINKS = [
@@ -72,8 +73,6 @@ export function SiteFooter() {
                   <a
                     href={href}
                     aria-label={label}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className={`flex h-11 w-11 items-center justify-center rounded-button border border-hh-rule-light text-hh-mint transition-colors hover:bg-hh-lime hover:text-hh-onyx ${focusRing}`}
                   >
                     <Icon className="size-4" />
