@@ -5,7 +5,7 @@ import { PartnerStrip } from "@/components/site/sections/PartnerStrip";
 import { GrowthCounter } from "@/components/landing/GrowthCounter";
 import { OurStory } from "@/components/site/sections/OurStory";
 import { VisionOrbit } from "@/components/site/sections/VisionOrbit";
-import { HowItWorks } from "@/components/landing/HowItWorks";
+import { HowItWorks } from "@/components/site/sections/HowItWorks";
 import { ForResidents } from "@/components/landing/ForResidents";
 import { FoundingNeighbours } from "@/components/landing/FoundingNeighbours";
 import { ForBusiness } from "@/components/landing/ForBusiness";
