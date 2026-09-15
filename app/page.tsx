@@ -7,11 +7,9 @@ import { OurStory } from "@/components/site/sections/OurStory";
 import { HowItWorks } from "@/components/site/sections/HowItWorks";
 import { WhyHello } from "@/components/site/sections/WhyHello";
 import { CommunityPromise } from "@/components/site/sections/CommunityPromise";
+import { FoundingNeighbours } from "@/components/site/sections/FoundingNeighbours";
+import { FoundingBusinesses } from "@/components/site/sections/FoundingBusinesses";
 import { GrowthCounter } from "@/components/landing/GrowthCounter";
-import { ForResidents } from "@/components/landing/ForResidents";
-import { FoundingNeighbours } from "@/components/landing/FoundingNeighbours";
-import { ForBusiness } from "@/components/landing/ForBusiness";
-import { FoundingBusinesses } from "@/components/landing/FoundingBusinesses";
 import { PartnersInvestors } from "@/components/landing/PartnersInvestors";
 import { FaqSection } from "@/components/landing/FaqSection";
 import { ClosingCta } from "@/components/landing/ClosingCta";
@@ -30,9 +28,7 @@ export default function Page() {
         <WhyHello />
         <CommunityPromise />
         <GrowthCounter />
-        <ForResidents />
         <FoundingNeighbours />
-        <ForBusiness />
         <FoundingBusinesses />
         <PartnersInvestors />
         <FaqSection />
