@@ -3,13 +3,13 @@
 import { useState } from "react";
 import { Check } from "lucide-react";
 import { submitRegistration } from "@/lib/registrations";
+import { PROGRESS } from "@/lib/progress";
 import { SectionEyebrow } from "@/components/site/ui/SectionEyebrow";
 import { CtaLink } from "@/components/site/ui/CtaLink";
 import { CheckboxField, FormError, SelectField, TextField } from "@/components/site/forms/Fields";
 import { SuccessState } from "@/components/site/forms/SuccessState";
 
-// Must match the business count shown in the Progress bar.
-const BUSINESS_COUNT = 42;
+const BUSINESS_COUNT = PROGRESS.businesses.count;
 
 const BENEFITS = [
   "Founding Business recognition",

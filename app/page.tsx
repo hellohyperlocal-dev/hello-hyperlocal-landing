@@ -7,9 +7,10 @@ import { OurStory } from "@/components/site/sections/OurStory";
 import { HowItWorks } from "@/components/site/sections/HowItWorks";
 import { WhyHello } from "@/components/site/sections/WhyHello";
 import { CommunityPromise } from "@/components/site/sections/CommunityPromise";
+import { GetInvolved } from "@/components/site/sections/GetInvolved";
+import { Progress } from "@/components/site/sections/Progress";
 import { FoundingNeighbours } from "@/components/site/sections/FoundingNeighbours";
 import { FoundingBusinesses } from "@/components/site/sections/FoundingBusinesses";
-import { GrowthCounter } from "@/components/landing/GrowthCounter";
 import { PartnersInvestors } from "@/components/landing/PartnersInvestors";
 import { FaqSection } from "@/components/landing/FaqSection";
 import { ClosingCta } from "@/components/landing/ClosingCta";
@@ -27,7 +28,8 @@ export default function Page() {
         <HowItWorks />
         <WhyHello />
         <CommunityPromise />
-        <GrowthCounter />
+        <GetInvolved />
+        <Progress />
         <FoundingNeighbours />
         <FoundingBusinesses />
         <PartnersInvestors />

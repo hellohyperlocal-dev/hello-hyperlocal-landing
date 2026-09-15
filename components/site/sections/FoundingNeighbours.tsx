@@ -3,13 +3,13 @@
 import { useState } from "react";
 import { Check } from "lucide-react";
 import { submitRegistration } from "@/lib/registrations";
+import { PROGRESS } from "@/lib/progress";
 import { SectionEyebrow } from "@/components/site/ui/SectionEyebrow";
 import { CtaLink } from "@/components/site/ui/CtaLink";
 import { CheckboxField, FormError, SelectField, TextField } from "@/components/site/forms/Fields";
 import { SuccessState } from "@/components/site/forms/SuccessState";
 
-// Must match the neighbour count shown in the Progress bar.
-const NEIGHBOUR_COUNT = 327;
+const NEIGHBOUR_COUNT = PROGRESS.neighbours.count;
 
 const BENEFITS = [
   "Discover events, markets & school activities nearby",
