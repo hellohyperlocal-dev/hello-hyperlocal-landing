@@ -3,7 +3,8 @@ export type RegistrationRole =
   | "business"
   | "founding_neighbour"
   | "founding_business"
-  | "partner_interest";
+  | "partner_interest"
+  | "general_enquiry";
 
 export interface RegistrationPayload {
   roles: RegistrationRole[];
@@ -25,6 +26,10 @@ export interface RegistrationPayload {
   partner?: {
     organisation: string;
     inquiryType: string;
+  };
+  enquiry?: {
+    topic: string;
+    message: string;
   };
   /** ISO timestamp of the explicit opt-in, or null when none was given. */
   consentAt: string | null;

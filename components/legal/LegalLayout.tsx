@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { TableOfContents, type TocItem } from "@/components/ui/toc";
-import { SiteFooter } from "@/components/landing/SiteFooter";
+import { SiteFooter } from "@/components/site/SiteFooter";
 
 interface LegalLayoutProps {
   children: React.ReactNode;
@@ -65,10 +65,10 @@ export function LegalLayout({
 
           <div className="flex items-center gap-3">
             <Link
-              href="/#get-app"
-              className="rounded-full bg-[#1C472A] text-white dark:bg-[#7ED957] dark:text-[#0e0f0c] px-4 py-1.5 text-[12px] font-bold hover:opacity-90 transition-opacity"
+              href="/#get-involved"
+              className="rounded-button bg-hh-forest px-4 py-2 text-[13px] font-bold text-white transition-colors hover:bg-hh-hunter focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hh-forest focus-visible:ring-offset-2"
             >
-              Download App
+              Join Hello Linden
             </Link>
           </div>
         </div>
