@@ -1,9 +1,9 @@
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Hero } from "@/components/site/sections/Hero";
-import { PartnerStrip } from "@/components/landing/PartnerStrip";
+import { PartnerStrip } from "@/components/site/sections/PartnerStrip";
 import { GrowthCounter } from "@/components/landing/GrowthCounter";
-import { OurStory } from "@/components/landing/OurStory";
+import { OurStory } from "@/components/site/sections/OurStory";
 import { VisionOrbit } from "@/components/site/sections/VisionOrbit";
 import { HowItWorks } from "@/components/landing/HowItWorks";
 import { ForResidents } from "@/components/landing/ForResidents";
