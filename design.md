@@ -433,7 +433,9 @@ components:
 
 Hello Hyperlocal wears its identity in a signature pairing: a vivid grass/lime-green `{colors.primary}` (`#7ED957`) used as the CTA pill and brand accent, set against a clean soft canvas `{colors.canvas-soft}` (`#F5F5F5`) running across the hero band, and near-black ink `{colors.ink}` (`#0e0f0c`) with an olive undertone. The brand reads like a calm Scandinavian magazine — generous whitespace, large rounded cards (`{rounded.xl}` 24 px / `{rounded.2xl}` 32 px), full-radius interactive pills (`{rounded.pill}` 9999 px), and punchy display typography.
 
-In this system, all typography is powered by Vercel's **Geist Typography System** (`GeistSans` and `GeistMono`). Headings make use of calibrated negative letter spacing (`-0.02em` to `-0.06em`), while body copy and buttons leverage dedicated single-purpose classes (`text-heading-*`, `text-copy-*`, `text-label-*`, `text-button-*`).
+> **v2 update:** the Geist typography described below and in the `typography` tokens above is superseded. v2 uses the Charion layout type scale in Hello Hyperlocal colors: **Bricolage Grotesque** for headings and display type, **Almarai** for body copy. Headings: h1 46/68/80px (line-height 0.9, -3px tracking), h2 36/40/48px (-2.2px), h3 22px (-1px); body 20/30 and 16/24. Implemented as `type-*` utilities in `app/globals.css`. The `geistClass` values no longer exist in the codebase. Radii are now `rounded-button` 8px, `rounded-card` 10px and `rounded-chip` 6px, replacing the 9999px pill and 24/32px card radii.
+
+In the pre-v2 system, all typography was powered by Vercel's **Geist Typography System** (`GeistSans` and `GeistMono`). Headings make use of calibrated negative letter spacing (`-0.02em` to `-0.06em`), while body copy and buttons leverage dedicated single-purpose classes (`text-heading-*`, `text-copy-*`, `text-label-*`, `text-button-*`).
 
 **Key Characteristics:**
 - A single lime-green CTA accent `{colors.primary}` (`#7ED957`) — universal primary action color.

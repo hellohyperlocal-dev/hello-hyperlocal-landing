@@ -70,7 +70,7 @@ The project's active single source of truth for tokens, typography, radii, and c
 - **Tailwind v4:** Theme tokens live directly inside `@theme` in `app/globals.css`. There is **no `tailwind.config.js`**.
 - **Base UI, not Radix:** `components.json` is configured for `base-maia` style with `@base-ui/react`.
 - **Icons:** `lucide-react` v1 (core UI icons) and `react-icons/fa` (brand social links in footer).
-- **Fonts & Typography:** Official `geist` package (`GeistSans` and `GeistMono`) powering the complete Geist typography hierarchy.
+- **Fonts & Typography (v2):** Bricolage Grotesque (headings and display) and Almarai (body, weights 400/700) via `next/font/google` in `app/layout.tsx`. The `geist` package and the `text-heading-*` / `text-copy-*` / `text-label-*` / `text-button-*` ladder were removed. Use the `type-h1`, `type-h2`, `type-h3`, `type-stat`, `type-body-lg` and `type-body` utilities in `app/globals.css`; each sets `font-family` itself, so display type on non-heading elements never falls back to the body font. The typography token sections above describe the pre-v2 system.
 - **Motion (`motion/react`) v13:** For entrance tweens and expanding accordion interactions.
 - **Marquee:** `react-fast-marquee` for partner logo strip.
 - **Skills:** Impeccable skill installed at `.gemini/skills/impeccable/` for design audits, token enforcement, and frontend polish.
