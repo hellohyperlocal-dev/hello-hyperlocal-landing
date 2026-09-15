@@ -12,7 +12,7 @@ import { Progress } from "@/components/site/sections/Progress";
 import { FoundingNeighbours } from "@/components/site/sections/FoundingNeighbours";
 import { FoundingBusinesses } from "@/components/site/sections/FoundingBusinesses";
 import { PartnersInvestors } from "@/components/landing/PartnersInvestors";
-import { FaqSection } from "@/components/landing/FaqSection";
+import { FaqSection } from "@/components/site/sections/FaqSection";
 import { ClosingCta } from "@/components/landing/ClosingCta";
 
 export default function Page() {

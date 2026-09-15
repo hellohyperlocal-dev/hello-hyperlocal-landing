@@ -65,6 +65,30 @@ export function SelectField({
   );
 }
 
+export function TextAreaField({
+  label,
+  required,
+  className,
+  ...textarea
+}: BaseProps & Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "className" | "id">) {
+  const id = useId();
+  return (
+    <div className={cn("flex flex-col gap-1.5", className)}>
+      <label htmlFor={id} className={labelCls}>
+        {label}
+        <RequiredMark required={required} />
+      </label>
+      <textarea
+        id={id}
+        required={required}
+        rows={4}
+        className={cn(control, "h-auto resize-y py-3")}
+        {...textarea}
+      />
+    </div>
+  );
+}
+
 export function CheckboxField({
   children,
   className,
