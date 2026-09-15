@@ -1,11 +1,13 @@
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Hero } from "@/components/site/sections/Hero";
-import { PartnerStrip } from "@/components/site/sections/PartnerStrip";
-import { GrowthCounter } from "@/components/landing/GrowthCounter";
-import { OurStory } from "@/components/site/sections/OurStory";
 import { VisionOrbit } from "@/components/site/sections/VisionOrbit";
+import { PartnerStrip } from "@/components/site/sections/PartnerStrip";
+import { OurStory } from "@/components/site/sections/OurStory";
 import { HowItWorks } from "@/components/site/sections/HowItWorks";
+import { WhyHello } from "@/components/site/sections/WhyHello";
+import { CommunityPromise } from "@/components/site/sections/CommunityPromise";
+import { GrowthCounter } from "@/components/landing/GrowthCounter";
 import { ForResidents } from "@/components/landing/ForResidents";
 import { FoundingNeighbours } from "@/components/landing/FoundingNeighbours";
 import { ForBusiness } from "@/components/landing/ForBusiness";
@@ -23,9 +25,11 @@ export default function Page() {
         <Hero />
         <VisionOrbit />
         <PartnerStrip />
-        <GrowthCounter />
         <OurStory />
         <HowItWorks />
+        <WhyHello />
+        <CommunityPromise />
+        <GrowthCounter />
         <ForResidents />
         <FoundingNeighbours />
         <ForBusiness />
