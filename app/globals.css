@@ -7,10 +7,30 @@
 @theme inline {
     --font-heading: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
     --font-sans: var(--font-almarai), ui-sans-serif, system-ui, sans-serif;
-    --font-mono: var(--font-geist-mono), monospace;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
     /* Two-column rows stack below this width. */
     --breakpoint-split: 810px;
+
+    /* Charion layout tokens mapped onto the HH palette (see plan: AA-checked pairings). */
+    --color-hh-forest: var(--hh-forest);
+    --color-hh-onyx: var(--hh-onyx);
+    --color-hh-lime: var(--hh-lime);
+    --color-hh-lime-hover: var(--hh-lime-hover);
+    --color-hh-mint: var(--hh-mint);
+    --color-hh-mint-strong: var(--hh-mint-strong);
+    --color-hh-hunter: var(--hh-hunter);
+    --color-hh-warm: var(--hh-warm);
+    --color-hh-panel: var(--hh-panel);
+    --color-hh-muted: var(--hh-muted);
+    --color-hh-rule-light: var(--hh-rule-light);
+    --color-hh-rule-dark: var(--hh-rule-dark);
+    --color-hh-veil: var(--hh-veil);
+
+    /* Named radii. Bare rounded-sm/lg resolve differently here than in Charion's theme. */
+    --radius-button: 8px;
+    --radius-card: 10px;
+    --radius-chip: 6px;
 
     /* HHL Canonical Brand Colors — mirrors design.md */
     --color-brand-spruce: #0e0f0c;
@@ -87,6 +107,30 @@
 :root {
     --site-header-h: 4.5rem;
 
+    color-scheme: light;
+
+    /* HH palette values for the Charion layout. White on forest 10.58:1, onyx on lime 10.94:1,
+       lime on forest 6.02:1, mint on forest 9.26:1, muted on white 9.37:1. Never lime text on light. */
+    --hh-forest: #1c472a;
+    --hh-onyx: #0e0f0c;
+    --hh-lime: #7ed957;
+    --hh-lime-hover: #cdffad;
+    --hh-mint: #e2f6d5;
+    --hh-mint-strong: #c5edab;
+    --hh-hunter: #054d28;
+    --hh-warm: #fcfaf7;
+    --hh-panel: #f5f5f5;
+    --hh-muted: #454745;
+    --hh-rule-light: rgb(255 255 255 / 0.1);
+    --hh-rule-dark: rgb(14 15 12 / 0.12);
+    /* Orbit pill veil: hunter at 60% keeps lime text at 5.81:1 over forest. */
+    --hh-veil: rgb(5 77 40 / 0.6);
+
+    /* Charion page measure and fixed-nav height. */
+    --site-container: 1340px;
+    --site-gutter: 20px;
+    --site-nav-h: 90px;
+
     --background: #ffffff;
     --foreground: #0e0f0c;
     --card: #ffffff;
@@ -156,6 +200,86 @@
     @apply font-sans;
     scroll-behavior: smooth;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+  [id] {
+    scroll-margin-top: var(--site-nav-h);
+  }
+}
+
+/* ==========================================================================
+   Charion layout system in HH colors. Each type utility sets font-family itself,
+   so display type on non-heading elements never falls back to the body font.
+   ========================================================================== */
+@utility site-container {
+  width: 100%;
+  max-width: var(--site-container);
+  margin-inline: auto;
+  padding-inline: var(--site-gutter);
+}
+
+@utility type-h1 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 0.9;
+  letter-spacing: -3px;
+  @media (width >= 64rem) {
+    font-size: 68px;
+  }
+  @media (width >= 80rem) {
+    font-size: 80px;
+  }
+}
+
+@utility type-h2 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: -2.2px;
+  @media (width >= 48rem) {
+    font-size: 40px;
+  }
+  @media (width >= 80rem) {
+    font-size: 48px;
+  }
+}
+
+@utility type-h3 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 26.4px;
+  letter-spacing: -1px;
+}
+
+@utility type-stat {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 56px;
+  line-height: 1;
+  @media (width >= 80rem) {
+    font-size: 78px;
+  }
+}
+
+@utility type-body-lg {
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: -0.1px;
+}
+
+@utility type-body {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.6px;
 }
 
 /* ==========================================================================
@@ -316,7 +440,7 @@
     font-weight: 400;
   }
   .text-label-14-mono {
-    font-family: var(--font-geist-mono), monospace;
+    font-family: var(--font-mono);
     font-size: 14px;
     line-height: 20px;
     font-weight: 400;
@@ -328,7 +452,7 @@
     font-weight: 400;
   }
   .text-label-13-mono {
-    font-family: var(--font-geist-mono), monospace;
+    font-family: var(--font-mono);
     font-size: 13px;
     line-height: 20px;
     font-weight: 400;
@@ -340,7 +464,7 @@
     font-weight: 400;
   }
   .text-label-12-mono {
-    font-family: var(--font-geist-mono), monospace;
+    font-family: var(--font-mono);
     font-size: 12px;
     line-height: 16px;
     font-weight: 400;
@@ -378,7 +502,7 @@
     font-weight: 400;
   }
   .text-copy-14-mono {
-    font-family: var(--font-geist-mono), monospace;
+    font-family: var(--font-mono);
     font-size: 14px;
     line-height: 20px;
     font-weight: 400;
@@ -390,7 +514,7 @@
     font-weight: 400;
   }
   .text-copy-13-mono {
-    font-family: var(--font-geist-mono), monospace;
+    font-family: var(--font-mono);
     font-size: 13px;
     line-height: 18px;
     font-weight: 400;

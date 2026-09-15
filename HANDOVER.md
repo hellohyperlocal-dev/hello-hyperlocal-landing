@@ -36,6 +36,7 @@ The project's active single source of truth for tokens, typography, radii, and c
 ### Strict Shadow & Gradient Policy
 - **Zero Shadows & Zero Gradients**: All decorative box-shadows, drop-shadows, radial/linear backdrop gradients, and blur glows are strictly prohibited across standard sections and cards.
 - **The Only Permitted Shadow**: Strictly reserved for **`card-content-elevated`** (`shadow: 0 4px 24px rgba(14, 15, 12, 0.1)`, `border: none`).
+- **v2 Gradient Exception**: In the v2 Charion-layout rebuild, dark gradient veils over full-bleed photography (so white text stays legible) and the soft radial glow behind the ecosystem orbit are permitted. All other decorative gradients, glows and shadows remain prohibited. The zero em dash rule for copy still stands.
 
 ### Canonical Card Surface Hierarchy
 1. **`card-content`**: Pure white background (`#ffffff`), `rounded-[24px]`, hairline border (`1px solid rgba(14,15,12,0.1)`), no shadow.
