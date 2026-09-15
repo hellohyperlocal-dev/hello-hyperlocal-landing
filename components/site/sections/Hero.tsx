@@ -14,7 +14,25 @@ export function Hero() {
 
   return (
     <section id="top" className="relative w-full overflow-hidden bg-hh-forest pb-20 pt-[140px] split:pb-[100px]">
-      <div className="site-container flex flex-col items-center gap-12 split:flex-row split:gap-10">
+      {/* Decorative waves at Charion's measured offsets; purely presentational. */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
+        <Image
+          src="/decoration/hero-wave-1.svg"
+          alt=""
+          width={923}
+          height={769}
+          className="absolute left-0 top-[169px] w-[923px] max-w-none"
+        />
+        <Image
+          src="/decoration/hero-wave-2.svg"
+          alt=""
+          width={1096}
+          height={705}
+          className="absolute left-[329px] top-[675px] w-[1096px] max-w-none -translate-y-[352.5px]"
+        />
+      </div>
+
+      <div className="site-container relative z-10 flex flex-col items-center gap-12 split:flex-row split:gap-10">
         <div className="flex w-full flex-1 flex-col items-start gap-[50px]">
           <div className="flex flex-col items-start gap-5">
             <SectionEyebrow label="Hello Linden · Coming in 2026" tone="dark" />
