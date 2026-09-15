@@ -11,9 +11,10 @@ import { GetInvolved } from "@/components/site/sections/GetInvolved";
 import { Progress } from "@/components/site/sections/Progress";
 import { FoundingNeighbours } from "@/components/site/sections/FoundingNeighbours";
 import { FoundingBusinesses } from "@/components/site/sections/FoundingBusinesses";
-import { PartnersInvestors } from "@/components/landing/PartnersInvestors";
+import { Partners } from "@/components/site/sections/Partners";
+import { PlatformPillars } from "@/components/site/sections/PlatformPillars";
 import { FaqSection } from "@/components/site/sections/FaqSection";
-import { ClosingCta } from "@/components/landing/ClosingCta";
+import { ClosingCta } from "@/components/site/sections/ClosingCta";
 
 export default function Page() {
   return (
@@ -32,7 +33,8 @@ export default function Page() {
         <Progress />
         <FoundingNeighbours />
         <FoundingBusinesses />
-        <PartnersInvestors />
+        <Partners />
+        <PlatformPillars />
         <FaqSection />
         <ClosingCta />
       </main>
