@@ -1,0 +1,498 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-heading: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+    --font-sans: var(--font-almarai), ui-sans-serif, system-ui, sans-serif;
+    --font-mono: var(--font-geist-mono), monospace;
+
+    /* Two-column rows stack below this width. */
+    --breakpoint-split: 810px;
+
+    /* HHL Canonical Brand Colors — mirrors design.md */
+    --color-brand-spruce: #0e0f0c;
+    --color-brand-hunter: #054d28;
+    --color-brand-grass: #7ED957;
+    --color-brand-grass-soft: #e2f6d5;
+    --color-brand-warm-white: #ffffff;
+    --color-brand-onyx: #0e0f0c;
+    --color-brand-panel: #F5F5F5;
+    --color-brand-muted: #454745;
+    --color-brand-line: rgba(14, 15, 12, 0.12);
+    --color-brand-line-soft: rgba(14, 15, 12, 0.07);
+    --color-brand-spruce-line: rgba(14, 15, 12, 0.15);
+
+    /* Purpose-Driven Semantic Colors */
+    --color-semantic-success: #1C472A;
+    --color-semantic-success-fg: #7ED957;
+    --color-semantic-success-soft: #e2f6d5;
+    --color-semantic-warning: #B45309;
+    --color-semantic-warning-fg: #D97706;
+    --color-semantic-warning-soft: #FEF3C7;
+    --color-semantic-danger: #991B1B;
+    --color-semantic-danger-fg: #DC2626;
+    --color-semantic-danger-soft: #FEE2E2;
+    --color-semantic-info: #1E40AF;
+    --color-semantic-info-fg: #2563EB;
+    --color-semantic-info-soft: #DBEAFE;
+
+    /* Landing page motion */
+    --animate-hhl-float: hhl-float 7.5s ease-in-out infinite;
+    --animate-hhl-float-b: hhl-float-b 9s ease-in-out infinite;
+    --animate-hhl-pulse: hhl-pulse 2.4s ease-in-out infinite;
+
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-2xl: 32px;
+    --radius-full: 9999px;
+}
+
+:root {
+    --site-header-h: 4.5rem;
+
+    --background: #ffffff;
+    --foreground: #0e0f0c;
+    --card: #ffffff;
+    --card-foreground: #0e0f0c;
+    --popover: #ffffff;
+    --popover-foreground: #0e0f0c;
+    --primary: #7ED957;
+    --primary-foreground: #0e0f0c;
+    --secondary: #F5F5F5;
+    --secondary-foreground: #0e0f0c;
+    --muted: #F5F5F5;
+    --muted-foreground: #454745;
+    --accent: #7ED957;
+    --accent-foreground: #0e0f0c;
+    --destructive: #320707;
+    --border: rgba(14, 15, 12, 0.1);
+    --input: rgba(14, 15, 12, 0.1);
+    --ring: #7ED957;
+    --radius: 24px;
+    --sidebar: #ffffff;
+    --sidebar-foreground: #0e0f0c;
+    --sidebar-primary: #7ED957;
+    --sidebar-primary-foreground: #0e0f0c;
+    --sidebar-accent: #7ED957;
+    --sidebar-accent-foreground: #0e0f0c;
+    --sidebar-border: rgba(14, 15, 12, 0.1);
+    --sidebar-ring: #7ED957;
+}
+
+.dark {
+    --background: #0e0f0c;
+    --foreground: #ffffff;
+    --card: #161814;
+    --card-foreground: #ffffff;
+    --popover: #161814;
+    --popover-foreground: #ffffff;
+    --primary: #7ED957;
+    --primary-foreground: #0e0f0c;
+    --secondary: #1C472A;
+    --secondary-foreground: #ffffff;
+    --muted: #1c1e1a;
+    --muted-foreground: #868685;
+    --accent: #7ED957;
+    --accent-foreground: #0e0f0c;
+    --destructive: #ff5c5c;
+    --border: rgba(255, 255, 255, 0.12);
+    --input: rgba(255, 255, 255, 0.12);
+    --ring: #7ED957;
+    --sidebar: #0e0f0c;
+    --sidebar-foreground: #ffffff;
+    --sidebar-primary: #7ED957;
+    --sidebar-primary-foreground: #0e0f0c;
+    --sidebar-accent: #1C472A;
+    --sidebar-accent-foreground: #ffffff;
+    --sidebar-border: rgba(255, 255, 255, 0.12);
+    --sidebar-ring: #7ED957;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans transition-colors duration-200;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+}
+
+/* ==========================================================================
+   Vercel Geist Typography System Utility Classes
+   ========================================================================== */
+@layer utilities {
+  /* --- Headings (Semibold with Calibrated Negative Tracking) --- */
+  .text-heading-165 {
+    font-family: var(--font-heading);
+    font-size: 165px;
+    line-height: 148px;
+    font-weight: 600;
+    letter-spacing: -9.9px;
+  }
+  .text-heading-72 {
+    font-family: var(--font-heading);
+    font-size: 72px;
+    line-height: 72px;
+    font-weight: 600;
+    letter-spacing: -4.32px;
+  }
+  .text-heading-64 {
+    font-family: var(--font-heading);
+    font-size: 64px;
+    line-height: 64px;
+    font-weight: 600;
+    letter-spacing: -3.84px;
+  }
+  .text-heading-56 {
+    font-family: var(--font-heading);
+    font-size: 56px;
+    line-height: 56px;
+    font-weight: 600;
+    letter-spacing: -3.36px;
+  }
+  .text-heading-50,
+  .text-display-md {
+    font-family: var(--font-heading);
+    font-size: 50px;
+    line-height: 54px;
+    font-weight: 600;
+    letter-spacing: -3.00px;
+  }
+  .text-heading-48 {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    line-height: 56px;
+    font-weight: 600;
+    letter-spacing: -2.88px;
+  }
+  .text-heading-40 {
+    font-family: var(--font-heading);
+    font-size: 40px;
+    line-height: 48px;
+    font-weight: 600;
+    letter-spacing: -2.4px;
+  }
+  .text-heading-36 {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    line-height: 44px;
+    font-weight: 600;
+    letter-spacing: -1.8px;
+  }
+  .text-heading-32 {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 600;
+    letter-spacing: -1.28px;
+  }
+  .text-heading-28 {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: 600;
+    letter-spacing: -1.12px;
+  }
+  .text-heading-24 {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+    letter-spacing: -0.96px;
+  }
+  .text-heading-20 {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+  }
+  .text-heading-18 {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+    letter-spacing: -0.36px;
+  }
+  .text-heading-16 {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    letter-spacing: -0.32px;
+  }
+  .text-heading-14 {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    letter-spacing: -0.28px;
+  }
+
+  /* --- Buttons (Medium Weight) --- */
+  .text-button-16 {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+  }
+  .text-button-14 {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+  }
+  .text-button-12 {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+  }
+
+  /* --- Labels (Single Line, Icon-Matched Line Height) --- */
+  .text-label-20 {
+    font-family: var(--font-sans);
+    font-size: 20px;
+    line-height: 32px;
+    font-weight: 400;
+  }
+  .text-label-18 {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+  .text-label-16 {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+  .text-label-14 {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+  .text-label-14-mono {
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+  .text-label-13 {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+  }
+  .text-label-13-mono {
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+  .text-label-12 {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+  }
+  .text-label-12-mono {
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+  }
+
+  /* --- Copy (Multi-Line Body Text with Expanded Leading) --- */
+  .text-copy-24 {
+    font-family: var(--font-sans);
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 400;
+  }
+  .text-copy-20 {
+    font-family: var(--font-sans);
+    font-size: 20px;
+    line-height: 36px;
+    font-weight: 400;
+  }
+  .text-copy-18 {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+  }
+  .text-copy-16 {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+  .text-copy-14 {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+  .text-copy-14-mono {
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+  .text-copy-13 {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+  }
+  .text-copy-13-mono {
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+  }
+
+  /* Support for strong modifier within typography system */
+  :is(.text-copy-13, .text-copy-14, .text-copy-16, .text-copy-18, .text-copy-20, .text-copy-24,
+      .text-label-12, .text-label-13, .text-label-14, .text-label-16, .text-label-18, .text-label-20) strong {
+    font-weight: 600;
+  }
+}
+
+@keyframes hhl-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(5deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(5deg);
+  }
+}
+
+@keyframes hhl-float-b {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-7deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(-7deg);
+  }
+}
+
+@keyframes hhl-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-hhl-float {
+    animation: none;
+    transform: rotate(5deg);
+  }
+  .animate-hhl-float-b {
+    animation: none;
+    transform: rotate(-7deg);
+  }
+  .animate-hhl-pulse {
+    animation: none;
+  }
+  .icon-flip .arrow-1,
+  .icon-flip .arrow-2 {
+    transition: none !important;
+  }
+}
+
+/* ==========================================================================
+   Button Arrow Flip Micro-Animation
+   ========================================================================== */
+.icon-flip {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon-flip .arrow-1 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.icon-flip .arrow-2 {
+  position: absolute;
+  inset: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-100%, 100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .icon-flip .arrow-1,
+button:hover .icon-flip .arrow-1,
+a:hover .icon-flip .arrow-1 {
+  transform: translate(100%, -100%);
+}
+
+.group:hover .icon-flip .arrow-2,
+button:hover .icon-flip .arrow-2,
+a:hover .icon-flip .arrow-2 {
+  transform: translate(0, 0);
+}
