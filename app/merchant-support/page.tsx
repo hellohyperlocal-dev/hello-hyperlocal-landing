@@ -1,9 +1,7 @@
-import React from "react";
-import Link from "next/link";
-import { Store, Mail, Clock, ArrowRight } from "lucide-react";
+import { Mail, Store } from "lucide-react";
 import { LegalLayout } from "@/components/legal/LegalLayout";
 import { type TocItem } from "@/components/ui/toc";
-import { EyebrowPill } from "@/components/ui/EyebrowPill";
+import { SectionEyebrow } from "@/components/site/ui/SectionEyebrow";
 
 export const metadata = {
   title: "Merchant Support | Hello Hyperlocal",
@@ -24,56 +22,51 @@ export default function MerchantSupportPage() {
       lastUpdated="August 11, 2026"
       tocItems={TOC_ITEMS}
     >
-      {/* Section: Status */}
       <section id="status" className="scroll-mt-24 space-y-4">
-        <div className="flex items-center gap-2">
-          <EyebrowPill icon={Clock} variant="standard">
-            Coming Soon
-          </EyebrowPill>
-        </div>
-        <h2 className="text-[18px] sm:text-[20px] font-bold text-brand-onyx dark:text-[#FCFAF7] tracking-tight m-0">
+        <SectionEyebrow label="Coming Soon" tone="light" />
+        <h2 className="m-0 text-[20px] font-bold tracking-tight text-hh-onyx">
           Documentation Under Preparation
         </h2>
-        <p className="m-0 text-brand-muted dark:text-[#99A893]">
-          The official Merchant Partner Portal and self-serve business documentation are currently being built to help neighbourhood stores and service providers connect seamlessly with nearby residents.
+        <p className="m-0 text-hh-muted">
+          The official Merchant Partner Portal and self-serve business documentation are currently being
+          built to help neighbourhood stores and service providers connect seamlessly with nearby
+          residents.
         </p>
       </section>
 
-      {/* Section 1: Business Onboarding */}
       <section id="merchant-overview" className="scroll-mt-24 space-y-3">
-        <h2 className="text-[18px] sm:text-[20px] font-bold text-brand-onyx dark:text-[#FCFAF7] tracking-tight m-0">
-          1. Business Onboarding
-        </h2>
+        <h2 className="m-0 text-[20px] font-bold tracking-tight text-hh-onyx">1. Business Onboarding</h2>
         <p className="m-0">
-          Hello Hyperlocal gives verified local cafes, shops, markets, and independent professionals a direct line to neighbours without algorithm paywalls or competing against global corporate advertisers.
+          Hello Hyperlocal gives verified local cafes, shops, markets, and independent professionals a
+          direct line to neighbours without algorithm paywalls or competing against global corporate
+          advertisers.
         </p>
         <p className="m-0">
-          Our upcoming merchant guide will cover business profile verification, publishing weekly specials, creating resident-exclusive perks, and managing map listings.
+          Our upcoming merchant guide will cover business profile verification, publishing weekly
+          specials, creating resident-exclusive perks, and managing map listings.
         </p>
       </section>
 
-      {/* Section 2: Partner Support */}
       <section id="merchant-contact" className="scroll-mt-24 space-y-4">
-        <h2 className="text-[18px] sm:text-[20px] font-bold text-brand-onyx dark:text-[#FCFAF7] tracking-tight m-0">
-          2. Partner Support
-        </h2>
+        <h2 className="m-0 text-[20px] font-bold tracking-tight text-hh-onyx">2. Partner Support</h2>
         <p className="m-0">
-          Want to pre-register your business or speak directly with our merchant partnership team? Get in touch with us:
+          Want to pre-register your business or speak directly with our merchant partnership team? Get in
+          touch with us:
         </p>
 
-        <div className="rounded-[20px] bg-[#e2f6d5] dark:bg-[#1C472A] p-6 text-left space-y-3">
-          <div className="flex items-center gap-2.5 text-[#1C472A] dark:text-[#7ED957] font-semibold text-[15px]">
-            <Store className="h-5 w-5" />
+        <div className="space-y-3 rounded-card bg-hh-mint p-6 text-left">
+          <div className="flex items-center gap-2.5 text-[16px] font-bold text-hh-hunter">
+            <Store aria-hidden className="h-5 w-5" />
             <span>Merchant Partnerships Desk</span>
           </div>
-          <p className="text-[14px] leading-relaxed text-[#1C472A]/90 dark:text-white/90 m-0">
+          <p className="m-0 text-[15px] leading-relaxed text-hh-hunter">
             Send your business details, location, and queries directly to our partnership team:
           </p>
           <a
             href="mailto:merchants@hellohyperlocal.co.za"
-            className="inline-flex items-center gap-2 font-bold text-[#1C472A] dark:text-[#7ED957] hover:underline text-[14px]"
+            className="inline-flex items-center gap-2 rounded-chip text-[15px] font-bold text-hh-hunter underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hh-forest focus-visible:ring-offset-2"
           >
-            <Mail className="h-4 w-4" />
+            <Mail aria-hidden className="h-4 w-4" />
             <span>merchants@hellohyperlocal.co.za</span>
           </a>
         </div>
