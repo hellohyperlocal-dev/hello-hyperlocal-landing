@@ -1,3 +1,5 @@
+import { registerAction } from "@/app/join/actions";
+
 export type RegistrationRole =
   | "resident"
   | "business"
@@ -19,7 +21,7 @@ export interface RegistrationPayload {
   interests?: string[];
   business?: {
     name: string;
-    category?: string;
+    /** Street address. Category is chosen in the app, not here — see migration 0008. */
     address?: string;
     wantsWindowSticker?: boolean;
   };
@@ -33,39 +35,19 @@ export interface RegistrationPayload {
   };
   /** ISO timestamp of the explicit opt-in, or null when none was given. */
   consentAt: string | null;
+  /** Anti-spam honeypot. Must stay empty; a real person never sees the field. */
+  website?: string;
 }
 
-export interface RegistrationRecord extends RegistrationPayload {
-  source: "website";
-  submittedAt: string;
-}
-
-export type RegistrationResult =
-  | { ok: true; record: RegistrationRecord }
-  | { ok: false; error: string };
+export type RegistrationResult = { ok: true } | { ok: false; error: string };
 
 /**
- * Single entry point for every website sign-up. The app will read the same
- * records, so email is normalised here to match app accounts later.
- * No backend is connected yet: this resolves locally until the shared
- * Supabase schema exists.
+ * Single entry point for every website sign-up. Hands off to the server action,
+ * which writes to the shared Supabase `registrations` table — the same database the
+ * app reads, so a website registration becomes an app account without re-registering.
  */
 export async function submitRegistration(
   payload: RegistrationPayload,
 ): Promise<RegistrationResult> {
-  const email = payload.contact.email.trim().toLowerCase();
-  if (!email) return { ok: false, error: "An email address is required." };
-
-  const record: RegistrationRecord = {
-    ...payload,
-    contact: { ...payload.contact, email },
-    source: "website",
-    submittedAt: new Date().toISOString(),
-  };
-
-  if (process.env.NODE_ENV !== "production") {
-    console.info("[registrations] captured", record);
-  }
-
-  return { ok: true, record };
+  return registerAction(payload);
 }

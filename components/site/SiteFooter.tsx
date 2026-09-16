@@ -8,11 +8,11 @@ const COLUMNS = [
   {
     title: "Explore Hello",
     links: [
-      { label: "Our Story", href: "/#our-story" },
+      { label: "Our Story", href: "/about" },
       { label: "The Vision", href: "/#vision" },
-      { label: "How It Works", href: "/#how-it-works" },
+      { label: "How the App Works", href: "/#how-it-works" },
       { label: "For Local Businesses", href: "/#businesses" },
-      { label: "Join Hello Linden", href: "/#get-involved" },
+      { label: "Join Hello Linden", href: "/join" },
     ],
   },
   {
@@ -105,7 +105,7 @@ export function SiteFooter() {
           </div>
 
           <Link
-            href="/#get-involved"
+            href="/join"
             className={`flex h-[60px] w-fit shrink-0 items-center gap-[15px] rounded-button bg-hh-lime px-5 text-[20px] leading-[30px] text-hh-onyx transition-colors hover:bg-hh-lime-hover ${focusRing}`}
           >
             Join Hello Linden

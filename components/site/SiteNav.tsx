@@ -7,16 +7,18 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ArrowIcon } from "@/components/site/ui/ArrowIcon";
 
+// Root-relative so the same nav works from /about and other pages. Order follows the client brief.
 const NAV_LINKS = [
-  { href: "#vision", label: "Explore Hello" },
-  { href: "#our-story", label: "Our Story" },
-  { href: "#founding-neighbours", label: "Residents" },
-  { href: "#businesses", label: "Businesses" },
-  { href: "#partners", label: "Partners" },
-  { href: "#faqs", label: "FAQs" },
+  { href: "/", label: "Home" },
+  { href: "/about", label: "Our Story" },
+  { href: "/#vision", label: "Explore Hello" },
+  { href: "/#residents", label: "Residents" },
+  { href: "/#businesses", label: "Businesses" },
+  { href: "/#partners", label: "Partners" },
+  { href: "/#faqs", label: "FAQs" },
 ];
 
-const NAV_CTA = { href: "#get-involved", label: "Join Hello Linden" };
+const NAV_CTA = { href: "/join", label: "Join Hello Linden" };
 
 export function SiteNav() {
   const sentinelRef = useRef<HTMLDivElement>(null);
@@ -62,7 +64,7 @@ export function SiteNav() {
         >
           <div className="site-container flex h-[60px] items-center gap-[15px]">
             <Link
-              href="#top"
+              href="/"
               aria-label="Hello Hyperlocal, back to top"
               onClick={() => setMenuOpen(false)}
               className="flex h-[52px] shrink-0 items-center rounded-card bg-hh-warm px-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hh-lime focus-visible:ring-offset-2 focus-visible:ring-offset-hh-forest"

@@ -8,7 +8,7 @@
 
 @theme inline {
     --font-heading: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
-    --font-sans: var(--font-almarai), ui-sans-serif, system-ui, sans-serif;
+    --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
     /* Two-column rows stack below this width. */
@@ -85,6 +85,28 @@
     --radius-xl: 24px;
     --radius-2xl: 32px;
     --radius-full: 9999px;
+}
+
+/* Eyebrow dot ping, sampled from the Framer Activity Badge: the ring grows 1 -> 2.4x while
+   fading 0.75 -> 0 over ~1s, then rests hidden for ~0.5s before the next ping. */
+@theme {
+    --animate-eyebrow-ping: eyebrow-ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+
+    @keyframes eyebrow-ping {
+        0% {
+            transform: scale(1);
+            opacity: 0.75;
+        }
+        66% {
+            transform: scale(2.4);
+            opacity: 0;
+        }
+        66.01%,
+        100% {
+            transform: scale(1);
+            opacity: 0;
+        }
+    }
 }
 
 :root {

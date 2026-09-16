@@ -15,7 +15,8 @@ const TOC_ITEMS: TocItem[] = [
   { id: "address-privacy", text: "4. Address Privacy Protection", level: 2 },
   { id: "data-subject-rights", text: "5. Your Rights Under POPIA", level: 2 },
   { id: "security-safeguards", text: "6. Security Safeguards", level: 2 },
-  { id: "information-officer", text: "7. Information Officer Contact", level: 2 },
+  { id: "cookies", text: "7. Cookies & Analytics", level: 2 },
+  { id: "information-officer", text: "8. Information Officer Contact", level: 2 },
 ];
 
 export default function PrivacyPolicyPage() {
@@ -23,7 +24,7 @@ export default function PrivacyPolicyPage() {
     <LegalLayout
       title="Privacy Policy"
       subtitle="How Hello Hyperlocal collects, processes, and protects personal information in compliance with South Africa's Protection of Personal Information Act (POPIA)."
-      lastUpdated="August 10, 2026"
+      lastUpdated="September 16, 2026"
       tocItems={TOC_ITEMS}
     >
       {/* Principles Section (Clean typography, no boxes) */}
@@ -117,10 +118,28 @@ export default function PrivacyPolicyPage() {
         </p>
       </section>
 
-      {/* Section 7 */}
+      {/* Section 7: matches components/ui/CookieConsent.tsx and components/site/GoogleAnalytics.tsx */}
+      <section id="cookies" className="scroll-mt-24 space-y-3">
+        <h2 className="text-[18px] sm:text-[20px] font-bold text-brand-onyx dark:text-[#FCFAF7] tracking-tight m-0">
+          7. Cookies &amp; Analytics
+        </h2>
+        <p className="m-0">
+          We use cookies to enhance your browsing experience and understand how our website is used. When you first visit, we ask whether you accept or decline analytics cookies.
+        </p>
+        <ul className="list-disc pl-5 space-y-2 m-0 text-[14px]">
+          <li><strong>Essential storage:</strong> We store your cookie choice in your browser so we don&apos;t ask you again on every visit. This does not identify you.</li>
+          <li><strong>Google Analytics (only if you accept):</strong> Google Analytics, a service provided by Google, collects information such as the pages you visit, how long you stay, the type of device and browser you use, your approximate location, and how you arrived at our site. We use this only to understand and improve the website. If you decline, Google Analytics is not loaded and no analytics cookies are set.</li>
+          <li><strong>No advertising cookies:</strong> We do not use cookies for advertising, and we do not sell browsing information.</li>
+        </ul>
+        <p className="m-0">
+          You can change your mind at any time by clearing this website&apos;s cookies and stored data in your browser settings. You will then be asked again on your next visit.
+        </p>
+      </section>
+
+      {/* Section 8 */}
       <section id="information-officer" className="scroll-mt-24 space-y-3">
         <h2 className="text-[18px] sm:text-[20px] font-bold text-brand-onyx dark:text-[#FCFAF7] tracking-tight m-0">
-          7. Information Officer &amp; Inquiries
+          8. Information Officer &amp; Inquiries
         </h2>
         <p className="m-0">
           To exercise your rights or lodge a privacy inquiry, please contact our designated Information Officer:

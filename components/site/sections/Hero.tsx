@@ -13,7 +13,9 @@ export function Hero() {
   const [videoOpen, setVideoOpen] = useState(false);
 
   return (
-    <section id="top" className="relative w-full overflow-hidden bg-hh-forest pb-20 pt-[140px] split:pb-[100px]">
+    // min-h-dvh: fills the viewport exactly (dynamic viewport, so mobile browser bars don't cut it),
+    // but can still grow if the content is taller than a short screen.
+    <section id="top" className="relative flex min-h-dvh w-full flex-col justify-center overflow-hidden bg-hh-forest pb-20 pt-[140px] split:pb-[100px]">
       {/* Decorative waves at Charion's measured offsets; purely presentational. */}
       <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
         <Image
@@ -28,7 +30,9 @@ export function Hero() {
           alt=""
           width={1096}
           height={705}
-          className="absolute left-[329px] top-[675px] w-[1096px] max-w-none -translate-y-[352.5px]"
+          // Charion pins this wave to the right edge (right: 0). A fixed left offset only lined up
+          // at one viewport width and showed the SVG's cut-off edge everywhere else.
+          className="absolute right-0 top-[675px] w-[1096px] max-w-none -translate-y-[352.5px]"
         />
       </div>
 
@@ -45,11 +49,13 @@ export function Hero() {
             </p>
           </div>
 
+          {/* Two CTAs only. The brief's other home-page CTAs (Become a Founding Business, Learn More)
+              live further down the page, in Founding Businesses and Our Story. */}
           <div className="flex flex-wrap items-center gap-5">
-            <CtaLink href="#founding-neighbours" surface="dark">
+            <CtaLink href="/join?type=resident" surface="dark">
               Become a Founding Neighbour
             </CtaLink>
-            <CtaLink href="#businesses" variant="text" surface="dark">
+            <CtaLink href="/join?type=business" variant="text" surface="dark">
               Register Your Business
             </CtaLink>
           </div>

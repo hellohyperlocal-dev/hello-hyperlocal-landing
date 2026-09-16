@@ -1,8 +1,9 @@
-import { Almarai, Bricolage_Grotesque } from "next/font/google";
+import { Bricolage_Grotesque, Geist } from "next/font/google";
 
 import "./globals.css";
 import { Providers } from "@/components/site/Providers";
 import { CookieConsent } from "@/components/ui/CookieConsent";
+import { GoogleAnalytics } from "@/components/site/GoogleAnalytics";
 import { cn } from "@/lib/utils";
 
 const bricolage = Bricolage_Grotesque({
@@ -11,10 +12,10 @@ const bricolage = Bricolage_Grotesque({
   display: "swap",
 });
 
-const almarai = Almarai({
-  variable: "--font-almarai",
+// Body copy. Geist is a variable font, so every weight used (400 body, 700 bold labels) ships in one file.
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
-  weight: ["400", "700"],
   display: "swap",
 });
 
@@ -35,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("antialiased", bricolage.variable, almarai.variable)}
+      className={cn("antialiased", bricolage.variable, geist.variable)}
     >
       <body>
         <a
@@ -47,6 +48,7 @@ export default function RootLayout({
         <Providers>
           {children}
           <CookieConsent />
+          <GoogleAnalytics />
         </Providers>
       </body>
     </html>
