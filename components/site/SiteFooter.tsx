@@ -50,14 +50,14 @@ export function SiteFooter() {
             <Link
               href="/#top"
               aria-label="Hello Hyperlocal, home"
-              className={`flex h-[64px] items-center rounded-card bg-hh-warm px-4 ${focusRing}`}
+              className={`flex h-[64px] items-center rounded-card ${focusRing}`}
             >
               <Image
-                src="/logo/hello-hyperlocal-logo.png"
+                src="/logo/hhl-logo-lime.svg"
                 alt="Hello Hyperlocal"
-                width={120}
-                height={48}
-                className="h-12 w-auto object-contain"
+                width={130}
+                height={64}
+                className="h-16 w-auto"
               />
             </Link>
             <p className="m-0 font-heading text-[22px] font-medium leading-[26.4px] tracking-[-1px] text-white">
