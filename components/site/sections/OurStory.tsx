@@ -52,20 +52,21 @@ export function OurStory() {
           </CtaLink>
         </div>
 
-        <figure className="m-0 flex w-full flex-col gap-3 split:w-[455px] split:shrink-0">
+        <figure className="relative m-0 w-full overflow-hidden rounded-card split:w-[455px] split:shrink-0">
           <Image
             src="/photography/jc-steyn-founder.jpg"
             alt="JC Steyn, founder of Hello Hyperlocal, in Linden"
             width={455}
             height={650}
             sizes="(min-width: 810px) 455px, 100vw"
-            className="h-full max-h-[650px] w-full rounded-card object-cover"
+            className="block h-full max-h-[650px] w-full object-cover"
           />
-          <figcaption className="flex flex-col gap-1">
-            <span className="font-heading text-[22px] font-medium leading-[26.4px] tracking-[-1px] text-hh-onyx">
+          {/* Dark veil keeps the white caption legible over the photo. */}
+          <figcaption className="absolute inset-x-0 bottom-0 flex flex-col gap-1 bg-[linear-gradient(rgb(14_15_12/0)_0%,rgb(14_15_12/0.78)_100%)] px-6 pb-6 pt-24">
+            <span className="font-heading text-[22px] font-medium leading-[26.4px] tracking-[-1px] text-white">
               JC Steyn, Founder
             </span>
-            <span className="text-[16px] leading-6 text-hh-muted">
+            <span className="text-[16px] leading-6 text-white/80">
               Linden resident &amp; local business owner
             </span>
           </figcaption>

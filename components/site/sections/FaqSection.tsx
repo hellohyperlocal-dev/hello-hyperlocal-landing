@@ -71,13 +71,18 @@ const FAQS = [
   },
 ];
 
+const HALF = Math.ceil(FAQS.length / 2);
+const FAQ_COLUMNS = [FAQS.slice(0, HALF), FAQS.slice(HALF)].map((column, c) =>
+  column.map((faq, j) => ({ faq, i: j + c * HALF })),
+);
+
 export function FaqSection() {
   const baseId = useId();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [contactOpen, setContactOpen] = useState(false);
 
   return (
-    <section id="faqs" className="relative bg-white py-[100px] split:py-[130px]">
+    <section id="faqs" className="relative bg-hh-warm py-[100px] split:py-[130px]">
       <div className="site-container flex flex-col items-center gap-10">
         <div className="flex flex-col items-center gap-5 text-center">
           <SectionEyebrow label="Frequently Asked Questions" tone="light" />
@@ -86,42 +91,48 @@ export function FaqSection() {
           </h2>
         </div>
 
-        <ul className="m-0 flex w-full max-w-[860px] list-none flex-col gap-[10px] p-0">
-          {FAQS.map((faq, i) => {
-            const open = openIndex === i;
-            const btnId = `${baseId}-q${i}`;
-            const panelId = `${baseId}-a${i}`;
-            return (
-              <li key={faq.question} className="rounded-card bg-hh-panel">
-                <h3 className="m-0">
-                  <button
-                    id={btnId}
-                    type="button"
-                    aria-expanded={open}
-                    aria-controls={panelId}
-                    onClick={() => setOpenIndex(open ? null : i)}
-                    className="flex w-full items-start gap-5 rounded-card p-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hh-forest"
-                  >
-                    <span className="flex-1 font-heading text-[20px] font-medium leading-[26.4px] tracking-[-1.3px] text-hh-onyx sm:text-[22px]">
-                      {faq.question}
-                    </span>
-                    <span aria-hidden className="relative mt-3 h-[2px] w-[14px] shrink-0 bg-hh-onyx">
-                      <span
-                        className={cn(
-                          "absolute inset-0 bg-hh-onyx transition-transform duration-200 motion-reduce:transition-none",
-                          open ? "rotate-0" : "rotate-90",
-                        )}
-                      />
-                    </span>
-                  </button>
-                </h3>
-                <div id={panelId} role="region" aria-labelledby={btnId} hidden={!open} className="px-5 pb-5">
-                  <p className="m-0 type-body text-hh-muted">{faq.answer}</p>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+        {/* Desktop: two independent columns (first half left, second half right), so opening a
+            question only pushes down its own column. Mobile: one list in order. */}
+        <div className="flex w-full flex-col gap-[10px] lg:flex-row lg:items-start lg:gap-5">
+          {FAQ_COLUMNS.map((column, c) => (
+            <ul key={c} className="m-0 flex w-full list-none flex-col gap-[10px] p-0 lg:flex-1">
+              {column.map(({ faq, i }) => {
+                const open = openIndex === i;
+                const btnId = `${baseId}-q${i}`;
+                const panelId = `${baseId}-a${i}`;
+                return (
+                  <li key={faq.question} className="rounded-card bg-white">
+                    <h3 className="m-0">
+                      <button
+                        id={btnId}
+                        type="button"
+                        aria-expanded={open}
+                        aria-controls={panelId}
+                        onClick={() => setOpenIndex(open ? null : i)}
+                        className="flex w-full items-start gap-5 rounded-card p-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hh-forest"
+                      >
+                        <span className="flex-1 font-heading text-[20px] font-medium leading-[26.4px] tracking-[-1.3px] text-hh-onyx sm:text-[22px]">
+                          {faq.question}
+                        </span>
+                        <span aria-hidden className="relative mt-3 h-[2px] w-[14px] shrink-0 bg-hh-onyx">
+                          <span
+                            className={cn(
+                              "absolute inset-0 bg-hh-onyx transition-transform duration-200 motion-reduce:transition-none",
+                              open ? "rotate-0" : "rotate-90",
+                            )}
+                          />
+                        </span>
+                      </button>
+                    </h3>
+                    <div id={panelId} role="region" aria-labelledby={btnId} hidden={!open} className="px-5 pb-5">
+                      <p className="m-0 type-body text-hh-muted">{faq.answer}</p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          ))}
+        </div>
 
         <div className="flex flex-col items-center gap-4 text-center split:flex-row">
           <p className="m-0 type-body-lg text-hh-muted">Have more questions?</p>

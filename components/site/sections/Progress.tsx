@@ -27,7 +27,7 @@ const STATS: { label: string; value: number; goal?: number; caption: string }[] 
 
 export function Progress() {
   return (
-    <section id="progress" className="relative bg-white pb-[100px] split:pb-[130px]">
+    <section id="progress" className="relative bg-white pt-[100px] split:pt-[130px]">
       <div className="site-container flex flex-col gap-10">
         <div className="flex flex-col items-start gap-5 split:flex-row split:items-end split:justify-between">
           <div className="flex flex-col items-start gap-5">

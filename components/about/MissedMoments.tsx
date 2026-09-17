@@ -19,7 +19,8 @@ export function MissedMoments() {
               <h2 className="m-0 type-h2 text-hh-onyx">Easy to miss what&apos;s right around us</h2>
               <p className="m-0 type-body-lg text-hh-muted">
                 As a resident and local business owner, I&apos;ve also seen how easy it is for
-                people to miss what&apos;s happening right around them.
+                people to miss what&apos;s happening right around them. And many community initiatives
+                depend on word of mouth to reach the people who would gladly support them.
               </p>
             </div>
           </div>
@@ -55,11 +56,6 @@ export function MissedMoments() {
             );
           })}
         </ul>
-
-        <p className="m-0 max-w-[760px] type-body-lg text-hh-onyx">
-          And many community initiatives depend on word of mouth to reach the people who would
-          gladly support them.
-        </p>
       </div>
     </section>
   );

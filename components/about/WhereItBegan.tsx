@@ -2,35 +2,30 @@ import Image from "next/image";
 import { CtaLink } from "@/components/site/ui/CtaLink";
 import { SectionEyebrow } from "@/components/site/ui/SectionEyebrow";
 
-// Charion's "Our purpose" split: a two-photo collage (293px columns, 10px gap) with a caption
-// card, then an 80px gap to a 500px text column.
+// Charion's "Our purpose" split: founder photo, then an 80px gap to a
+// 500px text column. Side by side only from xl, where both fit.
 export function WhereItBegan() {
   return (
     <section className="relative bg-white py-[100px] split:py-[130px]">
-      <div className="site-container flex flex-col items-start gap-[60px] split:flex-row xl:gap-[80px]">
-        <div className="flex w-full items-start gap-[10px] split:w-[596px] split:shrink-0">
+      <div className="site-container flex flex-col items-start gap-[60px] xl:flex-row xl:items-center xl:justify-center xl:gap-[80px]">
+        <div className="flex w-full max-w-[455px] items-start xl:w-[455px] xl:shrink-0">
           <div className="flex flex-1 flex-col gap-[10px]">
             <div className="relative aspect-[293/356] w-full overflow-clip rounded-card">
               <Image
                 src="/photography/jc-steyn-founder.jpg"
                 alt="JC Steyn, founder of Hello Hyperlocal, in Linden"
                 fill
-                sizes="(min-width: 810px) 293px, 50vw"
+                sizes="(min-width: 640px) 455px, 100vw"
                 className="object-cover"
               />
+              {/* Dark veil keeps the white name legible over the photo; matches the home page founder card. */}
+              <div className="absolute inset-x-0 bottom-0 flex flex-col gap-1 bg-[linear-gradient(rgb(14_15_12/0)_0%,rgb(14_15_12/0.78)_100%)] px-6 pb-6 pt-24">
+                <span className="font-heading text-[22px] font-medium leading-[26.4px] tracking-[-1px] text-white">
+                  JC Steyn, Founder
+                </span>
+                <span className="text-[16px] leading-6 text-white/80">Hello Hyperlocal</span>
+              </div>
             </div>
-            <p className="m-0 rounded-card bg-hh-lime p-5 text-[16px] leading-6 text-hh-onyx">
-              More than a decade in Linden, as a resident and local business owner.
-            </p>
-          </div>
-          <div className="relative aspect-[293/468] w-full flex-1 overflow-clip rounded-card">
-            <Image
-              src="/photography/linden-streetview.jpeg"
-              alt="A tree-lined street in Linden"
-              fill
-              sizes="(min-width: 810px) 293px, 50vw"
-              className="object-cover"
-            />
           </div>
         </div>
 

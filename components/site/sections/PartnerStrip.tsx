@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
-import { useReducedMotion } from "motion/react";
 import { SectionEyebrow } from "@/components/site/ui/SectionEyebrow";
+import { useReducedMotion } from "motion/react";
 
 const LOGOS = [
   { src: "/partner-logos/private-property-logo.png", alt: "Private Property" },
@@ -17,9 +17,10 @@ export function PartnerStrip() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="partner-logos" className="relative bg-white pb-10 pt-[60px]">
+    // Sits directly under Partners (no bottom padding there), so this top padding is the whole gap.
+    <section id="partner-logos" className="relative bg-white pb-10 pt-[100px] split:pt-[130px]">
       <div className="site-container flex flex-col items-center gap-8">
-        <SectionEyebrow label="Powering Local Communities, Hand in Hand" tone="light" className="text-center" />
+        <SectionEyebrow label="Working with Linden locals" tone="light" className="text-center" />
 
         <ul className="m-0 w-full list-none p-0" aria-label="Community partners">
           <Marquee

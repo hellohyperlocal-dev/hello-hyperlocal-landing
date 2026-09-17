@@ -13,17 +13,15 @@ interface Screen {
   image?: string;
 }
 
-// Brief §4. Real mock-ups are still to come: set `image` (e.g. "/app-screens/home-feed.png")
-// on each entry when they arrive; nothing else needs to change.
 const SCREENS: Screen[] = [
-  { name: "Home feed", caption: "Everything happening nearby, in one place." },
-  { name: "Love Local", caption: "Specials and stories from local businesses." },
-  { name: "Explore", caption: "Find cafés, services and hidden gems." },
-  { name: "Events", caption: "See what's on around you this week." },
-  { name: "Marketplace", caption: "Buy, sell and offer services locally." },
-  { name: "Community Projects", caption: "Follow and support projects in your suburb." },
-  { name: "Rewards", caption: "Earn rewards for discovering your neighbourhood." },
-  { name: "Profile", caption: "Your interests, saved spots and settings." },
+  { name: "Home Feed", caption: "Everything happening nearby, in one place.", image: "/app-screens/home-feed.webp" },
+  { name: "Love Local", caption: "Specials and stories from local businesses.", image: "/app-screens/love-local.webp" },
+  { name: "Explore", caption: "Find cafés, services and hidden gems.", image: "/app-screens/explore.webp" },
+  { name: "Events", caption: "See what's on around you this week.", image: "/app-screens/events.webp" },
+  { name: "Marketplace", caption: "Buy, sell and offer services locally.", image: "/app-screens/marketplace.webp" },
+  { name: "Community Projects", caption: "Follow and support projects in your suburb.", image: "/app-screens/community-projects.webp" },
+  { name: "Rewards", caption: "Earn rewards for discovering your neighbourhood.", image: "/app-screens/rewards.webp" },
+  { name: "Profile", caption: "Your interests, saved spots and settings.", image: "/app-screens/profile.webp" },
 ];
 
 const COUNT = SCREENS.length;
@@ -61,7 +59,7 @@ export function HowItWorks() {
             if (e.key === "ArrowLeft") go(-1);
           }}
           // --step: distance between cards; --card: flat card width; --phone: phone frame width.
-          className="relative w-full overflow-hidden rounded-card bg-hh-warm py-10 [--card:120px] [--phone:210px] [--step:150px] sm:[--card:170px] sm:[--phone:260px] sm:[--step:220px] lg:[--card:200px] lg:[--phone:300px] lg:[--step:260px] split:py-14"
+          className="relative w-full overflow-hidden py-10 [--card:120px] [--phone:210px] [--step:150px] sm:[--card:170px] sm:[--phone:260px] sm:[--step:220px] lg:[--card:200px] lg:[--phone:300px] lg:[--step:260px] split:py-14"
         >
           <div className="relative mx-auto h-[calc(var(--phone)*2.03)]">
             {/* Card track: fades out towards both edges. */}
@@ -95,6 +93,10 @@ export function HowItWorks() {
             {/* Fixed phone frame over the centre of the track. */}
             <div className="absolute left-1/2 top-1/2 z-10 w-[var(--phone)] -translate-x-1/2 -translate-y-1/2">
               <div className="relative aspect-[300/609] w-full rounded-[34px] bg-[#141312] p-[4%] shadow-[0_44px_96px_-44px_rgb(12_11_10/0.62)] lg:rounded-[48px]">
+                {/* Side buttons, proportions from the reference frame: volume up/down left, power right. */}
+                <span aria-hidden className="absolute -left-[1.3%] top-[20%] h-[5%] w-[1.3%] rounded-l-[2px] bg-[#141312]" />
+                <span aria-hidden className="absolute -left-[1.3%] top-[29%] h-[8%] w-[1.3%] rounded-l-[2px] bg-[#141312]" />
+                <span aria-hidden className="absolute -right-[1.3%] top-[31%] h-[11%] w-[1.3%] rounded-r-[2px] bg-[#141312]" />
                 <div className="relative h-full w-full overflow-hidden rounded-[27px] bg-[#1c1e22] lg:rounded-[38px]">
                   <AnimatePresence initial={false} mode="popLayout">
                     <motion.div
@@ -119,12 +121,30 @@ export function HowItWorks() {
           </div>
 
           {/* Active screen title (announced to screen readers on change). */}
-          <div aria-live="polite" className="mt-6 flex flex-col items-center gap-1 px-5 text-center">
-            <p className="m-0 text-[14px] uppercase leading-5 tracking-[0.08em] text-hh-muted">{current.name}</p>
-            <p className="m-0 type-body text-hh-onyx">{current.caption}</p>
-            <p className="m-0 text-[13px] leading-5 text-hh-muted">
-              {active + 1} / {COUNT}
-            </p>
+          <div aria-live="polite" className="mt-16 flex flex-col items-center gap-1 px-5 text-center lg:mt-20">
+            <p className="m-0 type-h3 text-hh-onyx">{current.name}</p>
+            <p className="m-0 font-sans type-body text-hh-muted">{current.caption}</p>
+          </div>
+
+          {/* Dashed scroll indicator: one dash per screen, active dash widens. */}
+          <div className="mt-5 flex items-center justify-center gap-1.5">
+            {SCREENS.map((screen, index) => (
+              <button
+                key={screen.name}
+                type="button"
+                aria-label={`Show ${screen.name}`}
+                aria-current={index === active}
+                onClick={() => setActive(index)}
+                className="group flex h-6 items-center"
+              >
+                <span
+                  className={cn(
+                    "block h-[3px] rounded-full transition-[width,background-color] duration-500 ease-[cubic-bezier(0.44,0,0.56,1)] motion-reduce:transition-none",
+                    index === active ? "w-8 bg-hh-onyx" : "w-4 bg-hh-onyx/20 group-hover:bg-hh-onyx/40",
+                  )}
+                />
+              </button>
+            ))}
           </div>
         </div>
       </div>

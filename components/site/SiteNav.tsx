@@ -62,12 +62,13 @@ export function SiteNav() {
             solid ? "bg-hh-forest" : "bg-transparent",
           )}
         >
-          <div className="site-container flex h-[60px] items-center gap-[15px]">
+          {/* xl: three-column grid so the links sit at the true centre, whatever the logo and CTA widths. */}
+          <div className="site-container flex h-[60px] items-center gap-[15px] xl:grid xl:grid-cols-[1fr_auto_1fr]">
             <Link
               href="/"
               aria-label="Hello Hyperlocal, back to top"
               onClick={() => setMenuOpen(false)}
-              className="flex h-[52px] shrink-0 items-center rounded-card bg-hh-warm px-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hh-lime focus-visible:ring-offset-2 focus-visible:ring-offset-hh-forest"
+              className="flex h-[52px] shrink-0 items-center justify-self-start rounded-card bg-hh-warm px-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hh-lime focus-visible:ring-offset-2 focus-visible:ring-offset-hh-forest"
             >
               <Image
                 src="/logo/hello-hyperlocal-logo.png"
@@ -79,7 +80,7 @@ export function SiteNav() {
               />
             </Link>
 
-            <nav aria-label="Main navigation" className="ml-auto hidden xl:block">
+            <nav aria-label="Main navigation" className="hidden xl:block">
               <ul className="flex items-center gap-6 2xl:gap-[30px]">
                 {NAV_LINKS.map((link) => (
                   <li key={link.href}>
@@ -96,7 +97,7 @@ export function SiteNav() {
 
             <a
               href={NAV_CTA.href}
-              className="hidden h-[60px] shrink-0 items-center gap-[15px] rounded-button bg-hh-lime px-5 text-[20px] leading-[30px] text-hh-onyx transition-colors hover:bg-hh-lime-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hh-lime focus-visible:ring-offset-2 focus-visible:ring-offset-hh-forest xl:ml-0 xl:flex"
+              className="hidden h-[60px] shrink-0 items-center gap-[15px] rounded-button bg-hh-lime px-5 text-[20px] leading-[30px] text-hh-onyx transition-colors hover:bg-hh-lime-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hh-lime focus-visible:ring-offset-2 focus-visible:ring-offset-hh-forest xl:flex xl:justify-self-end"
             >
               {NAV_CTA.label}
               <ArrowIcon size={14} />

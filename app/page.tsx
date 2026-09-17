@@ -22,7 +22,6 @@ export default function Page() {
       <main id="main-content">
         {/* Discover */}
         <Hero />
-        <PartnerStrip />
         {/* Understand */}
         <OurStory />
         <VisionOrbit />
@@ -30,10 +29,11 @@ export default function Page() {
         <HowItWorks />
         {/* What's in it for me */}
         <ForResidents />
-        <ForBusinesses />
         <Progress />
+        <ForBusinesses />
         <FoundingBusinesses />
         <Partners />
+        <PartnerStrip />
         {/* Join */}
         <FaqSection />
         <ClosingCta />
