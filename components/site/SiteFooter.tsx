@@ -26,10 +26,9 @@ const COLUMNS = [
   },
 ];
 
-// Placeholder hrefs until the real Instagram and Facebook profile URLs are supplied.
 const SOCIAL_LINKS = [
   { label: "Instagram", href: "#", icon: FaInstagram },
-  { label: "Facebook", href: "#", icon: FaFacebook },
+  { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61591711951466", icon: FaFacebook },
 ];
 
 const LEGAL_LINKS = [
