@@ -27,7 +27,7 @@ const COLUMNS = [
 ];
 
 const SOCIAL_LINKS = [
-  { label: "Instagram", href: "#", icon: FaInstagram },
+  { label: "Instagram", href: "https://www.instagram.com/hello_linden?stkn=bXI4cTJ0b3cwMmt4", icon: FaInstagram },
   { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61591711951466", icon: FaFacebook },
 ];
 
