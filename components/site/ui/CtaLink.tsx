@@ -12,12 +12,12 @@ interface CommonProps {
   /** Surface the control sits on. Drives text, arrow and focus-ring colours so AA holds. */
   surface?: Surface;
   className?: string;
+  onClick?: () => void;
 }
 
-type AnchorProps = CommonProps & { href: string; onClick?: never; type?: never; disabled?: never };
+type AnchorProps = CommonProps & { href: string; type?: never; disabled?: never };
 type ButtonProps = CommonProps & {
   href?: undefined;
-  onClick?: () => void;
   type?: "button" | "submit";
   disabled?: boolean;
 };
@@ -33,21 +33,16 @@ function classes(variant: Variant, surface: Surface, className?: string) {
         : "focus-visible:ring-hh-forest focus-visible:ring-offset-white";
 
   return cn(
-    "group inline-flex min-h-[58px] shrink-0 items-center sm:h-[58px] rounded-button text-[18px] leading-[30px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:text-[20px]",
+    "group inline-flex min-h-[58px] shrink-0 items-center sm:h-[58px] rounded-button text-[18px] leading-[30px] tracking-[-0.6px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:text-[20px]",
     ring,
     variant === "primary"
       ? cn(
-          // From sm labels never wrap. On the narrowest phones (320px) a long label may wrap to two
-          // lines instead of pushing the button wider than the screen.
           "max-w-full justify-between gap-4 whitespace-normal py-[10px] pl-5 pr-[10px] text-left sm:gap-[55px] sm:whitespace-nowrap",
-          // On lime the button inverts to onyx (white text 19:1, lime chip 10.9:1).
           surface === "lime"
             ? "bg-hh-onyx text-white hover:bg-hh-forest"
             : "bg-hh-lime text-hh-onyx hover:bg-hh-lime-hover",
         )
       : cn(
-          // No gap: the arrow slots animate their own spacing (see TextInner). max-w-full lets a long
-          // label wrap on the narrowest phones instead of overflowing.
           "max-w-full px-5 text-left",
           surface === "dark" ? "text-white" : "text-hh-onyx",
         ),
@@ -80,8 +75,8 @@ function Inner({ variant, surface, children }: Required<Pick<CommonProps, "varia
 const ease = "duration-300 ease-[cubic-bezier(0.44,0,0.56,1)] motion-reduce:transition-none";
 
 function TextInner({ surface, children }: { surface: Surface; children: React.ReactNode }) {
-  const accent = surface === "dark" ? "text-hh-lime" : surface === "lime" ? "text-hh-onyx" : "text-hh-hunter";
-  const line = surface === "dark" ? "bg-hh-lime" : surface === "lime" ? "bg-hh-onyx" : "bg-hh-hunter";
+  const accent = surface === "dark" ? "text-hh-lime" : "text-hh-onyx";
+  const line = surface === "dark" ? "bg-hh-lime" : "bg-hh-onyx";
   return (
     <span className="relative inline-flex min-w-0 items-center pb-1">
       {/* Left arrow: hidden (0 width, scale 0, -90deg) until hover. */}

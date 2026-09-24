@@ -30,7 +30,7 @@ export function AboutHero() {
             <SectionEyebrow label="Hello Hyperlocal" tone="dark" />
             <h1 className="m-0 type-h1 text-white">Our Story</h1>
             <p className="m-0 max-w-[560px] type-body-lg text-hh-mint">
-              Hello Hyperlocal started with a simple question: how do we help people feel more
+              Hello Hyperlocal started with a simple question: How do we help people feel more
               connected to the place they already call home?
             </p>
           </div>

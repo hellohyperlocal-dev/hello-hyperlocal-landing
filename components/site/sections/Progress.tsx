@@ -29,14 +29,13 @@ export function Progress() {
   return (
     <section id="progress" className="relative bg-white pt-[100px] split:pt-[130px]">
       <div className="site-container flex flex-col gap-10">
-        <div className="flex flex-col items-start gap-5 split:flex-row split:items-end split:justify-between">
-          <div className="flex flex-col items-start gap-5">
-            <SectionEyebrow label="Building the Community" tone="light" />
-            <h2 className="m-0 type-h2 text-hh-onyx">Hello Linden is coming in 2026.</h2>
-          </div>
-          <p className="m-0 max-w-[460px] type-body-lg text-hh-muted">
-            Our founding community is growing ahead of launch. Register early to help shape Hello
-            Linden.
+        <div className="flex w-full flex-col items-center gap-5 text-center">
+          <SectionEyebrow label="Building the Community" tone="light" />
+          <h2 className="m-0 type-h2 text-hh-onyx text-center sm:whitespace-nowrap">
+            Hello Linden is coming in 2026.
+          </h2>
+          <p className="m-0 max-w-[640px] type-body-lg text-hh-muted text-center">
+            Our founding community is growing ahead of launch. Register early and get notified when we launch.
           </p>
         </div>
 

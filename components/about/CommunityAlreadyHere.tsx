@@ -26,8 +26,8 @@ export function CommunityAlreadyHere() {
               know and genuinely care about.
             </p>
           </div>
-          <CtaLink href="/#vision" surface="light">
-            Explore the vision
+          <CtaLink href="/join" surface="light">
+            Join Hello Linden
           </CtaLink>
         </div>
 

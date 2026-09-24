@@ -5,6 +5,7 @@ import { AboutHero } from "@/components/about/AboutHero";
 import { WhereItBegan } from "@/components/about/WhereItBegan";
 import { MissedMoments } from "@/components/about/MissedMoments";
 import { CommunityAlreadyHere } from "@/components/about/CommunityAlreadyHere";
+import { AboutVision } from "@/components/about/AboutVision";
 import { FounderQuote } from "@/components/about/FounderQuote";
 import { HelloLindenPurpose } from "@/components/about/HelloLindenPurpose";
 
@@ -25,6 +26,7 @@ export default function AboutPage() {
         <WhereItBegan />
         <MissedMoments />
         <CommunityAlreadyHere />
+        <AboutVision />
         <HelloLindenPurpose />
         <ClosingCta
           flushTop

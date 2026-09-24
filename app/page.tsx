@@ -1,9 +1,11 @@
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Hero } from "@/components/site/sections/Hero";
+import { GetStarted } from "@/components/site/sections/GetStarted";
+import { IntroVideoSection } from "@/components/site/sections/IntroVideoSection";
 import { PartnerStrip } from "@/components/site/sections/PartnerStrip";
 import { OurStory } from "@/components/site/sections/OurStory";
-import { VisionOrbit } from "@/components/site/sections/VisionOrbit";
+import { VisionTeaser } from "@/components/site/sections/VisionTeaser";
 import { HowItWorks } from "@/components/site/sections/HowItWorks";
 import { ForResidents } from "@/components/site/sections/ForResidents";
 import { ForBusinesses } from "@/components/site/sections/ForBusinesses";
@@ -22,9 +24,11 @@ export default function Page() {
       <main id="main-content">
         {/* Discover */}
         <Hero />
+        <GetStarted />
+        <IntroVideoSection />
         {/* Understand */}
         <OurStory />
-        <VisionOrbit />
+        <VisionTeaser />
         {/* See the app */}
         <HowItWorks />
         {/* What's in it for me */}

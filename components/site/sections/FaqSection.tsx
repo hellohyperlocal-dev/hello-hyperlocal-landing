@@ -32,7 +32,7 @@ const FAQS = [
   {
     question: "Can businesses register now?",
     answer:
-      "Yes. Local businesses can register their interest today, and can also choose to become one of the first Founding Businesses. There is no payment required at this stage — it is an expression of interest so we can plan launch together.",
+      "Yes. Local businesses can register their interest today, and can also choose to become one of the first Founding Businesses. There is no payment required at this stage; it is an expression of interest so we can plan launch together.",
   },
   {
     question: "Is Hello Linden part of the Linden Community Association?",
@@ -47,7 +47,7 @@ const FAQS = [
   {
     question: "Can residents submit events or stories?",
     answer:
-      "That is the intention. Hello Linden is being built so residents, schools, local organisations and community projects can share what is happening in the neighbourhood — events, notices and local stories — rather than it depending on word of mouth.",
+      "That is the intention. Hello Linden is being built so residents, schools, local organisations and community projects can share what is happening in the neighbourhood (events, notices and local stories) rather than depending on word of mouth.",
   },
   {
     question: "Can other suburbs get Hello Hyperlocal?",
@@ -134,10 +134,10 @@ export function FaqSection() {
           ))}
         </div>
 
-        <div className="flex flex-col items-center gap-4 text-center split:flex-row">
+        <div className="flex flex-col items-center gap-4 text-center">
           <p className="m-0 type-body-lg text-hh-muted">Have more questions?</p>
           <CtaLink surface="light" onClick={() => setContactOpen(true)}>
-            Get in touch
+            Get In Touch
           </CtaLink>
         </div>
       </div>

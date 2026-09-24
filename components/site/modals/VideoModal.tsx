@@ -15,27 +15,28 @@ export function VideoModal({ open, onOpenChange }: VideoModalProps) {
   return (
     <Dialog.Root open={open} onOpenChange={(next) => onOpenChange(next)}>
       <Dialog.Portal>
-        <Dialog.Backdrop className="fixed inset-0 z-[100] bg-hh-onyx/80" />
-        <Dialog.Popup className="fixed left-1/2 top-1/2 z-[101] w-[calc(100%-32px)] max-w-4xl -translate-x-1/2 -translate-y-1/2 rounded-card bg-hh-onyx p-4 focus:outline-none sm:p-6">
-          <div className="mb-4 flex items-center justify-between gap-4">
-            <Dialog.Title className="m-0 font-heading text-[22px] font-medium leading-[26.4px] tracking-[-1px] text-white">
-              Hello Linden introduction
-            </Dialog.Title>
+        <Dialog.Backdrop className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md" />
+        <Dialog.Popup
+          aria-label="Hello Linden intro video"
+          className="fixed left-1/2 top-1/2 z-[101] w-[calc(100%-32px)] max-w-5xl -translate-x-1/2 -translate-y-1/2 bg-transparent p-0 focus:outline-none"
+        >
+          <Dialog.Title className="sr-only">Hello Linden introduction</Dialog.Title>
+
+          {/* Clean Theater Video Container */}
+          <div className="relative aspect-video w-full max-h-[85vh] overflow-hidden rounded-[12px] bg-black shadow-2xl sm:rounded-[16px]">
+            {/* Floating Close Button */}
             <Dialog.Close
               aria-label="Close video"
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-button bg-white/10 text-white transition-colors hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hh-lime"
+              className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-md transition-all hover:bg-black/90 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hh-lime"
             >
               <X className="h-5 w-5" />
             </Dialog.Close>
-          </div>
 
-          <div className="relative aspect-video w-full overflow-hidden rounded-card bg-black">
-            {/* Popup unmounts on close, which stops playback. No autoplay when reduced motion is set. */}
             <video
               src="/video/Hello Hyper Local.mp4"
               controls
               playsInline
-              preload="none"
+              preload="metadata"
               autoPlay={!reduceMotion}
               className="h-full w-full object-contain"
             >

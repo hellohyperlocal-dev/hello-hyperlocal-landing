@@ -29,6 +29,52 @@ colors:
   accent-cyan: "#38c8ff"
 
 typography:
+  fontFamilies:
+    heading: "Bricolage Grotesque (var(--font-heading))"
+    body: "Geist (var(--font-geist-sans) / font-sans)"
+
+  type-h1:
+    fontFamily: "Bricolage Grotesque (var(--font-heading))"
+    fontSize: "46px (mobile) -> 68px (lg) -> 80px (xl)"
+    fontWeight: "700 (Bold)"
+    lineHeight: "0.9"
+    letterSpacing: "-3px"
+    utilityClass: "type-h1"
+  type-h2:
+    fontFamily: "Bricolage Grotesque (var(--font-heading))"
+    fontSize: "36px (mobile) -> 40px (md) -> 48px (xl)"
+    fontWeight: "600 (Semi-Bold)"
+    lineHeight: "1.0 (36px / 40px / 48px)"
+    letterSpacing: "-2.2px"
+    utilityClass: "type-h2"
+  type-h3:
+    fontFamily: "Bricolage Grotesque (var(--font-heading))"
+    fontSize: "22px"
+    fontWeight: "500 (Medium)"
+    lineHeight: "26.4px"
+    letterSpacing: "-1px"
+    utilityClass: "type-h3"
+  type-stat:
+    fontFamily: "Bricolage Grotesque (var(--font-heading))"
+    fontSize: "56px (mobile) -> 78px (xl)"
+    fontWeight: "500 (Medium)"
+    lineHeight: "1.0"
+    utilityClass: "type-stat"
+  type-body-lg:
+    fontFamily: "Geist (font-sans)"
+    fontSize: "20px"
+    fontWeight: "400 (Regular)"
+    lineHeight: "30px"
+    letterSpacing: "-0.6px"
+    utilityClass: "type-body-lg"
+  type-body:
+    fontFamily: "Geist (font-sans)"
+    fontSize: "16px"
+    fontWeight: "400 (Regular)"
+    lineHeight: "24px"
+    letterSpacing: "-0.6px"
+    utilityClass: "type-body"
+
   display-mega:
     fontFamily: var(--font-geist-sans), sans-serif
     fontSize: 165px
@@ -125,6 +171,7 @@ typography:
     fontSize: 16px
     fontWeight: 500
     lineHeight: 20px
+    letterSpacing: "-0.6px"
     geistClass: "text-button-16"
 
   # In-App Simulated Phone Screen Micro-Tokens (WCAG / Responsive Viewports)
@@ -186,31 +233,30 @@ components:
     textColor: "{colors.ink}"
     typography: "{typography.body-sm-strong}"
   button-primary:
+    description: "Primary brand CTA button. Solid lime-green surface (#7ED957) with dark onyx text (#0e0f0c) and an embedded dark square chip (#0e0f0c) on the right containing a lime right-arrow icon."
     backgroundColor: "{colors.primary}"
     textColor: "{colors.on-primary}"
+    chipBackgroundColor: "{colors.ink}"
+    chipIconColor: "{colors.primary}"
     typography: "{typography.button-md}"
-    rounded: "{rounded.pill}"
+    rounded: "{rounded.md}"
     padding: "{spacing.md} {spacing.xl}"
-  button-arrow-flip:
-    description: "Interactive button variant featuring dual-element sliding arrow flip animation on hover (Arrow 1 exits top-right, Arrow 2 slides in from bottom-left)."
-    backgroundColor: "{colors.primary}"
-    textColor: "{colors.on-primary}"
-    typography: "{typography.button-md}"
-    rounded: "{rounded.pill}"
-    padding: "{spacing.md} {spacing.xl}"
-    animation: "icon-flip (duration: 0.3s, easing: cubic-bezier(0.16, 1, 0.3, 1))"
   button-secondary:
-    backgroundColor: "{colors.canvas-soft}"
-    textColor: "{colors.ink}"
+    description: "Secondary text-link CTA button. Clean text label with right-arrow icon (#0e0f0c) and a continuous full-width bottom underline extending under both text and arrow."
+    backgroundColor: "transparent"
+    textColor: "{colors.ink} (#0e0f0c)"
+    arrowColor: "{colors.ink} (#0e0f0c)"
+    underlineColor: "{colors.ink} (#0e0f0c)"
     typography: "{typography.button-md}"
-    rounded: "{rounded.pill}"
-    padding: "{spacing.md} {spacing.xl}"
+    padding: "{spacing.xs} 0px"
   button-tertiary:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    borderColor: "{colors.ink}"
+    description: "Tertiary dark contrast CTA button (used on lime surfaces or focal dark cards). Solid dark onyx surface (#0e0f0c) with white text (#ffffff) and an embedded lime-green square chip (#7ED957) on the right containing a dark right-arrow icon."
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.canvas}"
+    chipBackgroundColor: "{colors.primary}"
+    chipIconColor: "{colors.ink}"
     typography: "{typography.button-md}"
-    rounded: "{rounded.pill}"
+    rounded: "{rounded.md}"
     padding: "{spacing.md} {spacing.xl}"
   button-icon-circular:
     backgroundColor: "{colors.canvas}"
@@ -286,13 +332,60 @@ components:
     textColor: "{colors.ink}"
     typography: "{typography.display-md}"
     padding: "{spacing.3xl} {spacing.xl}"
-  currency-converter-card:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    borderColor: "{colors.ink}"
-    typography: "{typography.body-md}"
-    rounded: "{rounded.xl}"
-    padding: "{spacing.xl}"
+  icon-box-primary:
+    description: "Primary feature icon box component used across section feature grids (e.g. Partners & Investors section)."
+    cardBackground: "{colors.canvas} (#ffffff)"
+    iconContainer:
+      size: "48px x 48px (h-12 w-12)"
+      backgroundColor: "{colors.ink-deep} (#1C472A)"
+      iconColor: "{colors.primary} (#7ED957)"
+      rounded: "10px (rounded-[10px])"
+      iconSize: "24px (h-6 w-6, strokeWidth: 2.2)"
+    heading:
+      typography: "type-h3 (font-family: var(--font-heading), font-size: 22px, font-weight: 500, line-height: 26.4px, letter-spacing: -1px)"
+      color: "{colors.ink} (#0e0f0c)"
+      casing: "Title Case"
+      text: "Primary Icon Box"
+    body:
+      typography: "type-body (font-size: 16px, line-height: 24px, letter-spacing: -0.6px)"
+      color: "{colors.muted} (#454745)"
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  icon-box-secondary:
+    description: "Secondary feature icon box component with lime icon container on soft sage background."
+    cardBackground: "{colors.canvas-soft} (#f5f5f5)"
+    iconContainer:
+      size: "48px x 48px (h-12 w-12)"
+      backgroundColor: "{colors.primary} (#7ED957)"
+      iconColor: "{colors.ink} (#0e0f0c)"
+      rounded: "10px (rounded-[10px])"
+      iconSize: "24px (h-6 w-6, strokeWidth: 2.2)"
+    heading:
+      typography: "type-h3 (font-family: var(--font-heading), font-size: 22px, font-weight: 500, line-height: 26.4px, letter-spacing: -1px)"
+      color: "{colors.ink} (#0e0f0c)"
+      casing: "Title Case"
+      text: "Secondary Icon Box"
+    body:
+      typography: "type-body (font-size: 16px, line-height: 24px, letter-spacing: -0.6px)"
+      color: "{colors.muted} (#454745)"
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  icon-box-tertiary:
+    description: "Tertiary feature icon box component with mid-green icon container on pale mint background."
+    cardBackground: "{colors.primary-pale} (#e2f6d5)"
+    iconContainer:
+      size: "48px x 48px (h-12 w-12)"
+      backgroundColor: "{colors.primary-neutral} (#c5edab)"
+      iconColor: "{colors.ink-deep} (#1C472A)"
+      rounded: "10px (rounded-[10px])"
+      iconSize: "24px (h-6 w-6, strokeWidth: 2.2)"
+    heading:
+      typography: "type-h3 (font-family: var(--font-heading), font-size: 22px, font-weight: 500, line-height: 26.4px, letter-spacing: -1px)"
+      color: "{colors.ink} (#0e0f0c)"
+      casing: "Title Case"
+      text: "Tertiary Icon Box"
+    body:
+      typography: "type-body (font-size: 16px, line-height: 24px, letter-spacing: -0.6px)"
+      color: "{colors.muted} (#454745)"
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
   eyebrow-pill-standard:
     description: "Standard section eyebrow pill used across light canvases and neutral sections."
     backgroundColor: "{colors.primary-pale}"
@@ -447,37 +540,53 @@ In the pre-v2 system, all typography was powered by Vercel's **Geist Typography 
 
 ---
 
-## Eyebrow Pill System Specification
+## Section Eyebrow System Specification
 
-To eliminate inconsistent button/badge styles across sections, all section headers adhere to a **unified Eyebrow Pill standard**:
+All section headers across the site adhere to the unified **Section Eyebrow standard** (`components/site/ui/SectionEyebrow.tsx`):
 
 ### 1. Typography & Anatomy
-- **Geometry**: `rounded-full` (`{rounded.pill}` 9999px)
-- **Padding**: `px-3.5 py-1.5` (compact 6px × 14px container)
-- **Typography**: `text-[12px]` / `0.75rem`, `font-semibold` (`600` weight), `leading-none`
-- **Casing**: **Title Case** (e.g., *"The Neighbourhood Network"*, *"Why Hello Hyperlocal"*, *"App Experience"*, *"How It Works"*, *"For Local Businesses"*, *"Our Commitment"*, *"Get the App"*)
-- **Layout**: `inline-flex items-center gap-2 w-fit` with micro-icon (`h-3.5 w-3.5`, `strokeWidth: 2.2`)
+- **Anatomy**: Live-status 10px pulsing lime dot (`bg-hh-lime` / `#7ED957`) with expanding ping ring (`animate-eyebrow-ping`) + text label string. No background container or pill by design.
+- **Layout**: `flex items-center gap-[10px]`
+- **Typography**: `text-[16px]` / `leading-4`, `font-normal`
+- **Casing**: **Title Case** (e.g., *"Hello Linden"*, *"Get Started"*, *"Our Story"*, *"For Residents"*, *"How It Works"*, *"For Businesses"*, *"Frequently Asked Questions"*, *"Local Partners"*)
 
-### 2. Standard Variants & Contrasting Rules
+### 2. Tones & Surface Rules
 
-| Variant | Surface (Background) | Text & Icon Color | Border | Recommended Usage |
-| :--- | :--- | :--- | :--- | :--- |
-| **`Standard`** | `#e2f6d5` (`primary-pale`)<br>*Dark: `#1C472A`* | `#054d28` (`positive-deep`)<br>*Dark: `#7ED957`* | `1px solid rgba(14,15,12,0.05)`<br>*Dark: `1px solid rgba(255,255,255,0.05)`* | **Default** across all light surfaces (Hero, Bento, App Experience, How It Works, For Business, Our Commitment) |
-| **`Dark Contrast`** | `rgba(255, 255, 255, 0.10)` | `#7ED957` (`primary`) | `1px solid rgba(255, 255, 255, 0.10)` | Dark feature surfaces (e.g. Card 4 Dark Forest, dark hero bands) |
-| **`Accent Lime`** | `#7ED957` (`primary`) | `#0e0f0c` (`ink`) | None | High-energy focal CTA cards (e.g. Download CTA card) |
-| **`Surface Contrast`** | `#1C472A` (`ink-deep`) | `#7ED957` (`primary`) | None | When inside an already-mint `#e2f6d5` container or step card |
-
-### 3. Canonical Section Eyebrows & Icon Pairings
-
-| Section | Icon (`lucide-react`) | Title Case Label | Variant |
+| Tone | Text Color | Dot Accent | Recommended Usage |
 | :--- | :--- | :--- | :--- |
-| **Hero** | `<Sparkles className="h-3.5 w-3.5" />` | `The Neighbourhood Network` | `Standard` (`#e2f6d5`) |
-| **Why Hello Hyperlocal** | `<Compass className="h-3.5 w-3.5" />` | `Why Hello Hyperlocal` | `Standard` (`#e2f6d5`) |
-| **App Experience** | `<Layers className="h-3.5 w-3.5" />` | `App Experience` | `Standard` (`#e2f6d5`) |
-| **How It Works** | `<ListOrdered className="h-3.5 w-3.5" />` | `How It Works` | `Standard` (`#e2f6d5`) |
-| **For Local Businesses** | `<Store className="h-3.5 w-3.5" />` | `For Local Businesses` | `Standard` (`#e2f6d5`) |
-| **Our Commitment** | `<ShieldCheck className="h-3.5 w-3.5" />` | `Our Commitment` | `Standard` (`#e2f6d5`) |
-| **Download CTA** | `<Smartphone className="h-3.5 w-3.5" />` | `Get the App` | `Accent Lime` (`#7ED957`) |
+| **`light`** (Default) | `#0e0f0c` (`text-hh-onyx`) | Lime `#7ED957` + ping ring | All white, sage, and light background sections (Hero, Get Started, Our Story, How It Works, For Businesses, FAQ, Partners) |
+| **`dark`** | `#e2f6d5` (`text-hh-mint`) | Lime `#7ED957` + ping ring | Dark forest green background sections (`#1C472A`, e.g. For Residents section) |
+
+### 3. Canonical Section Eyebrows
+
+| Section | Tone | Title Case Label | Rendered Component |
+| :--- | :--- | :--- | :--- |
+| **Hero** | `light` | `Hello Linden` | `<SectionEyebrow label="Hello Linden" tone="light" />` |
+| **Get Started** | `light` | `Get Started` | `<SectionEyebrow label="Get Started" tone="light" />` |
+| **Our Story** | `light` | `Our Story` | `<SectionEyebrow label="Our Story" tone="light" />` |
+| **For Residents** | `dark` | `For Residents` | `<SectionEyebrow label="For Residents" tone="dark" />` |
+| **How It Works** | `light` | `How It Works` | `<SectionEyebrow label="How It Works" tone="light" />` |
+| **For Businesses** | `light` | `For Businesses` | `<SectionEyebrow label="For Businesses" tone="light" />` |
+| **FAQ** | `light` | `Frequently Asked Questions` | `<SectionEyebrow label="Frequently Asked Questions" tone="light" />` |
+| **Local Partners** | `light` | `Local Partners` | `<SectionEyebrow label="Local Partners" tone="light" />` |
+
+---
+
+## Icon Box System Specification
+
+Standardized feature icon box primitives used across section feature grids and partner cards (`components/site/sections/Partners.tsx`):
+
+### 1. Canonical Variants & Colors
+
+| Variant | Card Surface (Background) | Icon Container | Icon Color | Heading Typography | Body Copy |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **`Primary Icon Box`** | `#ffffff` (`canvas`) | `#1C472A` (`ink-deep`) | `#7ED957` (`primary`) | `type-h3` (`22px / 26.4px`, `weight 500`, `letter-spacing -1px`) | `type-body` (`16px / 24px`, `letter-spacing -0.6px`) |
+| **`Secondary Icon Box`** | `#f5f5f5` (`canvas-soft`) | `#7ED957` (`primary`) | `#0e0f0c` (`ink`) | `type-h3` (`22px / 26.4px`, `weight 500`, `letter-spacing -1px`) | `type-body` (`16px / 24px`, `letter-spacing -0.6px`) |
+| **`Tertiary Icon Box`** | `#e2f6d5` (`primary-pale`) | `#c5edab` (`primary-neutral`) | `#1C472A` (`ink-deep`) | `type-h3` (`22px / 26.4px`, `weight 500`, `letter-spacing -1px`) | `type-body` (`16px / 24px`, `letter-spacing -0.6px`) |
+
+### 2. Geometry & Layout
+- **Icon Container**: 48px × 48px (`h-12 w-12`) container (`rounded-[10px]`), 24px icon (`h-6 w-6`, `strokeWidth: 2.2`).
+- **Layout**: Vertical stack (`flex flex-col items-start gap-4`).
 
 ---
 

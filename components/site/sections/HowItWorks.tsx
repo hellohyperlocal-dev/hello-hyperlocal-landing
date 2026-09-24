@@ -19,7 +19,7 @@ const SCREENS: Screen[] = [
   { name: "Explore", caption: "Find cafés, services and hidden gems.", image: "/app-screens/explore.webp" },
   { name: "Events", caption: "See what's on around you this week.", image: "/app-screens/events.webp" },
   { name: "Marketplace", caption: "Buy, sell and offer services locally.", image: "/app-screens/marketplace.webp" },
-  { name: "Community Projects", caption: "Follow and support projects in your suburb.", image: "/app-screens/community-projects.webp" },
+  { name: "Community Projects", caption: "Follow and support projects in your suburb.", image: "/app-screens/community-projects-v2.webp" },
   { name: "Rewards", caption: "Earn rewards for discovering your neighbourhood.", image: "/app-screens/rewards.webp" },
   { name: "Profile", caption: "Your interests, saved spots and settings.", image: "/app-screens/profile.webp" },
 ];
@@ -80,10 +80,16 @@ export function HowItWorks() {
   return (
     <section id="how-it-works" className="relative bg-white py-[100px] split:py-[130px]">
       <div className="site-container flex flex-col items-start gap-[50px]">
-        <div className="flex max-w-[720px] flex-col items-start gap-5">
-          <SectionEyebrow label="How the App Works" tone="light" />
-          <h2 className="m-0 type-h2 text-hh-onyx">A first look at Hello Linden</h2>
-          <p className="m-0 type-body-lg text-hh-muted">The app being built for Linden, screen by screen.</p>
+        <div className="grid w-full grid-cols-1 items-end gap-6 split:grid-cols-2 split:gap-12">
+          <div className="flex flex-col items-start gap-4">
+            <SectionEyebrow label="How the App Works" tone="light" />
+            <h2 className="m-0 type-h2 text-hh-onyx">A first look at Hello Linden</h2>
+          </div>
+          <div>
+            <p className="m-0 type-body-lg text-hh-muted">
+              An early look at the digital town square we&apos;re building for Linden. From daily merchant specials and local gems to suburb projects, everything is designed to bring our community closer together.
+            </p>
+          </div>
         </div>
 
         <div

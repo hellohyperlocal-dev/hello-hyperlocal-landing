@@ -33,7 +33,7 @@ export function Partners() {
         <ul className="m-0 grid w-full list-none grid-cols-1 gap-x-8 gap-y-10 p-0 sm:grid-cols-2 xl:grid-cols-5">
           {GROUPS.map(({ icon: Icon, title, body }) => (
             <li key={title} className="flex flex-col items-start gap-4">
-              <span className="flex h-12 w-12 items-center justify-center rounded-card bg-hh-forest text-hh-lime">
+              <span className="flex h-12 w-12 items-center justify-center rounded-[10px] bg-hh-forest text-hh-lime">
                 <Icon aria-hidden className="h-6 w-6" strokeWidth={2.2} />
               </span>
               <h3 className="m-0 type-h3 text-hh-onyx">{title}</h3>

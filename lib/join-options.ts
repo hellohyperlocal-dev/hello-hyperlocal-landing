@@ -56,6 +56,14 @@ export const RESIDENT_BENEFITS: Benefit[] = [
   { icon: Gift, title: "Rewards & local initiatives", caption: "Coming later, for exploring your suburb." },
 ];
 
+/** Curated 4 top highlights for the landing page For Residents section. */
+export const PRIMARY_RESIDENT_BENEFITS: Benefit[] = [
+  { icon: MapPin, title: "Discover what's nearby", caption: "Find local spots, news, and hidden gems right around the corner." },
+  { icon: Store, title: "Local businesses & services", caption: "Connect with neighborhood shops, trusted services, and favorite spots." },
+  { icon: CalendarDays, title: "Explore community events", caption: "Stay in the loop with local markets, school news, and suburb gatherings." },
+  { icon: Megaphone, title: "Important suburb updates", caption: "Receive verified local announcements and community advisories directly." },
+];
+
 /** Brief §6, For Businesses: the nine regular business benefits. */
 export const BUSINESS_BENEFITS: Benefit[] = [
   { icon: Store, title: "Business profile", caption: "Your story, hours and offers in one place." },
@@ -67,6 +75,14 @@ export const BUSINESS_BENEFITS: Benefit[] = [
   { icon: Megaphone, title: "Community campaigns", caption: "Join campaigns that bring people out." },
   { icon: Users, title: "Direct connection", caption: "Reach local customers, not algorithms." },
   { icon: TrendingUp, title: "Future promotion", caption: "Advertising opportunities as Hello grows." },
+];
+
+/** Curated 4 top highlights for the landing page For Businesses section. */
+export const PRIMARY_BUSINESS_BENEFITS: Benefit[] = [
+  { icon: Store, title: "Dedicated business profile", caption: "Share your story, opening hours, and offers with nearby residents." },
+  { icon: Compass, title: "Hyperlocal discovery", caption: "Be seen by neighbours looking for products and services in your area." },
+  { icon: Tag, title: "Promotions & local specials", caption: "Announce deals, seasonal offers, and news straight to the suburb." },
+  { icon: Users, title: "Direct community connection", caption: "Build lasting relationships with local regulars who support neighborhood business." },
 ];
 
 /** Brief §8, what the first 1,000 Founding Neighbours get. Used as a list in /join. */
