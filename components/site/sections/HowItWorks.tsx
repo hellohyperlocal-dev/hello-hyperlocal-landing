@@ -177,8 +177,8 @@ export function HowItWorks() {
                       <ScreenFill screen={screen} tone={index === active ? "dark" : "light"} />
                     </div>
                   ))}
-                  {/* Dynamic Island */}
-                  <span aria-hidden className="absolute left-1/2 top-[2.5%] z-10 h-[3.6%] w-[30%] -translate-x-1/2 rounded-full bg-black" />
+                  {/* Dynamic Island / Front Camera cutout */}
+                  <span aria-hidden className="absolute left-1/2 top-[1.5%] z-10 h-[2.8%] w-[24%] -translate-x-1/2 rounded-full bg-black" />
                 </div>
               </div>
             </div>
