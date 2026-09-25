@@ -22,8 +22,7 @@ export function FoundingBusinesses() {
             <h2 className="m-0 type-h2 text-white">Help shape Hello Linden before launch</h2>
             <p className="m-0 type-body-lg text-hh-mint">
               Founding Businesses get involved early and help shape Hello Linden with us. The first{" "}
-              {PROGRESS.businesses.goal} local businesses can join. There&apos;s no payment, just an
-              expression of interest.
+              {PROGRESS.businesses.goal} local businesses can join to secure priority launch access and recognition.
             </p>
           </div>
           <CtaLink href="/join?type=business" surface="dark">

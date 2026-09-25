@@ -112,7 +112,7 @@ export function businessSteps(form: JoinForm, set: SetField): StepDef[] {
     {
       key: "founding",
       title: "Would you like to be a Founding Business?",
-      description: "The first 100 businesses helping shape Hello Linden. No payment required.",
+      description: "The first 100 businesses helping shape Hello Linden before launch.",
       body: (
         <div className="flex flex-col gap-4">
           <ul className="m-0 flex list-none flex-col gap-2 rounded-card bg-hh-mint p-5 text-[15px] leading-[22px] text-hh-onyx">
@@ -127,7 +127,7 @@ export function businessSteps(form: JoinForm, set: SetField): StepDef[] {
               onChange={() => set("founding", "yes")}
               title="Yes, count us in"
             >
-              Register our expression of interest as a Founding Business.
+              Register as a Founding Business.
             </ChoiceCard>
             <ChoiceCard
               checked={form.founding === "no"}

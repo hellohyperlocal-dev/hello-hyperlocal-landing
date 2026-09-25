@@ -32,7 +32,7 @@ const FAQS = [
   {
     question: "Can businesses register now?",
     answer:
-      "Yes. Local businesses can register their interest today, and can also choose to become one of the first Founding Businesses. There is no payment required at this stage; it is an expression of interest so we can plan launch together.",
+      "Yes. Local businesses can register their interest today, and can also choose to become one of the first Founding Businesses so we can plan launch together.",
   },
   {
     question: "Is Hello Linden part of the Linden Community Association?",
@@ -62,7 +62,7 @@ const FAQS = [
   {
     question: "How can I become a Founding Business?",
     answer:
-      "Choose 'Join Hello Linden', select 'I'm a Business' and tell us you would like to be a Founding Business. Founding Businesses are recognised as such, get early access, a founding badge and window sticker, priority onboarding and a say in how Hello Linden develops. No payment is required today.",
+      "Choose 'Join Hello Linden', select 'I'm a Business' and tell us you would like to be a Founding Business. Founding Businesses are recognised as such, get early access, a founding badge and window sticker, priority onboarding and a say in how Hello Linden develops.",
   },
   {
     question: "How can I become a Founding Neighbour?",

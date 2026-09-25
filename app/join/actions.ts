@@ -1,6 +1,7 @@
 "use server";
 
 import { getSupabaseAdmin } from "@/lib/supabase-admin";
+import { sendRegistrationNotificationEmails } from "@/lib/email-notifications";
 import type {
   RegistrationPayload,
   RegistrationResult,
@@ -122,6 +123,9 @@ export async function registerAction(payload: RegistrationPayload): Promise<Regi
     console.error("[registrations] write failed", writeError);
     return { ok: false, error: GENERIC_ERROR };
   }
+
+  // Trigger automated Resend email notifications (Admin Alert + User Welcome)
+  await sendRegistrationNotificationEmails(payload);
 
   // Same response whether this email was new or already on the list, so the form
   // can't be used to find out who has registered.
