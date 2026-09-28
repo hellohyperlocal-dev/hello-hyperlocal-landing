@@ -21,7 +21,7 @@ export async function sendRegistrationNotificationEmails(payload: RegistrationPa
   }
 
   const resend = new Resend(apiKey);
-  const fromEmail = process.env.RESEND_FROM_EMAIL || "Hello Linden <onboarding@resend.dev>";
+  const fromEmail = process.env.RESEND_FROM_EMAIL || "Hello Linden <notifications@hellohyperlocal.co.za>";
   const adminEmail = process.env.ADMIN_NOTIFICATION_EMAIL || "registrations@hellohyperlocal.co.za";
 
   const email = payload.contact?.email?.trim();
@@ -94,7 +94,7 @@ export async function sendTestEmailTemplatesToAddress(targetEmail: string): Prom
   }
 
   const resend = new Resend(apiKey);
-  const fromEmail = process.env.RESEND_FROM_EMAIL || "Hello Linden <onboarding@resend.dev>";
+  const fromEmail = process.env.RESEND_FROM_EMAIL || "Hello Linden <notifications@hellohyperlocal.co.za>";
   const results: string[] = [];
 
   const templates = [

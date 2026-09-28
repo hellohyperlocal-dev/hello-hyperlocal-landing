@@ -1,13 +1,18 @@
 import fs from "fs";
 import { Resend } from "resend";
 
-if (!process.env.RESEND_API_KEY && fs.existsSync(".env.local")) {
+if (fs.existsSync(".env.local")) {
   const envContent = fs.readFileSync(".env.local", "utf8");
   for (const line of envContent.split("\n")) {
-    const match = line.match(/^\s*RESEND_API_KEY\s*=\s*(.*)\s*$/);
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) continue;
+    const match = trimmed.match(/^([^=]+)=(.*)$/);
     if (match) {
-      process.env.RESEND_API_KEY = match[1].trim();
-      break;
+      const key = match[1].trim();
+      const value = match[2].trim();
+      if (!process.env[key]) {
+        process.env[key] = value;
+      }
     }
   }
 }
@@ -17,8 +22,9 @@ if (!RESEND_API_KEY) {
   console.error("Error: RESEND_API_KEY environment variable is missing.");
   process.exit(1);
 }
-const TARGET_EMAIL = process.env.TARGET_EMAIL || "hellohyperlocal.dev@gmail.com";
-const FROM_EMAIL = "Hello Linden <onboarding@resend.dev>";
+
+const TARGET_EMAIL = process.env.TARGET_EMAIL || "jc@hellohyperlocal.co.za";
+const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "Hello Linden <notifications@hellohyperlocal.co.za>";
 
 const resend = new Resend(RESEND_API_KEY);
 
@@ -269,7 +275,9 @@ function renderAdminNotificationEmail() {
 }
 
 async function main() {
-  console.log(`Sending 5 test email templates to ${TARGET_EMAIL}...`);
+  console.log(`Sending 5 test email templates...`);
+  console.log(`From: ${FROM_EMAIL}`);
+  console.log(`To:   ${TARGET_EMAIL}\n`);
 
   const templates = [
     { subject: "[TEMPLATE 1/5] Welcome to Hello Linden (Founding Neighbour)", html: renderResidentWelcomeEmail({ firstName: "Sarah" }) },
