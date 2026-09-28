@@ -17,7 +17,7 @@ if (!RESEND_API_KEY) {
   console.error("Error: RESEND_API_KEY environment variable is missing.");
   process.exit(1);
 }
-const TARGET_EMAIL = "hellohyperlocal.dev@gmail.com";
+const TARGET_EMAIL = process.env.TARGET_EMAIL || "hellohyperlocal.dev@gmail.com";
 const FROM_EMAIL = "Hello Linden <onboarding@resend.dev>";
 
 const resend = new Resend(RESEND_API_KEY);
