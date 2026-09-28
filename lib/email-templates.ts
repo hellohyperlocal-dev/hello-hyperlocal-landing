@@ -11,7 +11,7 @@ const BRAND = {
 };
 
 /**
- * Base email wrapper with responsive container, header branding, and footer.
+ * Base email wrapper with Inter font, responsive container, header branding, and footer.
  */
 function emailWrapper(contentHtml: string): string {
   return `<!DOCTYPE html>
@@ -20,8 +20,11 @@ function emailWrapper(contentHtml: string): string {
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hello Linden</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
-<body style="margin: 0; padding: 0; background-color: ${BRAND.bg}; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+<body style="margin: 0; padding: 0; background-color: ${BRAND.bg}; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased;">
   <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: ${BRAND.bg}; padding: 32px 16px;">
     <tr>
       <td align="center">
@@ -34,10 +37,10 @@ function emailWrapper(contentHtml: string): string {
               <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td>
-                    <span style="display: inline-block; font-size: 22px; font-weight: 700; color: #ffffff; letter-spacing: -0.5px;">
+                    <span style="display: inline-block; font-size: 22px; font-weight: 700; color: #ffffff; letter-spacing: -0.5px; font-family: 'Inter', sans-serif;">
                       Hello Linden
                     </span>
-                    <span style="display: inline-block; margin-left: 8px; font-size: 11px; font-weight: 600; text-transform: uppercase; background-color: ${BRAND.lime}; color: ${BRAND.onyx}; padding: 3px 8px; border-radius: 12px; letter-spacing: 0.5px;">
+                    <span style="display: inline-block; margin-left: 8px; font-size: 11px; font-weight: 600; text-transform: uppercase; background-color: ${BRAND.lime}; color: ${BRAND.onyx}; padding: 3px 8px; border-radius: 12px; letter-spacing: 0.5px; font-family: 'Inter', sans-serif;">
                       Linden, JHB
                     </span>
                   </td>
@@ -48,24 +51,43 @@ function emailWrapper(contentHtml: string): string {
 
           <!-- Main Content Body -->
           <tr>
-            <td style="padding: 36px 32px; color: ${BRAND.onyx}; font-size: 16px; line-height: 1.6;">
+            <td style="padding: 36px 32px; color: ${BRAND.onyx}; font-size: 16px; line-height: 1.6; font-family: 'Inter', sans-serif;">
               ${contentHtml}
             </td>
           </tr>
 
           <!-- Footer Section -->
           <tr>
-            <td style="background-color: ${BRAND.panel}; padding: 24px 32px; border-top: 1px solid rgba(14,15,12,0.06); text-align: left;">
-              <p style="margin: 0 0 6px 0; font-size: 14px; font-weight: 700; color: ${BRAND.forest};">
+            <td style="background-color: ${BRAND.panel}; padding: 24px 32px; border-top: 1px solid rgba(14,15,12,0.06); text-align: left; font-family: 'Inter', sans-serif;">
+              <!-- Social Media Icons -->
+              <table role="presentation" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 16px;">
+                <tr>
+                  <td style="padding-right: 12px; vertical-align: middle;">
+                    <a href="https://www.instagram.com/hellohyperlocal" target="_blank" rel="noopener noreferrer" style="display: inline-block; text-decoration: none;">
+                      <img src="https://cdn.simpleicons.org/instagram/1C472A" alt="Instagram" width="20" height="20" style="display: block; border: 0;" />
+                    </a>
+                  </td>
+                  <td style="padding-right: 12px; vertical-align: middle;">
+                    <a href="https://www.facebook.com/hellohyperlocal" target="_blank" rel="noopener noreferrer" style="display: inline-block; text-decoration: none;">
+                      <img src="https://cdn.simpleicons.org/facebook/1C472A" alt="Facebook" width="20" height="20" style="display: block; border: 0;" />
+                    </a>
+                  </td>
+                  <td style="vertical-align: middle;">
+                    <span style="font-size: 12px; font-weight: 600; color: ${BRAND.forest}; font-family: 'Inter', sans-serif;">Follow Hello Hyperlocal</span>
+                  </td>
+                </tr>
+              </table>
+
+              <p style="margin: 0 0 6px 0; font-size: 14px; font-weight: 700; color: ${BRAND.forest}; font-family: 'Inter', sans-serif;">
                 Love Where You Live.
               </p>
-              <p style="margin: 0 0 12px 0; font-size: 13px; color: ${BRAND.muted};">
+              <p style="margin: 0 0 12px 0; font-size: 13px; color: ${BRAND.muted}; font-family: 'Inter', sans-serif;">
                 Hello Linden is part of the Hello Hyperlocal network. Connecting neighbours, supporting local businesses, and celebrating community.
               </p>
-              <p style="margin: 0 0 12px 0; font-size: 11px; color: #868685; line-height: 1.4;">
+              <p style="margin: 0 0 12px 0; font-size: 11px; color: #868685; line-height: 1.4; font-family: 'Inter', sans-serif;">
                 Protected in terms of South Africa&apos;s POPIA Act. You received this email because you registered on hellohyperlocal.co.za.
               </p>
-              <p style="margin: 0; font-size: 10px; color: #999998; line-height: 1.4;">
+              <p style="margin: 0; font-size: 10px; color: #999998; line-height: 1.4; font-family: 'Inter', sans-serif;">
                 <strong>CONFIDENTIALITY NOTICE &amp; POPIA COMPLIANCE:</strong> The contents of this email message and any attachments are intended solely for the addressee(s) and may contain confidential, proprietary, or privileged information. If you are not the intended recipient, please notify the sender immediately, delete this email, and do not disclose, copy, distribute, or take any action in reliance on it. In compliance with the Protection of Personal Information Act (POPIA), Hello Hyperlocal processes personal information responsibly and in accordance with law.
               </p>
             </td>
@@ -85,14 +107,14 @@ function emailWrapper(contentHtml: string): string {
 export function renderResidentWelcomeEmail(data: { firstName: string }): string {
   const name = data.firstName || "Neighbour";
   const body = `
-    <h1 style="margin: 0 0 16px 0; font-size: 24px; font-weight: 700; color: ${BRAND.forest}; tracking-[-0.5px];">
+    <h1 style="margin: 0 0 16px 0; font-size: 24px; font-weight: 700; color: ${BRAND.forest}; font-family: 'Inter', sans-serif;">
       Welcome to the neighbourhood, ${name}!
     </h1>
-    <p style="margin: 0 0 18px 0; color: ${BRAND.muted}; font-size: 16px; leading-height: 1.6;">
+    <p style="margin: 0 0 18px 0; color: ${BRAND.muted}; font-size: 16px; line-height: 1.6; font-family: 'Inter', sans-serif;">
       Thank you for joining as a <strong>Founding Neighbour</strong> for Hello Linden. You are officially registered as one of our first 1,000 founding residents ahead of our 2026 launch.
     </p>
 
-    <div style="background-color: ${BRAND.mint}; border-radius: 12px; padding: 20px 24px; margin: 24px 0;">
+    <div style="background-color: ${BRAND.mint}; border-radius: 12px; padding: 20px 24px; margin: 24px 0; font-family: 'Inter', sans-serif;">
       <p style="margin: 0 0 12px 0; font-size: 15px; font-weight: 700; color: ${BRAND.forest};">
         Here is what you can look forward to as a Founding Neighbour:
       </p>
@@ -104,15 +126,9 @@ export function renderResidentWelcomeEmail(data: { firstName: string }): string 
       </ul>
     </div>
 
-    <p style="margin: 0 0 24px 0; color: ${BRAND.muted}; font-size: 15px;">
+    <p style="margin: 0; color: ${BRAND.muted}; font-size: 15px; font-family: 'Inter', sans-serif;">
       We will reach out with progress updates and early preview invites as launch approaches.
     </p>
-
-    <div style="margin: 28px 0 12px 0;">
-      <a href="https://hellohyperlocal.co.za/about#vision" style="display: inline-block; background-color: ${BRAND.forest}; color: #ffffff; text-decoration: none; font-size: 15px; font-weight: 600; padding: 12px 24px; border-radius: 8px;">
-        Explore Our Full Vision &rarr;
-      </a>
-    </div>
   `;
   return emailWrapper(body);
 }
@@ -125,18 +141,18 @@ export function renderBusinessConfirmationEmail(data: { contactName: string; bus
   const business = data.businessName ? `"${data.businessName}"` : "your local business";
   
   const body = `
-    <h1 style="margin: 0 0 16px 0; font-size: 24px; font-weight: 700; color: ${BRAND.forest};">
+    <h1 style="margin: 0 0 16px 0; font-size: 24px; font-weight: 700; color: ${BRAND.forest}; font-family: 'Inter', sans-serif;">
       Welcome aboard, ${name}!
     </h1>
-    <p style="margin: 0 0 18px 0; color: ${BRAND.muted}; font-size: 16px;">
+    <p style="margin: 0 0 18px 0; color: ${BRAND.muted}; font-size: 16px; font-family: 'Inter', sans-serif;">
       Thank you for registering <strong>${business}</strong> as a Founding Business with Hello Linden!
     </p>
 
-    <p style="margin: 0 0 20px 0; color: ${BRAND.muted}; font-size: 15px;">
+    <p style="margin: 0 0 20px 0; color: ${BRAND.muted}; font-size: 15px; font-family: 'Inter', sans-serif;">
       We are building Hello Linden to give independent local spots direct, daily visibility to the people living right around your shop &mdash; without algorithm barriers or expensive ad fees.
     </p>
 
-    <div style="background-color: ${BRAND.panel}; border-left: 4px solid ${BRAND.forest}; border-radius: 4px; padding: 18px 20px; margin: 24px 0;">
+    <div style="background-color: ${BRAND.panel}; border-left: 4px solid ${BRAND.forest}; border-radius: 4px; padding: 18px 20px; margin: 24px 0; font-family: 'Inter', sans-serif;">
       <p style="margin: 0 0 10px 0; font-size: 15px; font-weight: 700; color: ${BRAND.forest};">
         What Happens Next?
       </p>
@@ -148,15 +164,9 @@ export function renderBusinessConfirmationEmail(data: { contactName: string; bus
       </ul>
     </div>
 
-    <p style="margin: 0 0 24px 0; color: ${BRAND.muted}; font-size: 15px;">
+    <p style="margin: 0; color: ${BRAND.muted}; font-size: 15px; font-family: 'Inter', sans-serif;">
       Our merchant support team will reach out directly as we prepare launch materials for Linden.
     </p>
-
-    <div style="margin: 28px 0 12px 0;">
-      <a href="https://hellohyperlocal.co.za/for-businesses" style="display: inline-block; background-color: ${BRAND.forest}; color: #ffffff; text-decoration: none; font-size: 15px; font-weight: 600; padding: 12px 24px; border-radius: 8px;">
-        Explore All Business Benefits &rarr;
-      </a>
-    </div>
   `;
   return emailWrapper(body);
 }
@@ -167,18 +177,18 @@ export function renderBusinessConfirmationEmail(data: { contactName: string; bus
 export function renderContactAcknowledgmentEmail(data: { name: string; topic: string; message: string }): string {
   const name = data.name || "Neighbour";
   const body = `
-    <h1 style="margin: 0 0 16px 0; font-size: 24px; font-weight: 700; color: ${BRAND.forest};">
+    <h1 style="margin: 0 0 16px 0; font-size: 24px; font-weight: 700; color: ${BRAND.forest}; font-family: 'Inter', sans-serif;">
       Hi ${name},
     </h1>
-    <p style="margin: 0 0 18px 0; color: ${BRAND.muted}; font-size: 16px;">
+    <p style="margin: 0 0 18px 0; color: ${BRAND.muted}; font-size: 16px; font-family: 'Inter', sans-serif;">
       Thank you for getting in touch with the Hello Linden team regarding <strong>"${data.topic || "General Enquiry"}"</strong>.
     </p>
 
-    <div style="background-color: ${BRAND.bg}; border: 1px solid rgba(14,15,12,0.1); border-radius: 8px; padding: 16px 20px; margin: 20px 0; font-style: italic; color: ${BRAND.muted}; font-size: 14px;">
+    <div style="background-color: ${BRAND.bg}; border: 1px solid rgba(14,15,12,0.1); border-radius: 8px; padding: 16px 20px; margin: 20px 0; font-style: italic; color: ${BRAND.muted}; font-size: 14px; font-family: 'Inter', sans-serif;">
       &ldquo;${data.message || "No message content provided."}&rdquo;
     </div>
 
-    <p style="margin: 0 0 20px 0; color: ${BRAND.muted}; font-size: 15px;">
+    <p style="margin: 0; color: ${BRAND.muted}; font-size: 15px; font-family: 'Inter', sans-serif;">
       A member of our local team will review your message and get back to you within 1 to 2 business days.
     </p>
   `;
@@ -191,22 +201,22 @@ export function renderContactAcknowledgmentEmail(data: { name: string; topic: st
 export function renderPartnerAcknowledgmentEmail(data: { contactName: string; organisation: string; inquiryType: string }): string {
   const name = data.contactName || "Partner";
   const body = `
-    <h1 style="margin: 0 0 16px 0; font-size: 24px; font-weight: 700; color: ${BRAND.forest};">
+    <h1 style="margin: 0 0 16px 0; font-size: 24px; font-weight: 700; color: ${BRAND.forest}; font-family: 'Inter', sans-serif;">
       Hello ${name},
     </h1>
-    <p style="margin: 0 0 18px 0; color: ${BRAND.muted}; font-size: 16px;">
+    <p style="margin: 0 0 18px 0; color: ${BRAND.muted}; font-size: 16px; font-family: 'Inter', sans-serif;">
       Thank you for reaching out on behalf of <strong>"${data.organisation || "your organisation"}"</strong>.
     </p>
 
-    <p style="margin: 0 0 20px 0; color: ${BRAND.muted}; font-size: 15px;">
+    <p style="margin: 0 0 20px 0; color: ${BRAND.muted}; font-size: 15px; font-family: 'Inter', sans-serif;">
       We are excited about opportunities to collaborate with schools, community associations, local leaders, and civic groups to support suburb initiatives across Linden.
     </p>
 
-    <div style="background-color: ${BRAND.mint}; border-radius: 8px; padding: 16px 20px; margin: 20px 0; color: ${BRAND.forest}; font-size: 14px;">
+    <div style="background-color: ${BRAND.mint}; border-radius: 8px; padding: 16px 20px; margin: 20px 0; color: ${BRAND.forest}; font-size: 14px; font-family: 'Inter', sans-serif;">
       <strong>Inquiry Type:</strong> ${data.inquiryType || "Community Partnership"}
     </div>
 
-    <p style="margin: 0 0 20px 0; color: ${BRAND.muted}; font-size: 15px;">
+    <p style="margin: 0; color: ${BRAND.muted}; font-size: 15px; font-family: 'Inter', sans-serif;">
       Our community partnership team will review your details and follow up with you directly.
     </p>
   `;
@@ -226,10 +236,10 @@ export function renderAdminNotificationEmail(payload: RegistrationPayload): stri
   const roleLabels = (payload.roles || []).map((r) => r.replace("_", " ")).join(", ");
 
   const body = `
-    <h2 style="margin: 0 0 16px 0; font-size: 20px; font-weight: 700; color: ${BRAND.forest}; border-bottom: 2px solid ${BRAND.lime}; padding-bottom: 8px;">
+    <h2 style="margin: 0 0 16px 0; font-size: 20px; font-weight: 700; color: ${BRAND.forest}; border-bottom: 2px solid ${BRAND.lime}; padding-bottom: 8px; font-family: 'Inter', sans-serif;">
       🔔 New Website Lead Received
     </h2>
-    <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 12px; font-size: 15px;">
+    <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 12px; font-size: 15px; font-family: 'Inter', sans-serif;">
       <tr>
         <td style="padding: 6px 0; font-weight: bold; width: 140px; color: ${BRAND.forest};">Name:</td>
         <td style="padding: 6px 0; color: ${BRAND.onyx};">${fullContactName}</td>
@@ -278,7 +288,7 @@ export function renderAdminNotificationEmail(payload: RegistrationPayload): stri
         <td style="padding: 6px 0; color: ${BRAND.onyx}; font-style: italic;">${payload.enquiry.message}</td>
       </tr>` : ""}
     </table>
-    <div style="margin-top: 24px; padding-top: 12px; border-top: 1px solid rgba(14,15,12,0.1); font-size: 12px; color: ${BRAND.muted};">
+    <div style="margin-top: 24px; padding-top: 12px; border-top: 1px solid rgba(14,15,12,0.1); font-size: 12px; color: ${BRAND.muted}; font-family: 'Inter', sans-serif;">
       Timestamp: ${new Date().toLocaleString("en-ZA", { timeZone: "Africa/Johannesburg" })}
     </div>
   `;
