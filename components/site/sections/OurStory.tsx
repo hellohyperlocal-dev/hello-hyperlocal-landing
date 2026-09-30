@@ -46,21 +46,10 @@ export function OurStory() {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 pt-1">
+          <div className="pt-1">
             <CtaLink href="/about" surface="light">
               Read Our Full Story
             </CtaLink>
-
-            <button
-              type="button"
-              onClick={() => setVideoOpen(true)}
-              className="inline-flex items-center gap-2.5 rounded-full border border-hh-onyx/15 bg-white px-6 py-3.5 font-heading text-[16px] font-semibold tracking-[-0.3px] text-hh-onyx shadow-sm transition-all hover:border-hh-onyx hover:bg-hh-onyx hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hh-lime"
-            >
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-hh-lime text-hh-onyx">
-                <Play className="ml-0.5 h-3.5 w-3.5 fill-current" />
-              </span>
-              Watch Intro Video
-            </button>
           </div>
         </div>
 
