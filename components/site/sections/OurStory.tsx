@@ -64,18 +64,16 @@ export function OurStory() {
               priority={false}
               className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
             />
-            {/* Play Button Badge overlay on Founder Card */}
+            {/* Brand Styled Video Button on Founder Card */}
             <button
               type="button"
               onClick={() => setVideoOpen(true)}
-              className="absolute left-6 top-6 z-10 flex items-center gap-2.5 rounded-full bg-black/60 px-4 py-2 text-white backdrop-blur-md transition-all duration-300 hover:bg-black/90 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hh-lime"
-              aria-label="Watch JC's intro video"
+              className="group absolute left-6 top-6 z-10 inline-flex min-h-[52px] items-center justify-between gap-3 rounded-button bg-hh-lime py-2 pl-4 pr-2 text-left font-heading text-[16px] font-semibold tracking-[-0.4px] text-hh-onyx shadow-xl transition-all duration-300 hover:bg-hh-lime-hover hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hh-forest focus-visible:ring-offset-2 sm:min-h-[58px] sm:gap-4 sm:py-[10px] sm:pl-5 sm:pr-[10px] sm:text-[18px]"
+              aria-label="Watch Intro Video"
             >
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-hh-lime text-hh-onyx">
-                <Play className="ml-0.5 h-3.5 w-3.5 fill-current" />
-              </span>
-              <span className="font-heading text-[14px] font-semibold tracking-tight text-white">
-                Watch JC&apos;s Story
+              <span>Watch Intro</span>
+              <span className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-chip bg-hh-onyx text-hh-lime transition-transform group-hover:scale-105 sm:h-[38px] sm:w-[38px]">
+                <Play className="ml-0.5 h-4 w-4 fill-current" />
               </span>
             </button>
 
@@ -98,7 +96,8 @@ export function OurStory() {
       <VideoModal
         open={videoOpen}
         onOpenChange={setVideoOpen}
-        videoSrc="/video/Hello Hyper Local.mp4"
+        videoSrc="/video/Hello Hyper Local 2min20s.mp4"
+        maxTime={140}
         title="How Hello Hyperlocal Started — JC Steyn"
       />
     </section>

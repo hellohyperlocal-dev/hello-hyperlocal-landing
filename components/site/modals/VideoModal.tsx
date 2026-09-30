@@ -9,6 +9,7 @@ interface VideoModalProps {
   onOpenChange: (open: boolean) => void;
   videoSrc?: string;
   title?: string;
+  maxTime?: number;
 }
 
 export function VideoModal({
@@ -16,8 +17,18 @@ export function VideoModal({
   onOpenChange,
   videoSrc = "/video/Promo Video .mp4",
   title = "Hello Linden introduction",
+  maxTime,
 }: VideoModalProps) {
   const reduceMotion = useReducedMotion();
+
+  const handleTimeUpdate = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+    if (!maxTime) return;
+    const video = e.currentTarget;
+    if (video.currentTime >= maxTime) {
+      video.pause();
+      video.currentTime = maxTime;
+    }
+  };
 
   return (
     <Dialog.Root open={open} onOpenChange={(next) => onOpenChange(next)}>
@@ -46,6 +57,7 @@ export function VideoModal({
               playsInline
               preload="metadata"
               autoPlay={!reduceMotion}
+              onTimeUpdate={handleTimeUpdate}
               className="h-full w-full object-contain"
             >
               Your browser does not support the video tag.
