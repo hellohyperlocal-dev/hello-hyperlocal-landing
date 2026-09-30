@@ -33,7 +33,7 @@ export function VideoModal({ open, onOpenChange }: VideoModalProps) {
             </Dialog.Close>
 
             <video
-              src="/video/Hello Hyper Local.mp4"
+              src="/video/Promo Video .mp4"
               controls
               playsInline
               preload="metadata"
