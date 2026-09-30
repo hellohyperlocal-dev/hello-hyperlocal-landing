@@ -2,6 +2,7 @@ import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Hero } from "@/components/site/sections/Hero";
 import { GetStarted } from "@/components/site/sections/GetStarted";
+import { PromoVideoSection } from "@/components/site/sections/PromoVideoSection";
 import { IntroVideoSection } from "@/components/site/sections/IntroVideoSection";
 import { PartnerStrip } from "@/components/site/sections/PartnerStrip";
 import { OurStory } from "@/components/site/sections/OurStory";
@@ -25,6 +26,7 @@ export default function Page() {
         {/* Discover */}
         <Hero />
         <GetStarted />
+        <PromoVideoSection />
         {/* Understand */}
         <OurStory />
         <IntroVideoSection />
