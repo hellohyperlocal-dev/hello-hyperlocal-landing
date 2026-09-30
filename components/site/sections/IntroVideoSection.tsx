@@ -22,11 +22,12 @@ export function IntroVideoSection() {
     <section id="intro-video" className="relative w-full bg-white pb-16 lg:pb-24">
       <div className="site-container">
         <div className="group relative flex w-full flex-col items-center justify-center overflow-hidden rounded-card bg-hh-onyx shadow-2xl">
-          {/* Direct Promo Video Display */}
+          {/* Promo Video with Promo Cover.png Poster */}
           <div className="relative aspect-[16/9] w-full sm:aspect-[21/9] lg:h-[540px]">
             <video
               ref={videoRef}
               src="/video/Promo Video .mp4"
+              poster="/video/Promo Cover.png"
               controls={isPlaying}
               playsInline
               preload="metadata"
@@ -38,7 +39,7 @@ export function IntroVideoSection() {
               Your browser does not support the video tag.
             </video>
 
-            {/* Overlay Play Button (Visible when paused) */}
+            {/* Clean Play Icon Overlay (Visible when paused) */}
             {!isPlaying && (
               <button
                 type="button"
