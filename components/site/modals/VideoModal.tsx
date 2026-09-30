@@ -7,9 +7,16 @@ import { X } from "lucide-react";
 interface VideoModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  videoSrc?: string;
+  title?: string;
 }
 
-export function VideoModal({ open, onOpenChange }: VideoModalProps) {
+export function VideoModal({
+  open,
+  onOpenChange,
+  videoSrc = "/video/Promo Video .mp4",
+  title = "Hello Linden introduction",
+}: VideoModalProps) {
   const reduceMotion = useReducedMotion();
 
   return (
@@ -17,10 +24,10 @@ export function VideoModal({ open, onOpenChange }: VideoModalProps) {
       <Dialog.Portal>
         <Dialog.Backdrop className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md" />
         <Dialog.Popup
-          aria-label="Hello Linden intro video"
+          aria-label={title}
           className="fixed left-1/2 top-1/2 z-[101] w-[calc(100%-32px)] max-w-5xl -translate-x-1/2 -translate-y-1/2 bg-transparent p-0 focus:outline-none"
         >
-          <Dialog.Title className="sr-only">Hello Linden introduction</Dialog.Title>
+          <Dialog.Title className="sr-only">{title}</Dialog.Title>
 
           {/* Clean Theater Video Container */}
           <div className="relative aspect-video w-full max-h-[85vh] overflow-hidden rounded-[12px] bg-black shadow-2xl sm:rounded-[16px]">
@@ -33,7 +40,8 @@ export function VideoModal({ open, onOpenChange }: VideoModalProps) {
             </Dialog.Close>
 
             <video
-              src="/video/Promo Video .mp4"
+              key={videoSrc}
+              src={videoSrc}
               controls
               playsInline
               preload="metadata"

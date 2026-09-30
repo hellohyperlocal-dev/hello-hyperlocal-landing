@@ -1,9 +1,15 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
-import { Quote } from "lucide-react";
+import { Quote, Play } from "lucide-react";
 import { CtaLink } from "@/components/site/ui/CtaLink";
 import { SectionEyebrow } from "@/components/site/ui/SectionEyebrow";
+import { VideoModal } from "@/components/site/modals/VideoModal";
 
 export function OurStory() {
+  const [videoOpen, setVideoOpen] = useState(false);
+
   return (
     <section id="our-story" className="relative bg-white py-[90px] split:py-[120px]">
       <div className="site-container grid grid-cols-1 items-stretch gap-[50px] split:grid-cols-[1fr_440px] split:gap-[80px]">
@@ -40,15 +46,26 @@ export function OurStory() {
             </div>
           </div>
 
-          <div className="pt-1">
+          <div className="flex flex-wrap items-center gap-4 pt-1">
             <CtaLink href="/about" surface="light">
               Read Our Full Story
             </CtaLink>
+
+            <button
+              type="button"
+              onClick={() => setVideoOpen(true)}
+              className="inline-flex items-center gap-2.5 rounded-full border border-hh-onyx/15 bg-white px-6 py-3.5 font-heading text-[16px] font-semibold tracking-[-0.3px] text-hh-onyx shadow-sm transition-all hover:border-hh-onyx hover:bg-hh-onyx hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hh-lime"
+            >
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-hh-lime text-hh-onyx">
+                <Play className="ml-0.5 h-3.5 w-3.5 fill-current" />
+              </span>
+              Watch Intro Video
+            </button>
           </div>
         </div>
 
-        {/* Right Founder Photo Card (Stretched via Grid to align exactly flush with bottom of CTA button) */}
-        <figure className="relative m-0 h-full min-h-[500px] w-full overflow-hidden rounded-card">
+        {/* Right Founder Photo Card with interactive Video Overlay */}
+        <figure className="group relative m-0 h-full min-h-[500px] w-full overflow-hidden rounded-card">
           <div className="relative h-full w-full overflow-hidden rounded-card">
             <Image
               src="/photography/jc-steyn-founder.jpg"
@@ -56,8 +73,23 @@ export function OurStory() {
               fill
               sizes="(min-width: 810px) 440px, 100vw"
               priority={false}
-              className="object-cover object-top"
+              className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
             />
+            {/* Play Button Badge overlay on Founder Card */}
+            <button
+              type="button"
+              onClick={() => setVideoOpen(true)}
+              className="absolute left-6 top-6 z-10 flex items-center gap-2.5 rounded-full bg-black/60 px-4 py-2 text-white backdrop-blur-md transition-all duration-300 hover:bg-black/90 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hh-lime"
+              aria-label="Watch JC's intro video"
+            >
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-hh-lime text-hh-onyx">
+                <Play className="ml-0.5 h-3.5 w-3.5 fill-current" />
+              </span>
+              <span className="font-heading text-[14px] font-semibold tracking-tight text-white">
+                Watch JC&apos;s Story
+              </span>
+            </button>
+
             {/* Elegant Gradient Overlay with clean typography caption */}
             <figcaption className="absolute inset-x-0 bottom-0 flex flex-col gap-1 bg-[linear-gradient(180deg,transparent_0%,rgba(14,15,12,0.85)_100%)] p-6 pt-24 text-white">
               <span className="font-heading text-[24px] font-bold leading-[28.8px] tracking-[-1px] text-white">
@@ -73,6 +105,13 @@ export function OurStory() {
           </div>
         </figure>
       </div>
+
+      <VideoModal
+        open={videoOpen}
+        onOpenChange={setVideoOpen}
+        videoSrc="/video/Hello Hyper Local.mp4"
+        title="How Hello Hyperlocal Started — JC Steyn"
+      />
     </section>
   );
 }
