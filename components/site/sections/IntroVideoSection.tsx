@@ -33,7 +33,7 @@ export function IntroVideoSection() {
           {/* Content Wrapper (Bottom Left Statement + Bottom Right CTA Button) */}
           <div className="relative z-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <p className="m-0 max-w-[760px] font-heading text-[24px] font-medium leading-[1.25] tracking-[-1px] text-white sm:text-[32px] sm:leading-[1.2] lg:text-[40px] lg:tracking-[-1.5px]">
-              Linden never lacked community. What was missing was a simple, trusted way to bring it all together.
+              Watch how Hello Linden is bringing our suburb closer together.
             </p>
 
             <div className="shrink-0">
