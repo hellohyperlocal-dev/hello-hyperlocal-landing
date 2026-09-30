@@ -1,15 +1,9 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
-import { Quote, Play } from "lucide-react";
+import { Quote } from "lucide-react";
 import { CtaLink } from "@/components/site/ui/CtaLink";
 import { SectionEyebrow } from "@/components/site/ui/SectionEyebrow";
-import { VideoModal } from "@/components/site/modals/VideoModal";
 
 export function OurStory() {
-  const [videoOpen, setVideoOpen] = useState(false);
-
   return (
     <section id="our-story" className="relative bg-white py-[90px] split:py-[120px]">
       <div className="site-container grid grid-cols-1 items-stretch gap-[50px] split:grid-cols-[1fr_440px] split:gap-[80px]">
@@ -53,7 +47,7 @@ export function OurStory() {
           </div>
         </div>
 
-        {/* Right Founder Photo Card with interactive Video Overlay */}
+        {/* Right Founder Photo Card */}
         <figure className="group relative m-0 h-full min-h-[500px] w-full overflow-hidden rounded-card">
           <div className="relative h-full w-full overflow-hidden rounded-card">
             <Image
@@ -64,16 +58,6 @@ export function OurStory() {
               priority={false}
               className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
             />
-            {/* Brand Styled Video Button on Founder Card */}
-            <CtaLink
-              onClick={() => setVideoOpen(true)}
-              surface="light"
-              icon={<Play className="ml-0.5 h-4 w-4 fill-current" />}
-              className="absolute left-6 top-6 z-10 shadow-2xl transition-transform duration-300 hover:scale-[1.03]"
-            >
-              Watch Intro
-            </CtaLink>
-
             {/* Elegant Gradient Overlay with clean typography caption */}
             <figcaption className="absolute inset-x-0 bottom-0 flex flex-col gap-1 bg-[linear-gradient(180deg,transparent_0%,rgba(14,15,12,0.85)_100%)] p-6 pt-24 text-white">
               <span className="font-heading text-[24px] font-bold leading-[28.8px] tracking-[-1px] text-white">
@@ -89,14 +73,6 @@ export function OurStory() {
           </div>
         </figure>
       </div>
-
-      <VideoModal
-        open={videoOpen}
-        onOpenChange={setVideoOpen}
-        videoSrc="/video/Hello Hyper Local 2min20s.mp4"
-        maxTime={140}
-        title="How Hello Hyperlocal Started — JC Steyn"
-      />
     </section>
   );
 }

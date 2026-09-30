@@ -25,9 +25,9 @@ export default function Page() {
         {/* Discover */}
         <Hero />
         <GetStarted />
-        <IntroVideoSection />
         {/* Understand */}
         <OurStory />
+        <IntroVideoSection />
         <VisionTeaser />
         {/* See the app */}
         <HowItWorks />
