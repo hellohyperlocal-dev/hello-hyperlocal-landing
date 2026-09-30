@@ -11,6 +11,8 @@ interface CommonProps {
   variant?: Variant;
   /** Surface the control sits on. Drives text, arrow and focus-ring colours so AA holds. */
   surface?: Surface;
+  /** Custom icon to render inside the chip box (defaults to ArrowIcon). */
+  icon?: React.ReactNode;
   className?: string;
   onClick?: () => void;
 }
@@ -50,7 +52,7 @@ function classes(variant: Variant, surface: Surface, className?: string) {
   );
 }
 
-function Inner({ variant, surface, children }: Required<Pick<CommonProps, "variant" | "surface">> & { children: React.ReactNode }) {
+function Inner({ variant, surface, icon, children }: Required<Pick<CommonProps, "variant" | "surface">> & { icon?: React.ReactNode; children: React.ReactNode }) {
   if (variant === "primary") {
     return (
       <>
@@ -61,7 +63,7 @@ function Inner({ variant, surface, children }: Required<Pick<CommonProps, "varia
             surface === "lime" ? "bg-hh-lime text-hh-onyx" : "bg-hh-onyx text-hh-lime",
           )}
         >
-          <ArrowIcon size={14} />
+          {icon ?? <ArrowIcon size={14} />}
         </span>
       </>
     );
@@ -135,10 +137,10 @@ function TextInner({ surface, children }: { surface: Surface; children: React.Re
 }
 
 export function CtaLink(props: CtaLinkProps) {
-  const { children, variant = "primary", surface = "dark", className } = props;
+  const { children, variant = "primary", surface = "dark", icon, className } = props;
   const cls = classes(variant, surface, className);
   const inner = (
-    <Inner variant={variant} surface={surface}>
+    <Inner variant={variant} surface={surface} icon={icon}>
       {children}
     </Inner>
   );

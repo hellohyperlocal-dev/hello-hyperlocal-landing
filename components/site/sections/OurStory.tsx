@@ -65,17 +65,14 @@ export function OurStory() {
               className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
             />
             {/* Brand Styled Video Button on Founder Card */}
-            <button
-              type="button"
+            <CtaLink
               onClick={() => setVideoOpen(true)}
-              className="group absolute left-6 top-6 z-10 inline-flex min-h-[52px] items-center justify-between gap-3 rounded-button bg-hh-lime py-2 pl-4 pr-2 text-left font-heading text-[16px] font-semibold tracking-[-0.4px] text-hh-onyx shadow-xl transition-all duration-300 hover:bg-hh-lime-hover hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hh-forest focus-visible:ring-offset-2 sm:min-h-[58px] sm:gap-4 sm:py-[10px] sm:pl-5 sm:pr-[10px] sm:text-[18px]"
-              aria-label="Watch Intro Video"
+              surface="light"
+              icon={<Play className="ml-0.5 h-4 w-4 fill-current" />}
+              className="absolute left-6 top-6 z-10 shadow-2xl transition-transform duration-300 hover:scale-[1.03]"
             >
-              <span>Watch Intro</span>
-              <span className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-chip bg-hh-onyx text-hh-lime transition-transform group-hover:scale-105 sm:h-[38px] sm:w-[38px]">
-                <Play className="ml-0.5 h-4 w-4 fill-current" />
-              </span>
-            </button>
+              Watch Intro
+            </CtaLink>
 
             {/* Elegant Gradient Overlay with clean typography caption */}
             <figcaption className="absolute inset-x-0 bottom-0 flex flex-col gap-1 bg-[linear-gradient(180deg,transparent_0%,rgba(14,15,12,0.85)_100%)] p-6 pt-24 text-white">
