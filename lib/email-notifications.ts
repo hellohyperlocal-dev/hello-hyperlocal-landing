@@ -22,7 +22,15 @@ export async function sendRegistrationNotificationEmails(payload: RegistrationPa
 
   const resend = new Resend(apiKey);
   const fromEmail = process.env.RESEND_FROM_EMAIL || "Hello Linden <notifications@hellohyperlocal.co.za>";
-  const adminEmail = process.env.ADMIN_NOTIFICATION_EMAIL || "registrations@hellohyperlocal.co.za";
+  
+  // Deliver admin alerts to registrations@ and directly to JC (jc@hellohyperlocal.co.za)
+  const defaultAdminEmails = ["registrations@hellohyperlocal.co.za", "jc@hellohyperlocal.co.za"];
+  const configuredEmails = process.env.ADMIN_NOTIFICATION_EMAIL
+    ? process.env.ADMIN_NOTIFICATION_EMAIL.split(",").map((e) => e.trim()).filter(Boolean)
+    : defaultAdminEmails;
+  
+  // Ensure both registrations@ and jc@ are always included unless explicitly overridden
+  const adminRecipients = Array.from(new Set([...configuredEmails, "jc@hellohyperlocal.co.za"]));
 
   const email = payload.contact?.email?.trim();
   if (!email) return;
@@ -37,7 +45,7 @@ export async function sendRegistrationNotificationEmails(payload: RegistrationPa
 
     await resend.emails.send({
       from: fromEmail,
-      to: [adminEmail],
+      to: adminRecipients,
       subject: adminSubject,
       html: adminHtml,
     });
