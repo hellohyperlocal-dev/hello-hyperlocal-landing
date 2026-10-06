@@ -86,6 +86,7 @@ export function businessSteps(form: JoinForm, set: SetField): StepDef[] {
           <TextField
             label="Mobile / WhatsApp"
             type="tel"
+            required
             autoComplete="tel"
             value={form.mobile}
             onChange={(e) => set("mobile", e.target.value)}
