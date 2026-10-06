@@ -13,7 +13,7 @@ const INQUIRY_TYPES = [
   { value: "Media", label: "Media & Press" },
 ];
 
-const EMPTY = { name: "", org: "", email: "", role: INQUIRY_TYPES[0].value };
+const EMPTY = { name: "", org: "", email: "", mobile: "", role: INQUIRY_TYPES[0].value };
 
 interface PartnerModalProps {
   open: boolean;
@@ -41,7 +41,7 @@ export function PartnerModal({ open, onOpenChange }: PartnerModalProps) {
     // An enquiry the team replies to, not a marketing opt-in, so no consent timestamp.
     const result = await submitRegistration({
       roles: ["partner_interest"],
-      contact: { fullName: form.name, email: form.email },
+      contact: { fullName: form.name, email: form.email, mobile: form.mobile },
       partner: { organisation: form.org, inquiryType: form.role },
       consentAt: null,
     });
@@ -94,15 +94,26 @@ export function PartnerModal({ open, onOpenChange }: PartnerModalProps) {
           onChange={(e) => setForm({ ...form, org: e.target.value })}
           placeholder="e.g. Linden Community Association / Brand"
         />
-        <TextField
-          label="Email Address"
-          type="email"
-          required
-          autoComplete="email"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-          placeholder="david@example.co.za"
-        />
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <TextField
+            label="Email Address"
+            type="email"
+            required
+            autoComplete="email"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+            placeholder="david@example.co.za"
+          />
+          <TextField
+            label="Mobile / WhatsApp"
+            type="tel"
+            required
+            autoComplete="tel"
+            value={form.mobile}
+            onChange={(e) => setForm({ ...form, mobile: e.target.value })}
+            placeholder="082 123 4567"
+          />
+        </div>
         <SelectField
           label="Inquiry Type"
           options={INQUIRY_TYPES}

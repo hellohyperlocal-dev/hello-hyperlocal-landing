@@ -14,7 +14,7 @@ const TOPICS = [
   "Community Initiative",
 ].map((t) => ({ value: t, label: t }));
 
-const EMPTY = { name: "", email: "", suburb: "Linden", topic: TOPICS[0].value, message: "" };
+const EMPTY = { name: "", email: "", mobile: "", suburb: "Linden", topic: TOPICS[0].value, message: "" };
 
 interface ContactModalProps {
   open: boolean;
@@ -42,7 +42,7 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
     // A reply to a question, not a marketing opt-in, so no consent timestamp.
     const result = await submitRegistration({
       roles: ["general_enquiry"],
-      contact: { fullName: form.name, email: form.email },
+      contact: { fullName: form.name, email: form.email, mobile: form.mobile },
       suburb: form.suburb,
       enquiry: { topic: form.topic, message: form.message },
       consentAt: null,
@@ -96,15 +96,26 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
             placeholder="e.g. Linden"
           />
         </div>
-        <TextField
-          label="Email Address"
-          type="email"
-          required
-          autoComplete="email"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-          placeholder="you@example.co.za"
-        />
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <TextField
+            label="Email Address"
+            type="email"
+            required
+            autoComplete="email"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+            placeholder="you@example.co.za"
+          />
+          <TextField
+            label="Mobile / WhatsApp"
+            type="tel"
+            required
+            autoComplete="tel"
+            value={form.mobile}
+            onChange={(e) => setForm({ ...form, mobile: e.target.value })}
+            placeholder="082 123 4567"
+          />
+        </div>
         <SelectField
           label="Topic"
           options={TOPICS}
