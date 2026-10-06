@@ -43,12 +43,18 @@ export async function sendRegistrationNotificationEmails(payload: RegistrationPa
     const adminSubject = `[Hello Linden Lead] New Registration: ${contactName} (${payload.roles.join(", ")})`;
     const adminHtml = renderAdminNotificationEmail(payload);
 
-    await resend.emails.send({
+    const adminRes = await resend.emails.send({
       from: fromEmail,
       to: adminRecipients,
       subject: adminSubject,
       html: adminHtml,
     });
+
+    if (adminRes.error) {
+      console.error("[registrations] Resend API error sending admin alert email:", adminRes.error);
+    } else {
+      console.log(`[registrations] Admin alert email sent successfully (ID: ${adminRes.data?.id})`);
+    }
   } catch (adminErr) {
     console.error("[registrations] Failed to send admin alert email via Resend:", adminErr);
   }
@@ -81,12 +87,18 @@ export async function sendRegistrationNotificationEmails(payload: RegistrationPa
       });
     }
 
-    await resend.emails.send({
+    const userRes = await resend.emails.send({
       from: fromEmail,
       to: [email],
       subject: userSubject,
       html: userHtml,
     });
+
+    if (userRes.error) {
+      console.error("[registrations] Resend API error sending user confirmation email:", userRes.error);
+    } else {
+      console.log(`[registrations] User confirmation email sent successfully (ID: ${userRes.data?.id})`);
+    }
   } catch (userErr) {
     console.error("[registrations] Failed to send user confirmation email via Resend:", userErr);
   }
