@@ -22,6 +22,7 @@ const COLUMNS = [
       { label: "Merchant Support", href: "/merchant-support" },
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of Service", href: "/terms" },
+      { label: "Community Guidelines", href: "/community-guidelines" },
     ],
   },
 ];
@@ -34,6 +35,7 @@ const SOCIAL_LINKS = [
 const LEGAL_LINKS = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },
+  { label: "Community Guidelines", href: "/community-guidelines" },
   { label: "Cookie Preferences", href: "/privacy#cookies" },
 ];
 

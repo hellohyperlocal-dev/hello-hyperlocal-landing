@@ -85,25 +85,28 @@ export default function PrivacyPolicyPage() {
       {/* Section 4 */}
       <section id="address-privacy" className="scroll-mt-24 space-y-3">
         <h2 className="text-[18px] sm:text-[20px] font-bold text-brand-onyx dark:text-[#FCFAF7] tracking-tight m-0">
-          4. Address Verification &amp; Privacy Protection
+          4. Address Verification &amp; POPIA Data Safeguards
         </h2>
         <p className="m-0">
-          Address documents submitted during verification are evaluated strictly to confirm physical residency. Once verified, documents are permanently encrypted and archived in restricted vaults. Your exact street number is never published on any public feed, user profile, or map.
+          Any documentation uploaded by residents for address verification (such as utility bills or lease agreements) is collected strictly under data minimization principles. This documentation is processed solely to confirm local neighbourhood residency within the Linden geofence and is handled with strict confidentiality under POPIA regulations.
+        </p>
+        <p className="m-0">
+          Verification documents are never displayed publicly, are never sold or shared with commercial entities, and are securely archived or purged following verification. Your exact street number is never published on any public feed, user profile, or map.
         </p>
       </section>
 
       {/* Section 5 */}
       <section id="data-subject-rights" className="scroll-mt-24 space-y-3">
         <h2 className="text-[18px] sm:text-[20px] font-bold text-brand-onyx dark:text-[#FCFAF7] tracking-tight m-0">
-          5. Data Subject Rights Under POPIA
+          5. Data Subject Rights &amp; In-App Account Deletion
         </h2>
         <p className="m-0">
-          Under Sections 23, 24, and 25 of POPIA, you have the right to:
+          Under Sections 23, 24, and 25 of POPIA, as well as mobile platform privacy rules (Apple App Store Guideline 5.1.1 and Google Play data protection):
         </p>
         <ul className="list-disc pl-5 space-y-1.5 m-0 text-[14px]">
+          <li><strong>Direct Account Deletion:</strong> You can permanently delete your account and all associated personal data directly within the mobile application at Settings &gt; Account &gt; Delete my account. Upon deletion, your profile, active posts, comments, and personal records are permanently erased from our production databases.</li>
           <li><strong>Request Access:</strong> Obtain confirmation and copies of personal information we hold about you.</li>
           <li><strong>Request Correction:</strong> Require us to correct inaccurate, irrelevant, excessive, or outdated information.</li>
-          <li><strong>Request Deletion:</strong> Ask us to destroy or delete your personal record when it is no longer authorized to be retained.</li>
           <li><strong>Object to Processing:</strong> Object at any time to the processing of your personal information on reasonable grounds.</li>
         </ul>
       </section>

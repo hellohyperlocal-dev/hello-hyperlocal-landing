@@ -32,6 +32,10 @@ const NAV_ITEMS = [
     href: "/terms",
     title: "Terms of Service",
   },
+  {
+    href: "/community-guidelines",
+    title: "Community Guidelines",
+  },
 ];
 
 export function LegalLayout({
