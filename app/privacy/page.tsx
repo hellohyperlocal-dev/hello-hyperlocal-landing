@@ -261,9 +261,6 @@ export default function PrivacyPolicyPage() {
             Email: <a href="mailto:privacy@hellohyperlocal.co.za" className="text-[#1C472A] dark:text-[#7ED957] font-semibold underline">privacy@hellohyperlocal.co.za</a>
           </p>
         </div>
-        <p className="text-[12px] text-[#868685] dark:text-[#99A893] pt-4 border-t border-black/5 dark:border-white/5 m-0">
-          Privacy Policy, 2026 &bull; &copy; STEYN IP [M00005441_LC/CS/lm]
-        </p>
       </section>
     </LegalLayout>
   );
