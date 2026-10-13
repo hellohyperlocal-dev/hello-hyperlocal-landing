@@ -118,7 +118,7 @@ export function LegalLayout({
                 </span>
                 <div className="text-[12px] text-[#454745] dark:text-[#99A893] leading-relaxed">
                   <strong className="text-brand-onyx dark:text-white">Hello Hyperlocal (Pty) Ltd</strong><br />
-                  Registration: 2026/014285/07<br />
+                  Registration: 2026/524071/07<br />
                   Johannesburg, South Africa<br />
                   <a href="mailto:privacy@hellohyperlocal.co.za" className="underline text-[#1C472A] dark:text-[#7ED957]">privacy@hellohyperlocal.co.za</a>
                 </div>
